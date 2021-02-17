@@ -1,0 +1,13 @@
+.example-card {
+  width: 80%;
+  margin: 10% auto;
+  display: flex;
+  justify-content: center;
+}
+
+.esclamation-mark {
+  margin-top: 12px;
+  color: rgb(182, 2, 2);
+  font-size: 50px;
+  font-weight: bold;
+}

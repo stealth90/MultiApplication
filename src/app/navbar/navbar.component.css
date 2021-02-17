@@ -1,0 +1,33 @@
+.toolbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar a {
+  text-decoration: none;
+  color: white;
+  margin-right: 16px;
+}
+
+.toolbar a:hover {
+  color: red;
+  transition: all 0.5s linear;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.active {
+  color: rgb(173, 39, 39);
+  font-weight: bold;
+}
+
+.toolbar img {
+  margin: 0 16px;
+  cursor: pointer;
+}

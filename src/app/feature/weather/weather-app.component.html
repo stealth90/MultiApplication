@@ -1,0 +1,10 @@
+<app-weather-form (getCity)="getCity($event)"></app-weather-form>
+<ng-container *ngIf="myWeatherCollection.length">
+  <app-weather-widget
+    *ngFor="let weather of myWeatherCollection"
+    [weather]="weather"
+  ></app-weather-widget>
+</ng-container>
+<ng-container *ngIf="!myWeatherCollection.length">
+  <app-no-weather></app-no-weather>
+</ng-container>
