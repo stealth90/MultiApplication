@@ -19,4 +19,9 @@ export class WeatherAppComponent {
     this.weatherService.getWeather(city);
     this.myWeatherCollection = this.weatherService.weatherCollection;
   }
+
+  deleteCity(id: string) {
+    this.weatherService.deleteWeather(id);
+    this.myWeatherCollection = this.weatherService.weatherCollection;
+  }
 }

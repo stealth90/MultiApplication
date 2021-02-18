@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { WeatherApp } from '../weather';
 
 @Component({
   selector: 'app-weather-widget',
@@ -6,7 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./weatherWidget.component.css'],
 })
 export class WeatherWidgetComponent implements OnInit {
-  @Input() weather: { city: string; temp: number; icon: string };
+  @Input() weather: WeatherApp;
+  @Output() deleteButton: EventEmitter<any> = new EventEmitter();
   constructor() {}
   ngOnInit(): void {}
+
+  deleteCity() {
+    this.deleteButton.emit(this.weather.id);
+  }
 }

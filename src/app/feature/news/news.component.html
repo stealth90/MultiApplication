@@ -1,1 +1,37 @@
-<p>news works!</p>
+<div class="news-container">
+  <h1>Last News</h1>
+  <div class="articles-slider" *ngIf="slidesStore.length">
+    <ngx-flicking
+      [options]="{
+        circular: true,
+        gap: 10,
+        duration: 500,
+        isEqualSize: true,
+        isConstantSize: true,
+        hanger: 50,
+        anchor: 50,
+        bound: false,
+        autoResize: true
+      }"
+      class="flicking"
+      (needPanel)="onNeedPanel($event)"
+      (moveEnd)="onMoveEnd($event)"
+    >
+      <ng-template>
+        <div class="panel" *ngFor="let article of slidesStore">
+          <h3 class="article-title">
+            {{ article.title }}
+          </h3>
+          <img
+            class="article-img"
+            src="{{ 'https://static01.nyt.com/' + article.image }}"
+          />
+          <p>{{ article.pub_date | date: "longDate":"UTC":"it" }}</p>
+          <a target="_blank" href="{{ article.url }}"
+            >Leggi articolo completo</a
+          >
+        </div>
+      </ng-template>
+    </ngx-flicking>
+  </div>
+</div>

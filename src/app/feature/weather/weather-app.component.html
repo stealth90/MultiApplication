@@ -1,10 +1,11 @@
 <app-weather-form (getCity)="getCity($event)"></app-weather-form>
-<ng-container *ngIf="myWeatherCollection.length">
+<div class="widgets-container" *ngIf="myWeatherCollection.length">
   <app-weather-widget
     *ngFor="let weather of myWeatherCollection"
     [weather]="weather"
+    (deleteButton)="deleteCity($event)"
   ></app-weather-widget>
-</ng-container>
+</div>
 <ng-container *ngIf="!myWeatherCollection.length">
   <app-no-weather></app-no-weather>
 </ng-container>

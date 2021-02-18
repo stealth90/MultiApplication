@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { debounceTime, skipWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-weather-form',

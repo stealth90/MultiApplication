@@ -1,11 +1,45 @@
 .example-card {
-  width: 80%;
-  margin: 3% auto;
+  max-width: 150px;
+  margin: 2%;
   display: flex;
+  position: relative;
   justify-content: center;
 }
 
+.buttons-container {
+  display: flex;
+  bottom: 10%;
+  right: 2%;
+  position: absolute;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+  max-width: 100px;
+}
+
+.button {
+  padding: 5%;
+  width: 70px;
+  border-radius: 5px;
+  border: 0;
+}
+
+.widgets-container {
+  display: flex;
+}
+
+.delete-button {
+  color: white;
+  background-color: rgb(255, 71, 71);
+}
+
+.edit-button {
+  color: white;
+  background-color: rgb(71, 83, 255);
+}
+
 mat-card-subtitle {
+  width: 80px;
   margin-top: 10px;
-  font-size: 24px;
+  font-size: 20px;
 }

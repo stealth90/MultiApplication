@@ -15,6 +15,7 @@ export interface Weather {
 }
 
 export interface WeatherApp {
+  id: string;
   city: string;
   temp: number;
   icon: string;
