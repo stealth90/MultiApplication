@@ -7,9 +7,13 @@
 }
 
 .panel {
-  width: 50%;
+  width: 40%;
+  height: 400px;
   margin: 5% auto;
   border: thin solid rgba(128, 128, 128, 0.37);
+  border-radius: 20px;
+  background-color: white;
+  padding-bottom: 5%;
 }
 
 .article {
@@ -25,4 +29,13 @@
   text-align: center;
   width: 100%;
   height: 50%;
+}
+
+.flicking {
+  height: 500px;
+}
+
+a {
+  text-decoration: none;
+  color: red;
 }

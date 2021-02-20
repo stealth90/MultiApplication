@@ -2,7 +2,7 @@
   <app-weather-icon [icon]="weather?.icon"></app-weather-icon>
   <span class="header-container">
     <h2 #city>{{ weather.city }}</h2>
-    <p>{{ weather.temp }} °C</p>
+    <p>{{ weather.temp.toFixed() }} °C</p>
   </span>
   <div class="buttons-container">
     <button (click)="deleteCity()" class="button edit-button">Modifica</button>

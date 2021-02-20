@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   constructor(private newsService: NewsService) {}
 
   ngOnInit(): void {
-    this.newsService.getNews('2021', '1').subscribe((news: any[]) => {
+    this.newsService.getNews('2021', '2').subscribe((news: any[]) => {
       this.slidesStore = news
         .filter((_, index) => index <= 10)
         .map((news) => ({

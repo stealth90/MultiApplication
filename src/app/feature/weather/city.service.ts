@@ -21,9 +21,6 @@ export class CityService {
   getAllCity(): Observable<any[]> {
     return this.http
       .get<any>(this.allCityUri, { headers: this.headers })
-      .pipe(
-        tap((value) => console.log(value.results)),
-        map((citiesList) => citiesList.results)
-      );
+      .pipe(map((citiesList) => citiesList.results));
   }
 }

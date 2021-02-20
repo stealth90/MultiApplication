@@ -3,7 +3,7 @@
   <div class="articles-slider" *ngIf="slidesStore.length">
     <ngx-flicking
       [options]="{
-        circular: true,
+        circular: false,
         gap: 10,
         duration: 500,
         isEqualSize: true,
@@ -11,7 +11,8 @@
         hanger: 50,
         anchor: 50,
         bound: false,
-        autoResize: true
+        autoResize: true,
+        height: 500
       }"
       class="flicking"
       (needPanel)="onNeedPanel($event)"

@@ -5,6 +5,10 @@
   background-color: #1976d2;
   color: white;
   font-weight: 600;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .hamburger-button {

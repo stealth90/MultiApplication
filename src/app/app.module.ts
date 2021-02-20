@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
-
+import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 @NgModule({
   declarations: [AppComponent, NavbarComponent, HomeComponent, FooterComponent],
   imports: [
@@ -22,6 +22,7 @@ import { MenubarModule } from 'primeng/menubar';
     SidebarModule,
     ButtonModule,
     MenubarModule,
+    AngularFullpageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
