@@ -10,6 +10,9 @@ import { WeatherAppComponent } from './weather-app.component';
 import { NoWeatherComponent } from './components/no-weather/no-weather.component';
 import { MatIconModule } from '@angular/material/icon';
 import { WeatherIconComponent } from './components/weather-icon/weather-icon.component';
+import { DropdownModule } from 'primeng/dropdown';
+
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   imports: [
@@ -19,6 +22,8 @@ import { WeatherIconComponent } from './components/weather-icon/weather-icon.com
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
+    DropdownModule,
+    ButtonModule,
   ],
   declarations: [
     WeatherWidgetComponent,

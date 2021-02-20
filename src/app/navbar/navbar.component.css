@@ -7,6 +7,15 @@
   font-weight: 600;
 }
 
+.hamburger-button {
+  margin-right: 2%;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+}
+
 .toolbar a {
   text-decoration: none;
   color: white;

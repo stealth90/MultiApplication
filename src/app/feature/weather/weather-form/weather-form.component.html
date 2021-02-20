@@ -1,9 +1,31 @@
-<div class="inputForm"></div>
-
-<mat-card class="example-card">
-  <label>
-    <h1>Città</h1>
-    <input placeholder="Cerca la città..." type="text" [formControl]="name" />
-  </label>
-  <button #addButton (click)="onAddCity()">+</button>
-</mat-card>
+<div class="input-container">
+  <h1>Città</h1>
+  <span class="button-container">
+    <span class="p-float-label">
+      <p-dropdown
+        [autoDisplayFirst]="false"
+        [showClear]="true"
+        placeholder=""
+        [options]="citiesList$ | async"
+        [(ngModel)]="myName"
+        filter="true"
+        filterValue="name"
+        optionLabel="name"
+        optionValue="name"
+        [virtualScroll]="true"
+        [panelStyle]="{ width: 'max-content' }"
+        itemSize="30"
+      ></p-dropdown>
+      <label class="dropdown-label" for="dropdown">Città</label>
+    </span>
+    <p-button
+      [disabled]="!myName"
+      icon="pi pi-plus"
+      iconPos="left"
+      (click)="onAddCity()"
+      type="button"
+      label="Aggiungi"
+      class="button"
+    ></p-button>
+  </span>
+</div>

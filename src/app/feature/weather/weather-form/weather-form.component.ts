@@ -6,26 +6,32 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { CityService } from '../city.service';
 
 @Component({
   selector: 'app-weather-form',
   templateUrl: './weather-form.component.html',
   styleUrls: ['./weather-form.component.css'],
 })
-export class WeatherFormComponent implements OnInit, OnDestroy {
+export class WeatherFormComponent implements OnInit {
   subscribes: Subject<any>[] = [];
-  constructor() {}
-  ngOnDestroy(): void {
-    this.subscribes.forEach((sub) => sub.unsubscribe());
-  }
-  name = new FormControl('');
+  citiesList$: Observable<any>;
+
+  constructor(private cityService: CityService) {}
+
+  myName: string;
 
   @Output() getCity = new EventEmitter<string>(true);
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.citiesList$ = this.cityService.getAllCity();
+  }
 
   onAddCity(): void {
-    this.getCity.emit(this.name.value);
+    if (this.myName) {
+      this.getCity.emit(this.myName);
+      this.myName = '';
+    }
   }
 }

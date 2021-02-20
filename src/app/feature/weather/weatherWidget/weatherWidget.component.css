@@ -1,9 +1,16 @@
 .example-card {
-  max-width: 150px;
-  margin: 2%;
+  height: 200px;
+  margin: 5px;
   display: flex;
   position: relative;
   justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.header-container {
+  padding: 0 10px;
+  min-width: 150px;
 }
 
 .buttons-container {
@@ -38,8 +45,11 @@
   background-color: rgb(71, 83, 255);
 }
 
-mat-card-subtitle {
-  width: 80px;
+p {
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 24px;
+}
+
+h2 {
+  max-width: 150px;
 }

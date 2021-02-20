@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  visibleSidebar1: boolean;
+  innerWidth: number;
 
-  constructor() { }
+  constructor(private primengConfig: PrimeNGConfig) {}
 
-  ngOnInit(): void {
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
   }
 
+  ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    this.primengConfig.ripple = true;
+  }
 }

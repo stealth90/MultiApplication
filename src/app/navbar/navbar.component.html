@@ -8,6 +8,36 @@
   />
   <span>Benvenuto</span>
   <div class="spacer"></div>
-  <a routerLink="weather" routerLinkActive="active">Weather App</a>
-  <a routerLink="news" routerLinkActive="active">News App</a>
+  <p-button
+    class="hamburger-button"
+    *ngIf="innerWidth < 800"
+    type="button"
+    (click)="visibleSidebar1 = true"
+    icon="pi pi-bars"
+  ></p-button>
+  <ng-container *ngIf="innerWidth > 800">
+    <a routerLink="weather" routerLinkActive="active">Weather App</a>
+    <a routerLink="news" routerLinkActive="active">News App</a>
+  </ng-container>
 </div>
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+  <h1 style="font-weight: normal">Left Sidebar</h1>
+  <div class="nav-links">
+    <p-button
+      type="button"
+      routerLinkActive="active"
+      (click)="visibleSidebar1 = false"
+      routerLink="weather"
+      label="Weather App"
+      styleClass="p-button-text"
+    ></p-button>
+    <p-button
+      type="button"
+      routerLinkActive="active"
+      (click)="visibleSidebar1 = false"
+      label="News App"
+      routerLink="news"
+      styleClass="p-button-text"
+    ></p-button>
+  </div>
+</p-sidebar>

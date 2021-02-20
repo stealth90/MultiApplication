@@ -1,11 +1,11 @@
-<mat-card class="example-card">
+<div class="example-card p-shadow-5">
   <app-weather-icon [icon]="weather?.icon"></app-weather-icon>
-  <mat-card-header>
-    <mat-card-title #city>{{ weather.city }}</mat-card-title>
-    <mat-card-subtitle>{{ weather.temp }} °C</mat-card-subtitle>
-  </mat-card-header>
+  <span class="header-container">
+    <h2 #city>{{ weather.city }}</h2>
+    <p>{{ weather.temp }} °C</p>
+  </span>
   <div class="buttons-container">
     <button (click)="deleteCity()" class="button edit-button">Modifica</button>
     <button (click)="deleteCity()" class="button delete-button">Elimina</button>
   </div>
-</mat-card>
+</div>

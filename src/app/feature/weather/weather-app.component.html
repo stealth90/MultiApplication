@@ -1,11 +1,25 @@
-<app-weather-form (getCity)="getCity($event)"></app-weather-form>
-<div class="widgets-container" *ngIf="myWeatherCollection.length">
-  <app-weather-widget
-    *ngFor="let weather of myWeatherCollection"
-    [weather]="weather"
-    (deleteButton)="deleteCity($event)"
-  ></app-weather-widget>
+<div class="weather-app">
+  <app-weather-form (getCity)="getCity($event)"></app-weather-form>
+
+  <div
+    class="p-grid p-mt-2 widgets-container"
+    *ngIf="myWeatherCollection.length; else noWeather"
+  >
+    <div
+      class="p-col-12 p-sm-10 p-md-6 p-lg-3"
+      *ngFor="let weather of myWeatherCollection"
+      [@animation]="'visible'"
+    >
+      <div class="box">
+        <app-weather-widget
+          [weather]="weather"
+          (deleteButton)="deleteCity($event)"
+        ></app-weather-widget>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noWeather>
+    <app-no-weather></app-no-weather>
+  </ng-template>
 </div>
-<ng-container *ngIf="!myWeatherCollection.length">
-  <app-no-weather></app-no-weather>
-</ng-container>

@@ -1,9 +1,10 @@
-.example-card {
+.input-container {
   width: 80%;
   margin: 10% auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-content: center;
   background-color: #1976d2;
 }
 
@@ -12,25 +13,22 @@ h1 {
   color: white;
 }
 
-input {
-  padding: 5%;
-  border-radius: 25px;
-  border: 0;
-}
-
 input::placeholder {
   font-style: italic;
 }
 
-button {
-  position: absolute;
-  border-radius: 25px;
-  bottom: 10%;
-  right: 10%;
-  height: 50px;
-  align-self: center;
-  background-color: red;
-  color: white;
-  font-size: 32px;
-  padding: 0 15px;
+.button-container {
+  display: flex;
+  margin-bottom: 5%;
+}
+
+.button {
+  margin-left: 5%;
+}
+.dropdown-label {
+  color: black;
+}
+
+.panelResult {
+  width: max-content;
 }
