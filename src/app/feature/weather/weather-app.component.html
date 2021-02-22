@@ -14,9 +14,6 @@
     <div
       class="p-col-12 p-sm-10 p-md-6 p-lg-3"
       *ngFor="let weather of myWeatherCollection; let idx = index"
-      (swipeleft)="swipe(idx, $event.type)"
-      (touchstart)="swipe($event, 2)"
-      (touchend)="swipe($event, 1)"
       [@animation]="'visible'"
     >
       <div class="box">

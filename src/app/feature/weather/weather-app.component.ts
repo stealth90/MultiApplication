@@ -74,8 +74,4 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
     this.weatherService.deleteWeather(id);
     this.myWeatherCollection = this.weatherService.weatherCollection;
   }
-
-  swipe(currentIndex: number, action: number) {
-    console.log(currentIndex, action);
-  }
 }
