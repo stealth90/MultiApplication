@@ -15,30 +15,13 @@
 }
 
 .buttons-container {
-  display: flex;
-  bottom: 10%;
-  right: 2%;
   position: absolute;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-self: center;
-  max-width: 100px;
-}
-
-.button {
-  padding: 5%;
-  width: 70px;
-  border-radius: 5px;
-  border: 0;
+  top: 5px;
+  right: 5px;
 }
 
 .widgets-container {
   display: flex;
-}
-
-.delete-button {
-  color: white;
-  background-color: rgb(255, 71, 71);
 }
 
 .time {
@@ -48,6 +31,10 @@
 .temperature {
   font-size: 3rem;
   padding: 0;
+}
+
+.custom-skeleton {
+  border: 1px solid black;
 }
 
 .content-container {

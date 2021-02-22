@@ -9,7 +9,7 @@ import {
   animate,
 } from '@angular/animations';
 import { TimeService } from './time.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-weather-app',

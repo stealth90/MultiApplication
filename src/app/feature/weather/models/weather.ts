@@ -15,6 +15,7 @@ export interface Weather {
 }
 
 export interface WeatherApp {
+  prefetch: boolean;
   id: string;
   city: string;
   temp: number;

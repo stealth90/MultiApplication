@@ -12,6 +12,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import {
   HammerGestureConfig,
   HAMMER_GESTURE_CONFIG,
@@ -27,6 +28,7 @@ import {
     ButtonModule,
     MenubarModule,
     AngularFullpageModule,
+    ProgressSpinnerModule,
   ],
   providers: [
     {

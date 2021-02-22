@@ -62,6 +62,16 @@ export class WeatherService {
   };
 
   getWeather = (city: string) => {
+    let newCity: WeatherApp = {
+      prefetch: true,
+      id: '',
+      city: '',
+      temp: 0,
+      icon: '',
+      flag: '',
+      timezone: '',
+    };
+    this.weatherCollection.push(newCity);
     this.http
       .get<any>(`${this.baseGeoUri}${city}`)
       .pipe(
@@ -82,6 +92,7 @@ export class WeatherService {
             .pipe(map((value) => Object.assign({}, value, cityDetail)))
         ),
         map((result) => ({
+          prefetch: false,
           id: result.id,
           city: result.name,
           temp: result.main.temp,
@@ -94,7 +105,23 @@ export class WeatherService {
       .subscribe((value) => {
         if (value === false) {
           alert('Hai inserito una città non esistente');
-        } else this.weatherCollection.push(value);
+          this.weatherCollection.pop();
+        } else {
+          this.weatherCollection[this.weatherCollection.length - 1].city =
+            value.city;
+          this.weatherCollection[this.weatherCollection.length - 1].id =
+            value.id;
+          this.weatherCollection[this.weatherCollection.length - 1].temp =
+            value.temp;
+          this.weatherCollection[this.weatherCollection.length - 1].flag =
+            value.flag;
+          this.weatherCollection[this.weatherCollection.length - 1].icon =
+            value.icon;
+          this.weatherCollection[this.weatherCollection.length - 1].prefetch =
+            value.prefetch;
+          this.weatherCollection[this.weatherCollection.length - 1].timezone =
+            value.timezone;
+        }
       });
   };
 
