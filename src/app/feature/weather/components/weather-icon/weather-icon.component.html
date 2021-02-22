@@ -1,1 +1,7 @@
-<img src="{{ 'assets/weather-icons/' + icon + '.png' }}" />
+<img
+  *ngIf="icon !== '50d' && icon !== '50n'; else svgIcon"
+  src="{{ 'assets/weather-icons/v2/' + icon + '.svg' }}"
+/>
+<ng-template #svgIcon>
+  <img src="{{ 'assets/weather-icons/v2/' + icon + '.png' }}" />
+</ng-template>
