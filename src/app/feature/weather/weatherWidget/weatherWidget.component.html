@@ -22,6 +22,19 @@
     (swiperight)="startAnimation('default')"
     class="example-card p-shadow-5"
   >
+    <div
+      [@buttonAnimator]="animationState"
+      class="example-card-skeleton p-shadow-5"
+    >
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-trash"
+        (click)="deleteCity()"
+        class="deleteButton"
+      ></button>
+    </div>
     <span class="header-container">
       <p class="time">
         {{ convertTimezone() }}

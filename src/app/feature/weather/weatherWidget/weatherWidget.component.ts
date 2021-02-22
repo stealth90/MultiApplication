@@ -37,6 +37,32 @@ import * as kf from './keyframes';
         animate(100, keyframes(kf.slideOutRight))
       ),
     ]),
+    trigger('buttonAnimator', [
+      state(
+        'default',
+        style({
+          opacity: 0,
+          display: 'none',
+          transform: 'translate3d(0, 0, 0)',
+        })
+      ),
+      state(
+        'slideOutLeft',
+        style({
+          opacity: 1,
+          display: 'block',
+          transform: 'translate3d(90%, 0, 0)',
+        })
+      ),
+      transition(
+        'default => slideOutLeft',
+        animate(100, keyframes(kf.showButton))
+      ),
+      transition(
+        'slideOutLeft => default',
+        animate(100, keyframes(kf.hideButton))
+      ),
+    ]),
   ],
 })
 export class WeatherWidgetComponent implements OnInit {
