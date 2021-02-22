@@ -22,7 +22,7 @@ export class WeatherWidgetComponent implements OnInit {
 
   convertTimezone(): string {
     const newTime = moment(this.time).tz(this.weather.timezone);
-    return `${newTime.hour()}: ${newTime.minute()}`;
+    return newTime.format('HH:mm ');
   }
 
   onSwipe($event) {

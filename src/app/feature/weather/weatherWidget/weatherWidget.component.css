@@ -1,17 +1,17 @@
 .example-card {
-  height: 200px;
   margin: 5px;
   display: flex;
   position: relative;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
   border-radius: 10px;
   max-width: 100vw;
 }
 
 .header-container {
-  padding: 0 10px;
-  min-width: 150px;
+  max-width: 150px;
+  margin-left: 1rem;
 }
 
 .buttons-container {
@@ -41,14 +41,19 @@
   background-color: rgb(255, 71, 71);
 }
 
-.edit-button {
-  color: white;
-  background-color: rgb(71, 83, 255);
+.time {
+  font-size: 1rem;
 }
 
-p {
-  margin-top: 10px;
-  font-size: 24px;
+.temperature {
+  font-size: 3rem;
+  padding: 0;
+}
+
+.content-container {
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 h2 {
