@@ -1,17 +1,28 @@
 <div class="weather-app">
   <app-weather-form (getCity)="getCity($event)"></app-weather-form>
-
   <div
     class="p-grid p-mt-2 widgets-container"
-    *ngIf="myWeatherCollection.length; else noWeather"
+    *ngIf="myCurrentWeather.length; else noWeather"
   >
+    <div class="p-col-12 p-sm-10 p-md-6 p-lg-3">
+      <app-weather-widget
+        [isGeoCity]="true"
+        [time]="currentTime"
+        [weather]="myCurrentWeather[0]"
+      ></app-weather-widget>
+    </div>
     <div
       class="p-col-12 p-sm-10 p-md-6 p-lg-3"
-      *ngFor="let weather of myWeatherCollection"
+      *ngFor="let weather of myWeatherCollection; let idx = index"
+      (swipeleft)="swipe(idx, $event.type)"
+      (touchstart)="swipe($event, 'start')"
+      (touchend)="swipe($event, 'end')"
       [@animation]="'visible'"
     >
       <div class="box">
         <app-weather-widget
+          [isGeoCity]="false"
+          [time]="currentTime"
           [weather]="weather"
           (deleteButton)="deleteCity($event)"
         ></app-weather-widget>
@@ -20,6 +31,9 @@
   </div>
 
   <ng-template #noWeather>
-    <app-no-weather></app-no-weather>
+    <div class="loader-container">
+      <i class="pi pi-spin pi-spinner loader"></i>
+    </div>
+    <!-- <app-no-weather></app-no-weather> -->
   </ng-template>
 </div>

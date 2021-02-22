@@ -11,9 +11,17 @@
   height: 400px;
   margin: 5% auto;
   border: thin solid rgba(128, 128, 128, 0.37);
-  border-radius: 20px;
+  border-radius: 1rem;
   background-color: white;
-  padding-bottom: 5%;
+}
+
+.news-footer {
+  float: right;
+  background-color: gainsboro;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 .article {
@@ -35,7 +43,27 @@
   height: 500px;
 }
 
+.panel:hover {
+  cursor: grab;
+}
+
 a {
   text-decoration: none;
-  color: red;
+  color: #1875d1;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: white;
+}
+
+.loader-container {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+
+.loader {
+  font-size: 5rem;
+  color: #1875d1;
 }

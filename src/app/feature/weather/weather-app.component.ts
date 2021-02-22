@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { WeatherApp } from './weather';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { WeatherApp } from './models/weather';
 import { WeatherService } from './weather.service';
 import {
   trigger,
@@ -8,6 +8,8 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import { TimeService } from './time.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-weather-app',
@@ -39,12 +41,28 @@ import {
     ]),
   ],
 })
-export class WeatherAppComponent {
+export class WeatherAppComponent implements OnInit, OnDestroy {
+  myCurrentWeather: WeatherApp[] = [];
   myWeatherCollection: WeatherApp[] = [];
-  constructor(private weatherService: WeatherService) {}
+  subscriptions: Subscription[] = [];
+  currentTime: string;
+  constructor(
+    private weatherService: WeatherService,
+    private timerService: TimeService
+  ) {}
 
   ngOnInit(): void {
+    this.myCurrentWeather = this.weatherService.myCurrentWeather;
     this.myWeatherCollection = this.weatherService.weatherCollection;
+    this.subscriptions.push(
+      this.timerService.currentTime.subscribe(
+        (time) => (this.currentTime = time)
+      )
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
   getCity(city: string) {
@@ -55,5 +73,9 @@ export class WeatherAppComponent {
   deleteCity(id: string) {
     this.weatherService.deleteWeather(id);
     this.myWeatherCollection = this.weatherService.weatherCollection;
+  }
+
+  swipe(currentIndex: number, action: number) {
+    console.log(currentIndex, action);
   }
 }

@@ -24,6 +24,7 @@ export class NewsComponent implements OnInit, OnDestroy {
           title: news.headline.main,
           pub_date: news.pub_date,
           url: news.web_url,
+          author: news.byline.original,
           image: news.multimedia[0]?.url,
         }));
       console.log(this.slidesStore);

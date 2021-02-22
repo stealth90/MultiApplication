@@ -1,12 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  OnDestroy,
-} from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CityService } from '../city.service';
 
 @Component({
@@ -15,7 +8,6 @@ import { CityService } from '../city.service';
   styleUrls: ['./weather-form.component.css'],
 })
 export class WeatherFormComponent implements OnInit {
-  subscribes: Subject<any>[] = [];
   citiesList$: Observable<any>;
 
   constructor(private cityService: CityService) {}

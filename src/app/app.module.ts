@@ -12,6 +12,10 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
+import {
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG,
+} from '@angular/platform-browser';
 @NgModule({
   declarations: [AppComponent, NavbarComponent, HomeComponent, FooterComponent],
   imports: [
@@ -24,7 +28,12 @@ import { AngularFullpageModule } from '@fullpage/angular-fullpage';
     MenubarModule,
     AngularFullpageModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerGestureConfig,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

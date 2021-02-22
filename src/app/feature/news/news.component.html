@@ -1,6 +1,6 @@
 <div class="news-container">
   <h1>Last News</h1>
-  <div class="articles-slider" *ngIf="slidesStore.length">
+  <div class="articles-slider" *ngIf="slidesStore.length; else loader">
     <ngx-flicking
       [options]="{
         circular: false,
@@ -19,20 +19,44 @@
       (moveEnd)="onMoveEnd($event)"
     >
       <ng-template>
-        <div class="panel" *ngFor="let article of slidesStore">
+        <div
+          class="p-d-flex p-flex-column p-jc-between panel"
+          *ngFor="let article of slidesStore"
+        >
           <h3 class="article-title">
             {{ article.title }}
           </h3>
           <img
-            class="article-img"
-            src="{{ 'https://static01.nyt.com/' + article.image }}"
+            *ngIf="!article.image; else articleImg"
+            src="../../../assets/placeholder-image.png"
           />
-          <p>{{ article.pub_date | date: "longDate":"UTC":"it" }}</p>
-          <a target="_blank" href="{{ article.url }}"
-            >Leggi articolo completo</a
-          >
+          <ng-template #articleImg>
+            <img
+              class="article-img"
+              src="{{ 'https://static01.nyt.com/' + article.image }}"
+            />
+          </ng-template>
+          <div class="news-footer">
+            <span class="p-d-flex p-jc-left">
+              <i class="pi pi-clock p-as-center p-m-2"></i>
+              <p style="font-size: small">
+                {{ article.pub_date | date: "MMM. d, y":"UTC":"it" }}
+              </p>
+            </span>
+            <p style="font-size: small; font-weight: bold; text-align: left">
+              {{ article.author || "Sconosciuto" }}
+            </p>
+            <a target="_blank" href="{{ article.url }}"
+              >Leggi articolo completo</a
+            >
+          </div>
         </div>
       </ng-template>
     </ngx-flicking>
   </div>
+  <ng-template #loader>
+    <div class="loader-container">
+      <i class="pi pi-spin pi-spinner loader"></i>
+    </div>
+  </ng-template>
 </div>

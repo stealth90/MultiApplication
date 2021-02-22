@@ -19,6 +19,8 @@ export interface WeatherApp {
   city: string;
   temp: number;
   icon: string;
+  flag: any;
+  timezone: string;
 }
 
 interface Sys {

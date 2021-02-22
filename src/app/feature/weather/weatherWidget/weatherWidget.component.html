@@ -1,11 +1,11 @@
 <div class="example-card p-shadow-5">
   <app-weather-icon [icon]="weather?.icon"></app-weather-icon>
   <span class="header-container">
-    <h2 #city>{{ weather.city }}</h2>
+    <h2 #city>{{ weather.city }} {{ weather.flag }}</h2>
     <p>{{ weather.temp.toFixed() }} °C</p>
+    <p>{{ convertTimezone() }}</p>
   </span>
-  <div class="buttons-container">
-    <button (click)="deleteCity()" class="button edit-button">Modifica</button>
+  <div *ngIf="!isGeoCity" class="buttons-container">
     <button (click)="deleteCity()" class="button delete-button">Elimina</button>
   </div>
 </div>
