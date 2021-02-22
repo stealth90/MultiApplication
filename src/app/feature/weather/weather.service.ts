@@ -75,13 +75,11 @@ export class WeatherService {
     this.http
       .get<any>(`${this.baseGeoUri}${city}`)
       .pipe(
-        map((city) => ({
+        map((city$) => ({
           cityDetail: {
-            name:
-              city.results[0].components.city ||
-              city.results[0].components.town,
-            flag: city.results[0].annotations.flag,
-            timezone: city.results[0].annotations.timezone.name,
+            name: city,
+            flag: city$.results[0].annotations.flag,
+            timezone: city$.results[0].annotations.timezone.name,
           },
         })),
         mergeMap(({ cityDetail }) =>
