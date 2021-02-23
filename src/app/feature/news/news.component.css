@@ -7,7 +7,7 @@
 }
 
 .panel {
-  width: 40%;
+  width: 300px;
   height: 400px;
   margin: 5% auto;
   border: thin solid rgba(128, 128, 128, 0.37);

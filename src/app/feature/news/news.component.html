@@ -29,6 +29,7 @@
           <img
             *ngIf="!article.image; else articleImg"
             src="../../../assets/placeholder-image.png"
+            class="article-img"
           />
           <ng-template #articleImg>
             <img
@@ -56,7 +57,7 @@
   </div>
   <ng-template #loader>
     <div class="loader-container">
-      <i class="pi pi-spin pi-spinner loader"></i>
+      <p-progressSpinner></p-progressSpinner>
     </div>
   </ng-template>
 </div>
