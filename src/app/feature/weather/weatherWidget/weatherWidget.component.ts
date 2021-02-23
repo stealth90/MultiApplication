@@ -1,20 +1,20 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherApp } from '../models/weather';
-import {
+/* import {
   trigger,
   keyframes,
   animate,
   transition,
   state,
   style,
-} from '@angular/animations';
+} from '@angular/animations'; */
 import * as moment from 'moment-timezone';
-import * as kf from './keyframes';
+// import * as kf from './keyframes';
 @Component({
   selector: 'app-weather-widget',
   templateUrl: './weatherWidget.component.html',
   styleUrls: ['./weatherWidget.component.css'],
-  animations: [
+  /* animations: [
     trigger('cardAnimator', [
       state(
         'default',
@@ -63,17 +63,17 @@ import * as kf from './keyframes';
         animate(100, keyframes(kf.hideButton))
       ),
     ]),
-  ],
+  ], */
 })
 export class WeatherWidgetComponent implements OnInit {
   @Input() weather: WeatherApp;
   @Input() isGeoCity: boolean;
   @Input() time: string;
   @Output() deleteButton: EventEmitter<any> = new EventEmitter();
-  animationState: string;
+  // animationState: string;
   constructor() {}
   ngOnInit(): void {
-    this.animationState = 'default';
+    // this.animationState = 'default';
   }
 
   deleteCity() {
@@ -85,14 +85,7 @@ export class WeatherWidgetComponent implements OnInit {
     return newTime.format('HH:mm ');
   }
 
-  // onSwipe(evt) {
-  //   console.log('IM HERE', evt);
-  //   const x =
-  //     Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? 'right' : 'left') : '';
-  //   const y = Math.abs(evt.deltaY) > 40 ? (evt.deltaY > 0 ? 'down' : 'up') : '';
-  // }
-
-  startAnimation(state) {
+  /* startAnimation(state) {
     this.animationState = state;
-  }
+  } */
 }

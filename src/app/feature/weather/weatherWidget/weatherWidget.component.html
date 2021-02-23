@@ -16,13 +16,14 @@
   </div>
 </div>
 <ng-template #loadedData>
-  <div
+  <!-- <div
     [@cardAnimator]="animationState"
     (swipeleft)="startAnimation('slideOutLeft')"
     (swiperight)="startAnimation('default')"
     class="example-card p-shadow-5"
-  >
-    <div
+  > -->
+  <div class="example-card p-shadow-5">
+    <!-- <div
       [@buttonAnimator]="animationState"
       class="example-card-skeleton p-shadow-5"
     >
@@ -34,7 +35,7 @@
         (click)="deleteCity()"
         class="deleteButton"
       ></button>
-    </div>
+    </div> -->
     <span class="header-container">
       <p class="time">
         {{ convertTimezone() }}
