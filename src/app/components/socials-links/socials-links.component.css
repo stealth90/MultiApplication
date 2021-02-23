@@ -1,0 +1,88 @@
+.fixed-socials {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 1.1875rem;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding: 5rem 0;
+
+  pointer-events: none;
+
+  color: black;
+
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.fixed-socials::before,
+.fixed-socials::after {
+  width: 1px;
+  height: 100%;
+  margin: 0 auto;
+
+  content: "";
+
+  background-color: black;
+}
+.fixed-socials::before {
+  margin-bottom: 3.125rem;
+}
+.fixed-socials::after {
+  margin-top: 3.125rem;
+}
+@media only screen and (min-width: 1200px) {
+  .fixed-socials {
+    left: 3.0625rem;
+    padding: 6.25rem 0;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .fixed-socials {
+    display: none;
+  }
+}
+.fixed-socials a {
+  pointer-events: auto;
+}
+.fixed-socials a + a {
+  margin-top: 2.1875rem;
+}
+
+/* PARTIAL: SOCIAL ICONS
+-------------------------------------------- */
+.social-icon {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+/* STYLE 1
+-------------------------------------------- */
+.social-icon {
+  text-decoration: none;
+}
+
+.social-icon > i {
+  font-size: 1.2rem;
+  color: black;
+  transition: all 200ms linear;
+}
+
+.social-icon > i:hover {
+  transform: scale(1.2);
+  color: #1875d1;
+  transition: all 200ms linear;
+}

@@ -30,7 +30,9 @@
               "node_modules/primeflex/primeflex.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/fullpage.js/vendors/scrolloverflow.min.js"
+            ]
           },
           "configurations": {
             "production": {

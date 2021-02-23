@@ -1,3 +1,33 @@
+@keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .example-card {
   margin: 5px;
   display: flex;
@@ -21,19 +51,9 @@
   background-color: red;
 }
 
-.deleteButton {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  width: 100%;
-  height: 100%;
-  background-color: #d32f2f;
-  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  border: 0;
-}
-
-.deleteButton:focus {
-  outline: none;
-  box-shadow: none;
+.deleteButton:hover {
+  animation-name: wobble;
+  animation-duration: 1s;
 }
 
 .header-container {

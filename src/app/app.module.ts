@@ -13,9 +13,19 @@ import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SocialsLinksComponent } from './components/socials-links/socials-links.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    FooterComponent,
+    SocialsLinksComponent,
+    ProgressBarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +37,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     AngularFullpageModule,
     ProgressSpinnerModule,
     HammerModule,
+    ProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

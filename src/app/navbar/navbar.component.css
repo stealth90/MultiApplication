@@ -2,7 +2,7 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #1976d2;
+  background-color: transparent;
   color: white;
   font-weight: 600;
   position: fixed;
@@ -13,6 +13,10 @@
 
 .hamburger-button {
   margin-right: 2%;
+}
+
+:host ::ng-deep .hamburger-button .pi {
+  font-size: 26px;
 }
 
 .nav-links {

@@ -1,40 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  options,
-  fullpage_api,
-} from 'fullpage.js/dist/fullpage.extensions.min';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { options } from './models/fullpage';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   title: string = 'IOCA';
   config: options;
-  fullpage_api: fullpage_api;
+
+  currentIndex = 0;
+  fullpage_api;
 
   constructor() {
-    // for more details on config options please visit fullPage.js docs
     this.config = {
-      // fullpage options
       licenseKey: 'YOUR LICENSE KEY HERE',
-      anchors: [
-        'firstPage',
-        'secondPage',
-        'thirdPage',
-        'fourthPage',
-        'lastPage',
-      ],
+      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
       sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'],
-      menu: '#menu',
-
-      // fullpage callbacks
-      afterResize: () => {
-        console.log('After resize');
-      },
-      afterLoad: (origin, destination, direction) => {
-        console.log(origin.index);
+      scrollOverflow: true,
+      normalScrollElements: '.scrollable-content',
+      bigSectionsDestination: 'top',
+      loopBottom: true,
+      // navigation: true,
+      // slidesNavigation: true,
+      // navigationTooltips: [
+      //   'firstPage',
+      //   'secondPage',
+      //   'thirdPage',
+      //   'fourthPage',
+      // ],
+      onLeave: (origin?: any, destination?: any, direction?: any) => {
+        this.currentIndex = destination.index
+          ? 100.0 * (destination.index / (this.config.anchors.length - 1))
+          : 0;
       },
     };
   }
@@ -44,4 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  ngOnDestroy(): void {
+    this.fullpage_api.destroy();
+  }
 }

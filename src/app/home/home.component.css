@@ -21,6 +21,13 @@ p {
   margin: 0;
 }
 
+.scrollable-content {
+  background: white;
+  overflow: scroll;
+  margin: 0 auto;
+  width: 500px;
+  height: 250px;
+}
 .content {
   display: flex;
   margin: 82px auto 32px;
