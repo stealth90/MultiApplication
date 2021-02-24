@@ -28,10 +28,7 @@
   </div>
 
   <ng-template #noWeather>
-    <div class="loader-container">
-      <p-progressSpinner></p-progressSpinner>
-      <p>Caricamento in corso...</p>
-    </div>
+    <app-loader [message]="'Fetch in corso...'"></app-loader>>
     <!-- <app-no-weather></app-no-weather> -->
   </ng-template>
 </div>

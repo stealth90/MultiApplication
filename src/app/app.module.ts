@@ -16,6 +16,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SocialsLinksComponent } from './components/socials-links/socials-links.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
     FooterComponent,
     SocialsLinksComponent,
     ProgressBarComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,15 +4,10 @@ import { NgxFlickingModule } from '@egjs/ngx-flicking';
 
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from './news.component';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [NewsComponent],
-  imports: [
-    CommonModule,
-    NewsRoutingModule,
-    NgxFlickingModule,
-    ProgressSpinnerModule,
-  ],
+  imports: [CommonModule, BadgeModule, NewsRoutingModule, NgxFlickingModule],
 })
 export class NewsModule {}

@@ -13,11 +13,12 @@ registerLocaleData(localeIt, 'it');
 })
 export class NewsComponent implements OnInit, OnDestroy {
   slidesStore: any[] = [];
+  totalResults: number;
   plugins: Plugin[] = [new Fade(), new AutoPlay({ duration: 10000 }, 'NEXT')];
   constructor(private newsService: NewsService) {}
 
   ngOnInit(): void {
-    this.newsService.getNews('2021', '2').subscribe((news: any[]) => {
+    /* this.newsService.getNews('2021', '2').subscribe((news: any[]) => {
       this.slidesStore = news
         .filter((_, index) => index <= 10)
         .map((news) => ({
@@ -28,6 +29,11 @@ export class NewsComponent implements OnInit, OnDestroy {
           image: news.multimedia[0]?.url,
         }));
       console.log(this.slidesStore);
+    }); */
+    this.newsService.getItaNews().subscribe((news) => {
+      console.log('news', news);
+      this.slidesStore = news.articles;
+      this.totalResults = news.totalResults;
     });
   }
 
@@ -37,6 +43,8 @@ export class NewsComponent implements OnInit, OnDestroy {
     console.log(e);
     // ADD PANELS
   }
+
+  getShortDate(date: any) {}
 
   onMoveEnd(e) {
     // HANDLE INDEX CHANGE

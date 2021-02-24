@@ -11,7 +11,6 @@ import { NoWeatherComponent } from './components/no-weather/no-weather.component
 import { MatIconModule } from '@angular/material/icon';
 import { WeatherIconComponent } from './components/weather-icon/weather-icon.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
 
@@ -25,7 +24,6 @@ import { SkeletonModule } from 'primeng/skeleton';
     ReactiveFormsModule,
     DropdownModule,
     ButtonModule,
-    ProgressSpinnerModule,
     SkeletonModule,
   ],
   declarations: [

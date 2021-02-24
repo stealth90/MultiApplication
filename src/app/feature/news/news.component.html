@@ -1,5 +1,5 @@
 <div class="news-container">
-  <h1>Last News</h1>
+  <h1>Ultime News ({{ totalResults || 0 }})</h1>
   <div class="articles-slider" *ngIf="slidesStore.length; else loader">
     <ngx-flicking
       [options]="{
@@ -20,28 +20,45 @@
     >
       <ng-template>
         <div
-          class="p-d-flex p-flex-column p-jc-between panel"
+          class="p-d-flex p-flex-column p-jc-between panel p-shadow-5"
           *ngFor="let article of slidesStore"
         >
-          <h3 class="article-title">
-            {{ article.title }}
-          </h3>
-          <img
-            *ngIf="!article.image; else articleImg"
-            src="../../../assets/placeholder-image.png"
+          <div
+            *ngIf="!article.image && !article.urlToImage; else articleImg"
+            [style.background]="
+              'url(../../../../../assets/placeholder-image.png)'
+            "
+            [style.background-position]="'center'"
+            [style.background-size]="'cover'"
             class="article-img"
-          />
+          >
+            <p-badge [value]="2" styleClass="p-mr-2"></p-badge>
+          </div>
           <ng-template #articleImg>
-            <img
+            <div
               class="article-img"
-              src="{{ 'https://static01.nyt.com/' + article.image }}"
-            />
+              [style.background]="'url(' + article.urlToImage + ')'"
+              [style.background-position]="'center'"
+              [style.background-size]="'cover'"
+            >
+              <p-badge
+                [value]="getShortDate(article.publishedAt)"
+                size="xlarge"
+                styleClass="p-mr-2"
+              ></p-badge>
+            </div>
           </ng-template>
           <div class="news-footer">
+            <h3 class="article-title">
+              {{ article.title }}
+            </h3>
             <span class="p-d-flex p-jc-left">
               <i class="pi pi-clock p-as-center p-m-2"></i>
               <p style="font-size: small">
-                {{ article.pub_date | date: "MMM. d, y":"UTC":"it" }}
+                {{
+                  article.pub_date || article.publishedAt
+                    | date: "MMM. d, y":"UTC":"it"
+                }}
               </p>
             </span>
             <p style="font-size: small; font-weight: bold; text-align: left">
@@ -56,9 +73,6 @@
     </ngx-flicking>
   </div>
   <ng-template #loader>
-    <div class="loader-container">
-      <p-progressSpinner></p-progressSpinner>
-      <p>Caricamento in corso...</p>
-    </div>
+    <app-loader [loadingMessage]="'Caricamento in corso...'"></app-loader>
   </ng-template>
 </div>
