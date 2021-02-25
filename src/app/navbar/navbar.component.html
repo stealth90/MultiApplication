@@ -10,22 +10,32 @@
   <p-button
     class="p-button-text hamburger-button"
     type="button"
-    (click)="visibleSidebar1 = !visibleSidebar1"
-    [style]="{
-      'background-color': 'transparent',
-      color: 'black',
-      border: 0
-    }"
+    (click)="handleOpenSidebar()"
     icon="pi pi-bars"
   ></p-button>
 </div>
-<p-sidebar [(visible)]="visibleSidebar1" position="right" [baseZIndex]="10000">
-  <h1 style="font-weight: normal">Left Sidebar</h1>
+<p-sidebar
+  [blockScroll]="true"
+  [(visible)]="isVisibleSidebar"
+  position="right"
+  [showCloseIcon]="false"
+  [baseZIndex]="10"
+>
+  <h1 [ngClass]="{ visible: sidebarAnimation }" style="font-weight: normal">
+    Left Sidebar
+  </h1>
+  <p-button
+    class="p-button-text close-button"
+    type="button"
+    (click)="handleCloseSidebar()"
+    icon="pi pi-times"
+  ></p-button>
   <div class="nav-links">
     <p-button
       type="button"
       routerLinkActive="active"
-      (click)="visibleSidebar1 = false"
+      (click)="isVisibleSidebar = false"
+      [ngClass]="{ visible: sidebarAnimation }"
       routerLink="weather"
       label="Weather App"
       styleClass="p-button-text"
@@ -33,7 +43,8 @@
     <p-button
       type="button"
       routerLinkActive="active"
-      (click)="visibleSidebar1 = false"
+      (click)="isVisibleSidebar = false"
+      [ngClass]="{ visible: sidebarAnimation }"
       label="News App"
       routerLink="news"
       styleClass="p-button-text"

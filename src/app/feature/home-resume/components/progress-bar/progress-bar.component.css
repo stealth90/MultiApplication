@@ -1,23 +1,40 @@
 .fullpage-slider-progress-bar {
   position: fixed;
-  z-index: 75;
+  z-index: 10;
   top: 50%;
-  right: -4.3rem;
-  width: 200px;
-  height: 10px;
+  right: -13rem;
+  width: 30rem;
+  height: 5px;
   transform: rotate(90deg);
   border-radius: 0.3125rem;
-  background-color: #fff;
+  background-color: #ffffee;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
 
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .p-progressbar:host {
   height: 100%;
 }
+
+:host ::ng-deep .p-progressbar-value {
+  background: #472728;
+}
 @media only screen and (min-width: 1200px) {
   .fullpage-slider-progress-bar {
-    right: 3.75rem;
+    right: -12.0625rem;
   }
 }
 @media only screen and (max-width: 575px) {

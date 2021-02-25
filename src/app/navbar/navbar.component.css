@@ -9,14 +9,83 @@
   top: 0;
   width: 100vw;
   z-index: 1;
+  transition: padding 0.3s;
 }
 
-.hamburger-button {
+:host ::ng-deep .hamburger-button .pi,
+:host ::ng-deep .close-button .pi {
+  font-size: 26px;
+}
+
+.hamburger-button,
+.close-button {
   margin-right: 2%;
 }
 
-:host ::ng-deep .hamburger-button .pi {
-  font-size: 26px;
+:host ::ng-deep .hamburger-button .p-button {
+  background-color: transparent;
+  color: #ffffee;
+  border: 0;
+}
+
+:host ::ng-deep .close-button .p-button {
+  background-color: transparent;
+  color: black;
+  border: 0;
+}
+
+:host
+  ::ng-deep
+  .p-sidebar-right.p-sidebar-active
+  .p-sidebar-content
+  .nav-links
+  p-button.visible
+  button {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+:host
+  ::ng-deep
+  .p-sidebar-right.p-sidebar-active
+  .p-sidebar-content
+  h1.visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+:host ::ng-deep .p-sidebar-content h1 {
+  opacity: 0;
+  transform: translateX(100px) scale(0.5);
+  transition: all 800ms;
+}
+
+:host ::ng-deep .p-sidebar-content .nav-links :first-child button {
+  opacity: 0;
+  transform: translateX(100px) scale(0.5);
+  transition: all 800ms;
+  transition-delay: 300ms;
+}
+
+:host ::ng-deep .p-sidebar-content .nav-links :nth-child(2) button {
+  opacity: 0;
+  transform: translateX(100px) scale(0.5);
+  transition: all 800ms;
+  transition-delay: 600ms;
+}
+
+:host ::ng-deep .p-sidebar-close,
+.close-button {
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  top: 0;
+  -webkit-transition: -webkit-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+}
+
+:host ::ng-deep .p-sidebar-close:hover,
+.close-button:hover {
+  transform: rotate(360deg);
 }
 
 .nav-links {
@@ -47,4 +116,10 @@
 .toolbar img {
   margin: 0 16px;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 1200px) {
+  .toolbar {
+    padding: 2.5rem 3.75rem;
+  }
 }

@@ -15,7 +15,7 @@
 
   pointer-events: none;
 
-  color: black;
+  color: #3f3b37;
 
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -34,7 +34,7 @@
 
   content: "";
 
-  background-color: black;
+  background-color: #3f3b37;
 }
 .fixed-socials::before {
   margin-bottom: 3.125rem;
@@ -75,14 +75,16 @@
   text-decoration: none;
 }
 
-.social-icon > i {
-  font-size: 1.2rem;
-  color: black;
+.social-icon > i,
+.social-icon > fa-icon {
+  font-size: 1.4rem;
+  color: #3f3b37;
   transition: all 200ms linear;
 }
 
-.social-icon > i:hover {
-  transform: scale(1.2);
-  color: #1875d1;
+.social-icon > i:hover,
+.social-icon > fa-icon:hover {
+  transform: scale(1.1);
+  color: #472728;
   transition: all 200ms linear;
 }

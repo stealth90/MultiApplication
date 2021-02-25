@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -8,8 +7,9 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  visibleSidebar1: boolean;
+  isVisibleSidebar: boolean;
   innerWidth: number;
+  sidebarAnimation: boolean;
 
   constructor(private primengConfig: PrimeNGConfig) {}
 
@@ -22,4 +22,14 @@ export class NavbarComponent implements OnInit {
     this.innerWidth = window.innerWidth;
     this.primengConfig.ripple = true;
   }
+
+  handleOpenSidebar = () => {
+    this.isVisibleSidebar = !this.isVisibleSidebar;
+    this.sidebarAnimation = !this.sidebarAnimation;
+  };
+
+  handleCloseSidebar = () => {
+    this.sidebarAnimation = !this.sidebarAnimation;
+    setTimeout(() => (this.isVisibleSidebar = false), 1000);
+  };
 }

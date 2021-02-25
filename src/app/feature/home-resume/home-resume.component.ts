@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { options } from './models/fullpage';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-home-resume',
+  templateUrl: './home-resume.component.html',
+  styleUrls: ['./home-resume.component.css'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeResumeComponent implements OnInit, OnDestroy {
   title: string = 'IOCA';
   config: options;
 
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.config = {
       licenseKey: 'YOUR LICENSE KEY HERE',
       anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
-      sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'],
+      sectionsColor: ['#F4D474', '#FAF3E3', '#F4D474', '#FAF3E3', '#F4D474'],
       scrollOverflow: true,
       normalScrollElements: '.scrollable-content',
       bigSectionsDestination: 'top',

@@ -8,6 +8,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:host ::ng-deep div.iScrollIndicator {
+  background: #472728 !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #161616;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cf000f;
+}
+
 h1,
 h2,
 h3,
