@@ -30,6 +30,7 @@
               "node_modules/primeflex/primeflex.css",
               "node_modules/@fortawesome/free-brands-svg-icons",
               "node_modules/aos/dist/aos.css",
+              "src/assets/RubikRegular.css",
               "src/styles.css"
             ],
             "scripts": [

@@ -1,11 +1,7 @@
 <div class="toolbar" role="banner">
-  <img
-    routerLink="/"
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <span>Benvenuto</span>
+  <span routerLink="/" class="home-title"
+    >Petralia<span class="home-title-dot">.</span></span
+  >
   <div class="spacer"></div>
   <p-button
     class="p-button-text hamburger-button"
@@ -15,38 +11,50 @@
   ></p-button>
 </div>
 <p-sidebar
-  [blockScroll]="true"
   [(visible)]="isVisibleSidebar"
   position="right"
   [showCloseIcon]="false"
-  [baseZIndex]="10"
+  [blockScroll]="true"
+  [dismissible]="false"
+  [baseZIndex]="1000"
 >
-  <h1 [ngClass]="{ visible: sidebarAnimation }" style="font-weight: normal">
-    Left Sidebar
-  </h1>
-  <p-button
-    class="p-button-text close-button"
-    type="button"
-    (click)="handleCloseSidebar()"
-    icon="pi pi-times"
-  ></p-button>
+  <div class="offcanvas-menu__header">
+    <!--Locales-->
+    <div [ngClass]="{ visible: sidebarAnimation }" class="language-switcher">
+      <a class="is-active" href="#">Eng</a><a href="#">Fra</a
+      ><a href="#">Ger</a>
+    </div>
+    <!--Menu Burger--><p-button
+      class="p-button-text close-button"
+      type="button"
+      (click)="handleCloseSidebar()"
+      icon="pi pi-times"
+    ></p-button>
+  </div>
+
   <div class="nav-links">
     <p-button
       type="button"
       routerLinkActive="active"
-      (click)="isVisibleSidebar = false"
-      [ngClass]="{ visible: sidebarAnimation }"
       routerLink="weather"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="handleCloseSidebar()"
+      [ngClass]="{
+        visible: sidebarAnimation
+      }"
       label="Weather App"
       styleClass="p-button-text"
     ></p-button>
     <p-button
       type="button"
-      routerLinkActive="active"
-      (click)="isVisibleSidebar = false"
-      [ngClass]="{ visible: sidebarAnimation }"
-      label="News App"
+      (click)="handleCloseSidebar()"
       routerLink="news"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [ngClass]="{
+        visible: sidebarAnimation
+      }"
+      label="News App"
       styleClass="p-button-text"
     ></p-button>
   </div>

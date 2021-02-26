@@ -7,7 +7,7 @@
   height: 5px;
   transform: rotate(90deg);
   border-radius: 0.3125rem;
-  background-color: #ffffee;
+  background-color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30,7 +30,7 @@
 }
 
 :host ::ng-deep .p-progressbar-value {
-  background: #472728;
+  background: #f14336;
 }
 @media only screen and (min-width: 1200px) {
   .fullpage-slider-progress-bar {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { options } from './models/fullpage';
 
 @Component({
@@ -9,7 +9,6 @@ import { options } from './models/fullpage';
 export class HomeResumeComponent implements OnInit, OnDestroy {
   title: string = 'IOCA';
   config: options;
-
   currentIndex = 0;
   fullpage_api;
 
@@ -17,7 +16,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
     this.config = {
       licenseKey: 'YOUR LICENSE KEY HERE',
       anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
-      sectionsColor: ['#F4D474', '#FAF3E3', '#F4D474', '#FAF3E3', '#F4D474'],
+      sectionsColor: ['#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8'],
       scrollOverflow: true,
       normalScrollElements: '.scrollable-content',
       bigSectionsDestination: 'top',

@@ -15,7 +15,7 @@
 
   pointer-events: none;
 
-  color: #3f3b37;
+  color: #fff;
 
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -34,7 +34,7 @@
 
   content: "";
 
-  background-color: #3f3b37;
+  background-color: #fff;
 }
 .fixed-socials::before {
   margin-bottom: 3.125rem;
@@ -78,13 +78,13 @@
 .social-icon > i,
 .social-icon > fa-icon {
   font-size: 1.4rem;
-  color: #3f3b37;
+  color: #fff;
   transition: all 200ms linear;
 }
 
 .social-icon > i:hover,
 .social-icon > fa-icon:hover {
   transform: scale(1.1);
-  color: #472728;
+  color: #f14336;
   transition: all 200ms linear;
 }

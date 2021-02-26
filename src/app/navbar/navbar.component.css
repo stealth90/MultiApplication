@@ -10,6 +10,7 @@
   width: 100vw;
   z-index: 1;
   transition: padding 0.3s;
+  padding: 1.875rem;
 }
 
 :host ::ng-deep .hamburger-button .pi,
@@ -17,20 +18,36 @@
   font-size: 26px;
 }
 
-.hamburger-button,
 .close-button {
   margin-right: 2%;
 }
 
+:host ::ng-deep .p-sidebar-right {
+  background-color: #4d05e8;
+}
+
+:host ::ng-deep p-button button.p-button-text {
+  color: #fff;
+}
+
+:host ::ng-deep .p-button.p-button-text:enabled:hover {
+  color: #f14336;
+}
+
+:host ::ng-deep p-button.active button.p-button-text {
+  color: #f14336;
+  font-weight: bold;
+}
+
 :host ::ng-deep .hamburger-button .p-button {
   background-color: transparent;
-  color: #ffffee;
+  color: #f14336;
   border: 0;
 }
 
 :host ::ng-deep .close-button .p-button {
   background-color: transparent;
-  color: black;
+  color: #f14336;
   border: 0;
 }
 
@@ -49,28 +66,24 @@
   ::ng-deep
   .p-sidebar-right.p-sidebar-active
   .p-sidebar-content
-  h1.visible {
+  .offcanvas-menu__header
+  .visible {
   opacity: 1;
   transform: translateX(0) scale(1);
-}
-:host ::ng-deep .p-sidebar-content h1 {
-  opacity: 0;
-  transform: translateX(100px) scale(0.5);
-  transition: all 800ms;
 }
 
 :host ::ng-deep .p-sidebar-content .nav-links :first-child button {
   opacity: 0;
   transform: translateX(100px) scale(0.5);
-  transition: all 800ms;
-  transition-delay: 300ms;
+  transition: opacity 500ms ease 300ms, transform 500ms ease 300ms,
+    color 500ms ease;
 }
 
 :host ::ng-deep .p-sidebar-content .nav-links :nth-child(2) button {
   opacity: 0;
   transform: translateX(100px) scale(0.5);
-  transition: all 800ms;
-  transition-delay: 600ms;
+  transition: opacity 500ms ease 600ms, transform 500ms ease 600ms,
+    color 500ms ease;
 }
 
 :host ::ng-deep .p-sidebar-close,
@@ -88,29 +101,22 @@
   transform: rotate(360deg);
 }
 
+.home-title {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.home-title-dot {
+  color: #f14336;
+}
+
 .nav-links {
   display: flex;
   flex-direction: column;
 }
 
-.toolbar a {
-  text-decoration: none;
-  color: white;
-  margin-right: 16px;
-}
-
-.toolbar a:hover {
-  color: red;
-  transition: all 0.5s linear;
-}
-
 .spacer {
   flex: 1;
-}
-
-.active {
-  color: rgb(173, 39, 39);
-  font-weight: bold;
 }
 
 .toolbar img {
@@ -122,4 +128,49 @@
   .toolbar {
     padding: 2.5rem 3.75rem;
   }
+}
+
+:host ::ng-deep .p-sidebar-content .offcanvas-menu__header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  transform: translateX(100px) scale(0.5);
+  transition: all 800ms;
+
+  width: 100%;
+  padding-bottom: 4.6875rem;
+
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+:host ::ng-deep .p-sidebar-right.p-sidebar-active .offcanvas-menu__header {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+@media only screen and (max-width: 575px) {
+  :host ::ng-deep .p-sidebar-content .offcanvas-menu__header {
+    padding-bottom: 3.125rem;
+  }
+}
+@media (max-height: 559px) {
+  :host ::ng-deep .p-sidebar-content .offcanvas-menu__header {
+    padding-bottom: 3.125rem;
+  }
+}
+:host
+  ::ng-deep
+  .p-sidebar-content
+  .offcanvas-menu__header
+  .vlt-language-switcher {
+  font-size: 0.8125rem;
 }
