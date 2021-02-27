@@ -1,15 +1,17 @@
-<div class="toolbar" role="banner">
-  <span routerLink="/" class="home-title"
-    >Petralia<span class="home-title-dot">.</span></span
-  >
-  <div class="spacer"></div>
-  <p-button
-    class="p-button-text hamburger-button"
-    type="button"
-    (click)="handleOpenSidebar()"
-    icon="pi pi-bars"
-  ></p-button>
-</div>
+<header class="header" role="banner">
+  <div class="toolbar-inner">
+    <span routerLink="/" class="home-title"
+      >Petralia<span class="home-title-dot">.</span></span
+    >
+    <div class="spacer"></div>
+    <p-button
+      class="p-button-text hamburger-button"
+      type="button"
+      (click)="handleOpenSidebar()"
+      icon="pi pi-bars"
+    ></p-button>
+  </div>
+</header>
 <p-sidebar
   [(visible)]="isVisibleSidebar"
   position="right"
@@ -18,44 +20,93 @@
   [dismissible]="false"
   [baseZIndex]="1000"
 >
-  <div class="offcanvas-menu__header">
-    <!--Locales-->
-    <div [ngClass]="{ visible: sidebarAnimation }" class="language-switcher">
-      <a class="is-active" href="#">Eng</a><a href="#">Fra</a
-      ><a href="#">Ger</a>
+  <div class="sidebar-menu">
+    <div class="menu-header" [ngClass]="{ visible: sidebarAnimation }">
+      <div class="language-switcher">
+        <a class="is-active" href="#">Ita</a><a href="#">Eng</a>
+      </div>
+      <p-button
+        class="p-button-text close-button"
+        type="button"
+        (click)="handleCloseSidebar()"
+        icon="pi pi-times"
+      ></p-button>
     </div>
-    <!--Menu Burger--><p-button
-      class="p-button-text close-button"
-      type="button"
-      (click)="handleCloseSidebar()"
-      icon="pi pi-times"
-    ></p-button>
-  </div>
-
-  <div class="nav-links">
-    <p-button
-      type="button"
-      routerLinkActive="active"
-      routerLink="weather"
-      [routerLinkActiveOptions]="{ exact: true }"
-      (click)="handleCloseSidebar()"
-      [ngClass]="{
-        visible: sidebarAnimation
-      }"
-      label="Weather App"
-      styleClass="p-button-text"
-    ></p-button>
-    <p-button
-      type="button"
-      (click)="handleCloseSidebar()"
-      routerLink="news"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [ngClass]="{
-        visible: sidebarAnimation
-      }"
-      label="News App"
-      styleClass="p-button-text"
-    ></p-button>
+    <div class="nav-links" style="overflow-y: scroll">
+      <nav>
+        <ul class="menu">
+          <li>
+            <p-button
+              type="button"
+              routerLinkActive="active"
+              routerLink=""
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="handleCloseSidebar()"
+              [ngClass]="{
+                visible: sidebarAnimation
+              }"
+              label="Home"
+              styleClass="p-button-text"
+            ></p-button>
+          </li>
+          <li>
+            <p-button
+              type="button"
+              routerLinkActive="active"
+              routerLink="weather"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="handleCloseSidebar()"
+              [ngClass]="{
+                visible: sidebarAnimation
+              }"
+              label="Weather App"
+              styleClass="p-button-text"
+            ></p-button>
+          </li>
+          <li>
+            <p-button
+              type="button"
+              (click)="handleCloseSidebar()"
+              routerLink="news"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="{
+                visible: sidebarAnimation
+              }"
+              label="News App"
+              styleClass="p-button-text"
+            ></p-button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="menu-footer">
+      <div
+        class="menu-socials"
+        [ngClass]="{
+          visible: sidebarAnimation
+        }"
+      >
+        <a
+          class="social-icon"
+          target="_blank"
+          href="https://www.linkedin.com/in/pierantonio-petralia/"
+          ><fa-icon [icon]="faLinkedinIn"></fa-icon></a
+        ><a
+          class="social-icon"
+          target="_blank"
+          href="https://github.com/stealth90"
+          ><i class="pi pi-github"></i
+        ></a>
+      </div>
+      <div
+        [ngClass]="{
+          visible: sidebarAnimation
+        }"
+        class="menu-copyright"
+      >
+        <p>© 2020 Petralia.<br />All rights reserved.</p>
+      </div>
+    </div>
   </div>
 </p-sidebar>

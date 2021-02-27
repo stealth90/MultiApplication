@@ -2,12 +2,14 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  faLinkedinIn = faLinkedinIn;
   subscription: Subscription;
   isVisibleSidebar: boolean;
   innerWidth: number;
@@ -43,7 +45,7 @@ export class NavbarComponent implements OnInit {
     this.sidebarAnimation = !this.sidebarAnimation;
     setTimeout(() => {
       this.isVisibleSidebar = false;
-    }, 1000);
+    }, 1600);
     this.subscription.unsubscribe();
   };
 }

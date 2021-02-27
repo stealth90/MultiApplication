@@ -1,5 +1,20 @@
+.header {
+  position: absolute;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+}
+
 .toolbar {
-  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.toolbar-inner {
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -13,9 +28,85 @@
   padding: 1.875rem;
 }
 
-:host ::ng-deep .hamburger-button .pi,
+/* HEADER: OFFCANVAS
+-------------------------------------------- */
+:host ::ng-deep .p-sidebar-right.p-sidebar-active .sidebar-menu {
+  position: fixed;
+  z-index: 80;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  padding: 1.875rem;
+
+  color: #fff;
+  background-color: #4d05e8;
+
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+}
+@media only screen and (min-width: 576px) {
+  :host ::ng-deep .p-sidebar-right.p-sidebar-active .sidebar-menu {
+    width: 31.25rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  :host ::ng-deep .p-sidebar-right.p-sidebar-active .sidebar-menu {
+    padding: 1.875rem 3.4375rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  :host ::ng-deep .p-sidebar-right.p-sidebar-active .sidebar-menu {
+    padding: 2.5rem 3.4375rem;
+  }
+}
+
+:host ::ng-deep .p-sidebar-content .menu-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  transform: translateX(100px) scale(0.5);
+  transition: all 800ms;
+  width: 100%;
+  padding-bottom: 4.6875rem;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 575px) {
+  :host ::ng-deep .p-sidebar-content .menu-header {
+    padding-bottom: 3.125rem;
+  }
+}
+@media (max-height: 559px) {
+  :host ::ng-deep .p-sidebar-content .menu-header {
+    padding-bottom: 3.125rem;
+  }
+}
+
+:host ::ng-deep .hamburger-button .pi {
+  font-size: 1.75rem;
+}
+
 :host ::ng-deep .close-button .pi {
-  font-size: 26px;
+  font-size: 1.5rem;
 }
 
 .close-button {
@@ -28,6 +119,11 @@
 
 :host ::ng-deep p-button button.p-button-text {
   color: #fff;
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.1;
+  padding: 0.3125rem 0;
+  letter-spacing: 0.02em;
 }
 
 :host ::ng-deep .p-button.p-button-text:enabled:hover {
@@ -66,8 +162,17 @@
   ::ng-deep
   .p-sidebar-right.p-sidebar-active
   .p-sidebar-content
-  .offcanvas-menu__header
-  .visible {
+  .menu-header.visible,
+:host
+  ::ng-deep
+  .p-sidebar-right.p-sidebar-active
+  .p-sidebar-content
+  .menu-copyright.visible,
+:host
+  ::ng-deep
+  .p-sidebar-right.p-sidebar-active
+  .p-sidebar-content
+  .menu-socials.visible {
   opacity: 1;
   transform: translateX(0) scale(1);
 }
@@ -75,7 +180,7 @@
 :host ::ng-deep .p-sidebar-content .nav-links :first-child button {
   opacity: 0;
   transform: translateX(100px) scale(0.5);
-  transition: opacity 500ms ease 300ms, transform 500ms ease 300ms,
+  transition: opacity 500ms ease 400ms, transform 500ms ease 400ms,
     color 500ms ease;
 }
 
@@ -86,19 +191,21 @@
     color 500ms ease;
 }
 
-:host ::ng-deep .p-sidebar-close,
-.close-button {
-  position: absolute;
-  cursor: pointer;
-  right: 0;
-  top: 0;
-  -webkit-transition: -webkit-transform 0.8s ease-in-out;
-  transition: transform 0.8s ease-in-out;
+:host ::ng-deep .p-sidebar-content .nav-links :nth-child(3) button {
+  opacity: 0;
+  transform: translateX(100px) scale(0.5);
+  transition: opacity 500ms ease 800ms, transform 500ms ease 800ms,
+    color 500ms ease;
 }
 
-:host ::ng-deep .p-sidebar-close:hover,
+.close-button {
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
 .close-button:hover {
-  transform: rotate(360deg);
+  transform: rotate(180deg);
 }
 
 .home-title {
@@ -111,17 +218,60 @@
 }
 
 .nav-links {
-  display: flex;
-  flex-direction: column;
+  overflow-y: scroll;
+  -webkit-overflow-y: scroll;
+  height: 100%;
+}
+
+.nav-links::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+  border-radius: 0.1rem;
+  background-color: #f14336;
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.menu {
+  overflow: hidden;
+  padding: 0;
+  font-size: 0;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.nav-links .menu {
+  overflow: hidden;
+}
+.nav-links .menu li {
+  display: block;
+  float: none;
+}
+.nav-links .menu a {
+  display: inline-block;
+}
+.nav-links .menu > li {
+  padding: 0.625rem 0;
+}
+.nav-links .menu > li > a {
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.1;
+
+  padding: 0.3125rem 0;
+
+  letter-spacing: 0.02em;
+}
+.vlt-offcanvas-menu__navigation .sf-menu > li:last-child {
+  padding-bottom: 0;
+}
+.menu__navigation .sf-menu > li:first-child {
+  padding-top: 0;
 }
 
 .spacer {
   flex: 1;
-}
-
-.toolbar img {
-  margin: 0 16px;
-  cursor: pointer;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -130,47 +280,90 @@
   }
 }
 
-:host ::ng-deep .p-sidebar-content .offcanvas-menu__header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+/* MENU LANGUAGE */
+
+:host ::ng-deep .p-sidebar-content .menu-header .language-switcher {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+:host ::ng-deep .p-sidebar-content .menu-header .language-switcher a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 300ms;
+}
+
+:host ::ng-deep .p-sidebar-content .menu-header .language-switcher a + a {
+  margin-left: 1.5625rem;
+}
+
+:host ::ng-deep .p-sidebar-content .menu-header .language-switcher a.is-active,
+:host ::ng-deep .p-sidebar-content .menu-header .language-switcher a:hover {
+  color: #f14336;
+}
+
+/* FOOTER */
+
+:host ::ng-deep .p-sidebar-content .menu-footer {
+  padding-top: 6.25rem;
+}
+@media only screen and (max-width: 575px) {
+  :host ::ng-deep .p-sidebar-content .menu-footer {
+    padding-top: 3.125rem;
+  }
+}
+
+:host ::ng-deep .p-sidebar-content .menu-copyright {
+  font-size: 0.9375rem;
+  font-weight: 500;
   opacity: 0;
   transform: translateX(100px) scale(0.5);
-  transition: all 800ms;
-
-  width: 100%;
-  padding-bottom: 4.6875rem;
-
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  transition: opacity 500ms ease 1000ms, transform 500ms ease 1000ms;
+  text-transform: uppercase;
 }
 
-:host ::ng-deep .p-sidebar-right.p-sidebar-active .offcanvas-menu__header {
-  opacity: 1;
-  transform: translateX(0) scale(1);
-}
-
-@media only screen and (max-width: 575px) {
-  :host ::ng-deep .p-sidebar-content .offcanvas-menu__header {
-    padding-bottom: 3.125rem;
+@media (max-height: 559px) {
+  :host ::ng-deep .p-sidebar-content .menu-copyright {
+    display: none;
   }
+}
+
+/* SOCIAL ICONS
+-------------------------------------------- */
+:host ::ng-deep .p-sidebar-content .menu-socials {
+  margin-bottom: 3.125rem;
+  opacity: 0;
+  transform: translateX(100px) scale(0.5);
+  transition: opacity 500ms ease 1000ms, transform 500ms ease 1000ms,
+    color 500ms ease;
 }
 @media (max-height: 559px) {
-  :host ::ng-deep .p-sidebar-content .offcanvas-menu__header {
-    padding-bottom: 3.125rem;
+  :host ::ng-deep .p-sidebar-content .menu-socials {
+    margin-bottom: 0;
   }
 }
-:host
-  ::ng-deep
-  .p-sidebar-content
-  .offcanvas-menu__header
-  .vlt-language-switcher {
-  font-size: 0.8125rem;
+
+:host ::ng-deep .p-sidebar-content .social-icon,
+:host ::ng-deep .p-sidebar-content .social-icon > i {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1.375rem;
+  color: #fff;
+  transition: all 300ms;
+  text-decoration: none;
+}
+
+:host ::ng-deep .p-sidebar-content .social-icon:hover,
+:host ::ng-deep .p-sidebar-content .social-icon > i:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  color: #f14336;
+}
+
+:host ::ng-deep .p-sidebar-content .menu-socials a + a {
+  margin-left: 2.1875rem;
 }
