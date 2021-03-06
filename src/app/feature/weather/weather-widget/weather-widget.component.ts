@@ -12,8 +12,8 @@ import * as moment from 'moment-timezone';
 // import * as kf from './keyframes';
 @Component({
   selector: 'app-weather-widget',
-  templateUrl: './weatherWidget.component.html',
-  styleUrls: ['./weatherWidget.component.css'],
+  templateUrl: './weather-widget.component.html',
+  styleUrls: ['./weather-widget.component.scss'],
   /* animations: [
     trigger('cardAnimator', [
       state(

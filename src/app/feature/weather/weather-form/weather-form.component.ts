@@ -1,16 +1,33 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CityService } from '../city.service';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { CityService } from '../services/city.service';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-weather-form',
   templateUrl: './weather-form.component.html',
-  styleUrls: ['./weather-form.component.css'],
+  styleUrls: ['./weather-form.component.scss'],
 })
-export class WeatherFormComponent implements OnInit {
+export class WeatherFormComponent implements OnInit, OnDestroy {
   citiesList$: Observable<any>;
-
-  constructor(private cityService: CityService) {}
+  lang$: Subscription;
+  constructor(
+    private cityService: CityService,
+    private translate: TranslateService
+  ) {
+    this.lang$ = translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.translate.use(event.lang);
+    });
+  }
+  ngOnDestroy(): void {
+    this.lang$.unsubscribe();
+  }
 
   myName: string;
 

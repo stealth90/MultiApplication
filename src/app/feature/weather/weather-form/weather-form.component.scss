@@ -7,8 +7,9 @@
   align-content: center;
 }
 
-h1 {
+h2 {
   text-align: center;
+  color: #fff;
 }
 
 input::placeholder {
@@ -25,6 +26,10 @@ input::placeholder {
 }
 .dropdown-label {
   color: black;
+}
+
+:host ::ng-deep .p-button {
+  background: #f14336;
 }
 
 .panelResult {

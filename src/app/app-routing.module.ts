@@ -20,6 +20,7 @@ const appRoutes: Routes = [
         (m) => m.HomeResumeModule
       ),
   },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

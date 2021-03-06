@@ -1,5 +1,5 @@
 <div class="input-container">
-  <h1>Città</h1>
+  <h2>{{ "weather.title" | translate }}</h2>
   <span class="button-container">
     <span class="p-float-label">
       <p-dropdown
@@ -16,7 +16,9 @@
         [panelStyle]="{ width: 'max-content' }"
         itemSize="30"
       ></p-dropdown>
-      <label class="dropdown-label" for="dropdown">Città</label>
+      <label class="dropdown-label" for="dropdown">{{
+        "weather.title" | translate
+      }}</label>
     </span>
     <p-button
       [disabled]="!myName"
@@ -24,7 +26,7 @@
       iconPos="left"
       (click)="onAddCity()"
       type="button"
-      label="Aggiungi"
+      label="{{ 'common.add' | translate }}"
       class="button"
     ></p-button>
   </span>

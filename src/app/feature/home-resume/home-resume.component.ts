@@ -4,7 +4,7 @@ import { options } from './models/fullpage';
 @Component({
   selector: 'app-home-resume',
   templateUrl: './home-resume.component.html',
-  styleUrls: ['./home-resume.component.css'],
+  styleUrls: ['./home-resume.component.scss'],
 })
 export class HomeResumeComponent implements OnInit, OnDestroy {
   title: string = 'IOCA';
@@ -14,7 +14,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
 
   constructor() {
     this.config = {
-      licenseKey: 'YOUR LICENSE KEY HERE',
+      licenseKey: null,
       anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
       sectionsColor: ['#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8'],
       scrollOverflow: true,

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WeatherApp } from './models/weather';
-import { WeatherService } from './weather.service';
+import { WeatherService } from './services/weather.service';
 import {
   trigger,
   state,
@@ -8,13 +8,13 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { TimeService } from './time.service';
+import { TimeService } from './services/time.service';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-weather-app',
   templateUrl: './weather-app.component.html',
-  styleUrls: ['./weather-app.component.css'],
+  styleUrls: ['./weather-app.component.scss'],
   animations: [
     trigger('animation', [
       state(
@@ -54,11 +54,10 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.myCurrentWeather = this.weatherService.myCurrentWeather;
     this.myWeatherCollection = this.weatherService.weatherCollection;
-    this.subscriptions.push(
-      this.timerService.currentTime.subscribe(
-        (time) => (this.currentTime = time)
-      )
+    const currentTime$ = this.timerService.currentTime.subscribe(
+      (time) => (this.currentTime = time)
     );
+    this.subscriptions.push(currentTime$);
   }
 
   ngOnDestroy(): void {

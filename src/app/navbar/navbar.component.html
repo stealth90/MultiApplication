@@ -23,7 +23,15 @@
   <div class="sidebar-menu">
     <div class="menu-header" [ngClass]="{ visible: sidebarAnimation }">
       <div class="language-switcher">
-        <a class="is-active" href="#">Ita</a><a href="#">Eng</a>
+        <a
+          [class.is-active]="currentLanguage === 'it'"
+          (click)="changeLanguage('it')"
+          >Ita</a
+        ><a
+          [class.is-active]="currentLanguage === 'en'"
+          (click)="changeLanguage('en')"
+          >Eng</a
+        >
       </div>
       <p-button
         class="p-button-text close-button"
@@ -39,13 +47,12 @@
             <p-button
               type="button"
               routerLinkActive="active"
-              routerLink=""
               [routerLinkActiveOptions]="{ exact: true }"
-              (click)="handleCloseSidebar()"
+              (click)="handleCloseSidebar('/')"
               [ngClass]="{
                 visible: sidebarAnimation
               }"
-              label="Home"
+              label="{{ 'navbar.home' | translate }}"
               styleClass="p-button-text"
             ></p-button>
           </li>
@@ -53,27 +60,25 @@
             <p-button
               type="button"
               routerLinkActive="active"
-              routerLink="weather"
               [routerLinkActiveOptions]="{ exact: true }"
-              (click)="handleCloseSidebar()"
+              (click)="handleCloseSidebar('weather')"
               [ngClass]="{
                 visible: sidebarAnimation
               }"
-              label="Weather App"
+              label="{{ 'navbar.weather-app' | translate }}"
               styleClass="p-button-text"
             ></p-button>
           </li>
           <li>
             <p-button
               type="button"
-              (click)="handleCloseSidebar()"
-              routerLink="news"
+              (click)="handleCloseSidebar('news')"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
               [ngClass]="{
                 visible: sidebarAnimation
               }"
-              label="News App"
+              label="{{ 'navbar.news-app' | translate }}"
               styleClass="p-button-text"
             ></p-button>
           </li>
@@ -105,7 +110,7 @@
         }"
         class="menu-copyright"
       >
-        <p>© 2020 Petralia.<br />All rights reserved.</p>
+        <p>© 2021 Petralia.<br />{{ "navbar.all-rights" | translate }}</p>
       </div>
     </div>
   </div>

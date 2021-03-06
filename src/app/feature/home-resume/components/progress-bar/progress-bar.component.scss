@@ -2,9 +2,9 @@
   position: fixed;
   z-index: 10;
   top: 50%;
-  right: -13rem;
-  width: 30rem;
-  height: 5px;
+  right: -10rem;
+  width: 25rem;
+  height: 2px;
   transform: rotate(90deg);
   border-radius: 0.3125rem;
   background-color: #fff;
@@ -34,7 +34,7 @@
 }
 @media only screen and (min-width: 1200px) {
   .fullpage-slider-progress-bar {
-    right: -12.0625rem;
+    right: -8.5rem;
   }
 }
 @media only screen and (max-width: 575px) {

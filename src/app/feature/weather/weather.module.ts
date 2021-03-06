@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WeatherRoutingModule } from './weather-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WeatherWidgetComponent } from './weatherWidget/weatherWidget.component';
+import { WeatherWidgetComponent } from './weather-widget/weather-widget.component';
 import { MatCardModule } from '@angular/material/card';
 import { WeatherFormComponent } from './weather-form/weather-form.component';
 import { WeatherAppComponent } from './weather-app.component';
@@ -13,6 +13,8 @@ import { WeatherIconComponent } from './components/weather-icon/weather-icon.com
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
+import { LoaderModule } from '../../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     DropdownModule,
     ButtonModule,
     SkeletonModule,
+    LoaderModule,
+    TranslateModule.forChild({ extend: true }),
   ],
   declarations: [
     WeatherWidgetComponent,

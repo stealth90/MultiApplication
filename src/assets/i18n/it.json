@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Home",
+    "weather-app": "App Meteo",
+    "news-app": "App Notizie",
+    "all-rights": "Tutti i diritti riservati."
+  },
+  "loader": {
+    "weather": "Fetch in corso..."
+  },
+  "weather": {
+    "title": "Città"
+  },
+  "common": {
+    "add": "Aggiungi"
+  }
+}

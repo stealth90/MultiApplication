@@ -141,10 +141,20 @@
   border: 0;
 }
 
+:host ::ng-deep .hamburger-button .p-button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
 :host ::ng-deep .close-button .p-button {
   background-color: transparent;
   color: #f14336;
   border: 0;
+}
+
+:host ::ng-deep .close-button .p-button:focus {
+  box-shadow: none;
+  outline: none;
 }
 
 :host
@@ -275,7 +285,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  .toolbar {
+  .toolbar-inner {
     padding: 2.5rem 3.75rem;
   }
 }
@@ -292,6 +302,7 @@
   text-decoration: none;
   color: #fff;
   transition: color 300ms;
+  cursor: pointer;
 }
 
 :host ::ng-deep .p-sidebar-content .menu-header .language-switcher a + a {

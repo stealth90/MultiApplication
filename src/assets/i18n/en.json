@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Home",
+    "weather-app": "Weather app",
+    "news-app": "News app",
+    "all-rights": "All rights reserved."
+  },
+  "loader": {
+    "weather": "Fetching..."
+  },
+  "weather": {
+    "title": "City"
+  },
+  "common": {
+    "add": "Add"
+  }
+}

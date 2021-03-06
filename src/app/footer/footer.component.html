@@ -3,6 +3,14 @@
     <p>© Petralia. 2021</p>
   </div>
   <div class="language-switcher">
-    <a class="is-active" href="#">Ita</a><a href="#">Eng</a>
+    <a
+      [class.is-active]="currentLanguage === 'it'"
+      (click)="changeLanguage('it')"
+      >Ita</a
+    ><a
+      [class.is-active]="currentLanguage === 'en'"
+      (click)="changeLanguage('en')"
+      >Eng</a
+    >
   </div>
 </footer>

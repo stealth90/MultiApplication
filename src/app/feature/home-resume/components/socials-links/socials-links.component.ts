@@ -4,7 +4,7 @@ import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-socials-links',
   templateUrl: './socials-links.component.html',
-  styleUrls: ['./socials-links.component.css'],
+  styleUrls: ['./socials-links.component.scss'],
 })
 export class SocialsLinksComponent implements OnInit {
   faLinkedinIn = faLinkedinIn;
