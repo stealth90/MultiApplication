@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Observable, of } from 'rxjs';
 import { catchError, delay, map, mergeMap, retryWhen } from 'rxjs/operators';
-import { WeatherApp } from '../models/weather';
+import { WeatherApp, Weather } from '../models/weather';
 
 @Injectable({
   providedIn: 'root',
@@ -55,19 +55,23 @@ export class WeatherService {
           })),
           mergeMap(({ cityDetail }) =>
             this.http
-              .get<any>(
+              .get<Weather>(
                 `${this.baseUri}weather?q=${cityDetail.name}&appid=${this.api}&units=metric`
               )
               .pipe(map((value) => Object.assign({}, value, cityDetail)))
           ),
-          map((result) => ({
-            id: result.id,
-            city: result.name,
-            temp: result.main.temp,
-            flag: result.flag,
-            timezone: result.timezone,
-            icon: result.weather[0].icon,
-          })),
+          map(
+            (
+              result: Weather & { flag: string; timezone: string; name: string }
+            ) => ({
+              id: result.id,
+              city: result.name,
+              temp: result.main.temp,
+              flag: result.flag,
+              timezone: result.timezone,
+              icon: result.weather[0].icon,
+            })
+          ),
           catchError((err) => of(err.ok))
         )
         .subscribe((weather) => {
@@ -110,21 +114,25 @@ export class WeatherService {
         })),
         mergeMap(({ cityDetail }) =>
           this.http
-            .get<any>(
+            .get<Weather>(
               `${this.baseUri}weather?q=${cityDetail.name}&appid=${this.api}&units=metric`
             )
             .pipe(map((value) => Object.assign({}, value, cityDetail)))
         ),
-        map((result) => ({
-          prefetch: false,
-          id: result.id,
-          city: result.name,
-          temp: result.main.temp,
-          flag: result.flag,
-          timezone: result.timezone,
-          icon: result.weather[0].icon,
-          timestamp: moment(),
-        })),
+        map(
+          (
+            result: Weather & { flag: string; timezone: string; name: string }
+          ) => ({
+            prefetch: false,
+            id: result.id,
+            city: result.name,
+            temp: result.main.temp,
+            flag: result.flag,
+            timezone: result.timezone,
+            icon: result.weather[0].icon,
+            timestamp: moment(),
+          })
+        ),
         catchError((err) => of(err.ok))
       )
       .subscribe((value) => {
@@ -160,20 +168,28 @@ export class WeatherService {
       if (moment(weather.timestamp).add(1, 'hours').isAfter(moment())) {
         needUpdate = true;
         const response = await this.http
-          .get<any>(
+          .get<Weather>(
             `${this.baseUri}weather?q=${weather.city}&appid=${this.api}&units=metric`
           )
           .pipe(
-            map((result) => ({
-              prefetch: false,
-              id: result.id,
-              city: result.name,
-              temp: result.main.temp,
-              flag: weather.flag,
-              timezone: weather.timezone,
-              icon: result.weather[0].icon,
-              timestamp: moment(),
-            }))
+            map(
+              (
+                result: Weather & {
+                  flag: string;
+                  timezone: string;
+                  name: string;
+                }
+              ) => ({
+                prefetch: false,
+                id: result.id,
+                city: result.name,
+                temp: result.main.temp,
+                flag: weather.flag,
+                timezone: weather.timezone,
+                icon: result.weather[0].icon,
+                timestamp: moment(),
+              })
+            )
           )
           .toPromise();
         const weatherKeys = Object.keys(weather);
