@@ -7,7 +7,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-export const routeTransitionAnimations = trigger('triggerName', [
+export const routeTransitionAnimations = trigger('routeChange', [
   transition('Home => Weather, Home => News, News <=> Weather', [
     style({ position: 'relative' }),
     query(':enter, :leave', [

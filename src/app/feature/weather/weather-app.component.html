@@ -1,5 +1,5 @@
 <div class="weather-app">
-  <app-weather-form (getCity)="getCity($event)"></app-weather-form>
+  <app-weather-form (addCity)="addCity($event)"></app-weather-form>
   <div
     class="p-grid p-mt-2 widgets-container"
     *ngIf="myCurrentWeather.length; else noWeather"
@@ -13,17 +13,15 @@
     </div>
     <div
       class="p-col-12 p-sm-10 p-md-6 p-lg-3"
-      *ngFor="let weather of myWeatherCollection; let idx = index"
+      *ngFor="let weather of myWeatherCollection"
       [@animation]="'visible'"
     >
-      <div class="box">
-        <app-weather-widget
-          [isGeoCity]="false"
-          [time]="currentTime"
-          [weather]="weather"
-          (deleteButton)="deleteCity($event)"
-        ></app-weather-widget>
-      </div>
+      <app-weather-widget
+        [isGeoCity]="false"
+        [time]="currentTime"
+        [weather]="weather"
+        (deleteButton)="deleteCity($event)"
+      ></app-weather-widget>
     </div>
   </div>
 

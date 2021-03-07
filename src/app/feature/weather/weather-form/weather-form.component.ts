@@ -17,6 +17,8 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 export class WeatherFormComponent implements OnInit, OnDestroy {
   citiesList$: Observable<any>;
   lang$: Subscription;
+  myName: string;
+  @Output() addCity = new EventEmitter<string>(true);
   constructor(
     private cityService: CityService,
     private translate: TranslateService
@@ -25,21 +27,17 @@ export class WeatherFormComponent implements OnInit, OnDestroy {
       this.translate.use(event.lang);
     });
   }
-  ngOnDestroy(): void {
-    this.lang$.unsubscribe();
-  }
-
-  myName: string;
-
-  @Output() getCity = new EventEmitter<string>(true);
 
   ngOnInit(): void {
     this.citiesList$ = this.cityService.getAllCity();
   }
+  ngOnDestroy(): void {
+    this.lang$.unsubscribe();
+  }
 
   onAddCity(): void {
     if (this.myName) {
-      this.getCity.emit(this.myName);
+      this.addCity.emit(this.myName);
       this.myName = '';
     }
   }

@@ -1,23 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { interval, Observable, of } from 'rxjs';
-import {
-  catchError,
-  count,
-  delay,
-  isEmpty,
-  map,
-  mergeMap,
-  retryWhen,
-  tap,
-} from 'rxjs/operators';
+import * as moment from 'moment';
+import { Observable, of } from 'rxjs';
+import { catchError, delay, map, mergeMap, retryWhen } from 'rxjs/operators';
 import { WeatherApp } from '../models/weather';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
-  weatherCollection: WeatherApp[] = [];
+  weatherCollection: WeatherApp[];
   myCurrentWeather: WeatherApp[] = [];
   api: string = '448b2429a71b8c55510f42a62897d676';
   geoApi: string = 'c762178c3b604aa1b807eb867f8a1058';
@@ -27,6 +19,13 @@ export class WeatherService {
   coordinates$: Observable<any>;
 
   constructor(private http: HttpClient) {
+    const weatherCitiesSaved: WeatherApp[] = JSON.parse(
+      window.localStorage.getItem('weatherCities')
+    );
+    this.weatherCollection =
+      weatherCitiesSaved && weatherCitiesSaved.length
+        ? this.ceckDateWeather(weatherCitiesSaved)
+        : [];
     this.getCurrentCity();
   }
 
@@ -86,7 +85,8 @@ export class WeatherService {
     });
   }
 
-  getWeather = (city: string) => {
+  addCity = (city: string) => {
+    if (this.weatherCollection.find((weather) => weather.city === city)) return;
     let newCity: WeatherApp = {
       prefetch: true,
       id: '',
@@ -95,8 +95,9 @@ export class WeatherService {
       icon: '',
       flag: '',
       timezone: '',
+      timestamp: moment(),
     };
-    this.weatherCollection.push(newCity);
+    const lastElement = this.weatherCollection.push(newCity) - 1;
     this.http
       .get<any>(`${this.baseGeoUri}${city}`)
       .pipe(
@@ -122,6 +123,7 @@ export class WeatherService {
           flag: result.flag,
           timezone: result.timezone,
           icon: result.weather[0].icon,
+          timestamp: moment(),
         })),
         catchError((err) => of(err.ok))
       )
@@ -130,32 +132,62 @@ export class WeatherService {
           alert('Hai inserito una città non esistente');
           this.weatherCollection.pop();
         } else {
-          this.weatherCollection[this.weatherCollection.length - 1].city =
-            value.city;
-          this.weatherCollection[this.weatherCollection.length - 1].id =
-            value.id;
-          this.weatherCollection[this.weatherCollection.length - 1].temp =
-            value.temp;
-          this.weatherCollection[this.weatherCollection.length - 1].flag =
-            value.flag;
-          this.weatherCollection[this.weatherCollection.length - 1].icon =
-            value.icon;
-          this.weatherCollection[this.weatherCollection.length - 1].prefetch =
-            value.prefetch;
-          this.weatherCollection[this.weatherCollection.length - 1].timezone =
-            value.timezone;
+          const weatherKeys = Object.keys(value);
+          weatherKeys.forEach((key) => {
+            this.weatherCollection[lastElement][key] = value[key];
+          });
+          window.localStorage.setItem(
+            'weatherCities',
+            JSON.stringify(this.weatherCollection)
+          );
         }
       });
-  };
-
-  editCity = (id: string, city: string) => {
-    this.deleteWeather(id);
-    this.getWeather(city);
   };
 
   deleteWeather = (id: string) => {
     this.weatherCollection = this.weatherCollection.filter(
       (city) => city.id !== id
     );
+    window.localStorage.setItem(
+      'weatherCities',
+      JSON.stringify(this.weatherCollection)
+    );
+  };
+
+  ceckDateWeather = (weatherCitiesSaved: WeatherApp[]) => {
+    let needUpdate = false;
+    weatherCitiesSaved.forEach(async (weather, id) => {
+      if (moment(weather.timestamp).add(1, 'hours').isAfter(moment())) {
+        needUpdate = true;
+        const response = await this.http
+          .get<any>(
+            `${this.baseUri}weather?q=${weather.city}&appid=${this.api}&units=metric`
+          )
+          .pipe(
+            map((result) => ({
+              prefetch: false,
+              id: result.id,
+              city: result.name,
+              temp: result.main.temp,
+              flag: weather.flag,
+              timezone: weather.timezone,
+              icon: result.weather[0].icon,
+              timestamp: moment(),
+            }))
+          )
+          .toPromise();
+        const weatherKeys = Object.keys(weather);
+        weatherKeys.forEach((key) => {
+          weatherCitiesSaved[id][key] = response[key];
+        });
+      }
+    });
+    if (needUpdate) {
+      window.localStorage.setItem(
+        'weatherCities',
+        JSON.stringify(weatherCitiesSaved)
+      );
+    }
+    return weatherCitiesSaved;
   };
 }

@@ -1,4 +1,11 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
@@ -17,6 +24,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   innerWidth: number;
   sidebarAnimation: boolean;
   currentLanguage: string;
+  offsetNavbar: boolean = false;
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -29,6 +37,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
   }
 
+  @ViewChild('navbar', { read: ElementRef, static: false }) navbar: ElementRef;
+
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this.primengConfig.ripple = true;
@@ -37,7 +47,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.currentLanguage = langEvent.lang;
       }
     );
-    this.subscriptions.push(lang$);
+    const navbarHeigh$ = fromEvent(window, 'scroll').subscribe(() => {
+      const navbarHeight = this.navbar.nativeElement.clientHeight;
+      const windowHeight = window.pageYOffset;
+      this.offsetNavbar = navbarHeight / 2 - windowHeight > 0 ? false : true;
+      console.log(this.offsetNavbar);
+    });
+    this.subscriptions.push(lang$, navbarHeigh$);
   }
 
   ngOnDestroy(): void {

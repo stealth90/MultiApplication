@@ -17,15 +17,19 @@
 .toolbar-inner {
   display: flex;
   align-items: center;
-  background-color: transparent;
+  background-color: rgba(78, 7, 232, 0);
   color: white;
   font-weight: 600;
   position: fixed;
   top: 0;
   width: 100vw;
   z-index: 1;
-  transition: padding 0.3s;
+  transition: padding 0.3s, background-color 0.2s;
   padding: 1.875rem;
+}
+
+.toolbar-inner.background {
+  background-color: rgba(101, 35, 245, 0.6);
 }
 
 /* HEADER: OFFCANVAS

@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 export interface Weather {
   coord: Coord;
   weather: Weathers[];
@@ -22,6 +23,7 @@ export interface WeatherApp {
   icon: string;
   flag: any;
   timezone: string;
+  timestamp: moment.Moment;
 }
 
 interface Sys {

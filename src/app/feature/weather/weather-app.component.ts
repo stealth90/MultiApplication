@@ -64,8 +64,8 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  getCity(city: string) {
-    this.weatherService.getWeather(city);
+  addCity(city: string) {
+    this.weatherService.addCity(city);
     this.myWeatherCollection = this.weatherService.weatherCollection;
   }
 
