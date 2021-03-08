@@ -20,10 +20,13 @@ export interface WeatherApp {
   id: string;
   city: string;
   temp: number;
+  temp_max: number;
+  temp_min: number;
   icon: string;
   flag: any;
   timezone: string;
   timestamp: moment.Moment;
+  humidity: number;
 }
 
 interface Sys {

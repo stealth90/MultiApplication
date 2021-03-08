@@ -6,7 +6,6 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -26,22 +25,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentLanguage: string;
   offsetNavbar: boolean = false;
 
-  constructor(
-    private primengConfig: PrimeNGConfig,
-    private translate: TranslateService,
-    private router: Router
-  ) {}
+  constructor(private translate: TranslateService, private router: Router) {}
 
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
   }
 
-  @ViewChild('navbar', { read: ElementRef, static: false }) navbar: ElementRef;
+  @ViewChild('navbar', { read: ElementRef, static: true }) navbar: ElementRef;
 
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
-    this.primengConfig.ripple = true;
     const lang$ = this.translate.onLangChange.subscribe(
       (langEvent: LangChangeEvent) => {
         this.currentLanguage = langEvent.lang;
@@ -51,7 +45,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       const navbarHeight = this.navbar.nativeElement.clientHeight;
       const windowHeight = window.pageYOffset;
       this.offsetNavbar = navbarHeight / 2 - windowHeight > 0 ? false : true;
-      console.log(this.offsetNavbar);
     });
     this.subscriptions.push(lang$, navbarHeigh$);
   }

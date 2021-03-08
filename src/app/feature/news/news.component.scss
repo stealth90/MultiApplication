@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+.news-title {
+  margin: 10% auto 5%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  h1 {
+    color: white;
+  }
+}
+
 .article-slider {
   height: 100%;
 }

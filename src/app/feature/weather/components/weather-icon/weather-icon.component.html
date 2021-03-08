@@ -1,9 +1,9 @@
 <img
   draggable="false"
-  *ngIf="icon !== '50d' && icon !== '50n'; else svgIcon"
+  *ngIf="icon !== '50d' && icon !== '50n'; else pngIcon"
   src="{{ 'assets/weather-icons/v2/' + icon + '.svg' }}"
 />
-<ng-template #svgIcon>
+<ng-template #pngIcon>
   <img
     draggable="false"
     src="{{ 'assets/weather-icons/v2/' + icon + '.png' }}"

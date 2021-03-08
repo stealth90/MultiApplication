@@ -61,11 +61,18 @@
     margin-right: 0.5rem;
     display: flex;
     align-items: center;
-
     &-buttons {
       position: absolute;
       top: 5px;
       right: 5px;
+    }
+  }
+  &-footer {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    .icon {
+      width: 1.5rem;
     }
   }
 }

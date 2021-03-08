@@ -9,7 +9,7 @@
 }
 
 :host ::ng-deep div.iScrollIndicator {
-  background: #472728 !important;
+  background: #f14336 !important;
 }
 
 ::-webkit-scrollbar {
@@ -20,9 +20,9 @@
   background-color: #161616;
 }
 
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   background-color: #cf000f;
-}
+} */
 
 h1,
 h2,

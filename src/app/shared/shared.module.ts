@@ -9,4 +9,4 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [CommonModule, ProgressSpinnerModule, TranslateModule],
   exports: [LoaderComponent, ProgressSpinnerModule, TranslateModule],
 })
-export class LoaderModule {}
+export class SharedModule {}

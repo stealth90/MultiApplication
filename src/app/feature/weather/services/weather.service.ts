@@ -2,7 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Observable, of } from 'rxjs';
-import { catchError, delay, map, mergeMap, retryWhen } from 'rxjs/operators';
+import {
+  catchError,
+  delay,
+  map,
+  mergeMap,
+  retryWhen,
+  tap,
+} from 'rxjs/operators';
 import { WeatherApp, Weather } from '../models/weather';
 
 @Injectable({
@@ -70,6 +77,9 @@ export class WeatherService {
               flag: result.flag,
               timezone: result.timezone,
               icon: result.weather[0].icon,
+              temp_max: result.main.temp_max,
+              temp_min: result.main.temp_min,
+              humidity: result.main.humidity,
             })
           ),
           catchError((err) => of(err.ok))
@@ -99,6 +109,9 @@ export class WeatherService {
       icon: '',
       flag: '',
       timezone: '',
+      temp_max: 0,
+      temp_min: 0,
+      humidity: 0,
       timestamp: moment(),
     };
     const lastElement = this.weatherCollection.push(newCity) - 1;
@@ -117,7 +130,10 @@ export class WeatherService {
             .get<Weather>(
               `${this.baseUri}weather?q=${cityDetail.name}&appid=${this.api}&units=metric`
             )
-            .pipe(map((value) => Object.assign({}, value, cityDetail)))
+            .pipe(
+              map((value) => Object.assign({}, value, cityDetail)),
+              tap(console.log)
+            )
         ),
         map(
           (
@@ -130,6 +146,9 @@ export class WeatherService {
             flag: result.flag,
             timezone: result.timezone,
             icon: result.weather[0].icon,
+            temp_max: result.main.temp_max,
+            temp_min: result.main.temp_min,
+            humidity: result.main.humidity,
             timestamp: moment(),
           })
         ),
@@ -165,7 +184,14 @@ export class WeatherService {
   ceckDateWeather = (weatherCitiesSaved: WeatherApp[]) => {
     let needUpdate = false;
     weatherCitiesSaved.forEach(async (weather, id) => {
-      if (moment(weather.timestamp).add(1, 'hours').isAfter(moment())) {
+      console.log(
+        moment(weather.timestamp).millisecond() + 36000000 <
+          moment().milliseconds()
+      );
+      if (
+        moment(weather.timestamp).millisecond() + 36000000 <
+        moment().milliseconds()
+      ) {
         needUpdate = true;
         const response = await this.http
           .get<Weather>(
@@ -187,6 +213,9 @@ export class WeatherService {
                 flag: weather.flag,
                 timezone: weather.timezone,
                 icon: result.weather[0].icon,
+                temp_max: result.main.temp_max,
+                temp_min: result.main.temp_min,
+                humidity: result.main.humidity,
                 timestamp: moment(),
               })
             )

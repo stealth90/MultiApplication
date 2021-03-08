@@ -13,7 +13,7 @@ import { WeatherIconComponent } from './components/weather-icon/weather-icon.com
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
-import { LoaderModule } from '../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -27,7 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
     DropdownModule,
     ButtonModule,
     SkeletonModule,
-    LoaderModule,
+    SharedModule,
     TranslateModule.forChild({ extend: true }),
   ],
   declarations: [

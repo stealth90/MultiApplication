@@ -64,5 +64,24 @@
       <app-weather-icon [icon]="weather?.icon"></app-weather-icon>
       <p class="temperature">{{ weather.temp.toFixed() }}°</p>
     </div>
+    <div class="card-footer">
+      <div class="p-d-flex">
+        <img
+          class="icon"
+          draggable="false"
+          src="../../../../assets/svg/dry.svg"
+        />{{ weather.humidity ? weather.humidity.toFixed() : "-" }}%
+        <img
+          class="icon"
+          draggable="false"
+          src="../../../../assets/svg/hot.svg"
+        />{{ weather.temp_max ? weather.temp_max.toFixed() : "-" }}°
+        <img
+          class="icon"
+          draggable="false"
+          src="../../../../assets/svg/cold.svg"
+        />{{ weather.temp_min ? weather.temp_min.toFixed() : "-" }}°
+      </div>
+    </div>
   </div>
 </ng-template>
