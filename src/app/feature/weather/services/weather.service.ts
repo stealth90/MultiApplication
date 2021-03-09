@@ -112,7 +112,7 @@ export class WeatherService {
       temp_max: 0,
       temp_min: 0,
       humidity: 0,
-      timestamp: moment(),
+      timestamp: moment().format(),
     };
     const lastElement = this.weatherCollection.push(newCity) - 1;
     this.http
@@ -149,7 +149,7 @@ export class WeatherService {
             temp_max: result.main.temp_max,
             temp_min: result.main.temp_min,
             humidity: result.main.humidity,
-            timestamp: moment(),
+            timestamp: moment().format(),
           })
         ),
         catchError((err) => of(err.ok))
@@ -184,41 +184,28 @@ export class WeatherService {
   ceckDateWeather = (weatherCitiesSaved: WeatherApp[]) => {
     let needUpdate = false;
     weatherCitiesSaved.forEach(async (weather, id) => {
-      console.log(
-        moment(weather.timestamp).millisecond() + 36000000 <
-          moment().milliseconds()
-      );
-      if (
-        moment(weather.timestamp).millisecond() + 36000000 <
-        moment().milliseconds()
-      ) {
+      console.log(moment(weather.timestamp).format(), moment().format());
+      if (-moment(weather.timestamp).diff(moment(), 'minutes') > 60) {
+        window.localStorage.clear();
         needUpdate = true;
         const response = await this.http
           .get<Weather>(
             `${this.baseUri}weather?q=${weather.city}&appid=${this.api}&units=metric`
           )
           .pipe(
-            map(
-              (
-                result: Weather & {
-                  flag: string;
-                  timezone: string;
-                  name: string;
-                }
-              ) => ({
-                prefetch: false,
-                id: result.id,
-                city: result.name,
-                temp: result.main.temp,
-                flag: weather.flag,
-                timezone: weather.timezone,
-                icon: result.weather[0].icon,
-                temp_max: result.main.temp_max,
-                temp_min: result.main.temp_min,
-                humidity: result.main.humidity,
-                timestamp: moment(),
-              })
-            )
+            map((result: Weather) => ({
+              prefetch: false,
+              id: result.id,
+              city: result.name,
+              temp: result.main.temp,
+              flag: weather.flag,
+              timezone: weather.timezone,
+              icon: result.weather[0].icon,
+              temp_max: result.main.temp_max,
+              temp_min: result.main.temp_min,
+              humidity: result.main.humidity,
+              timestamp: moment().format(),
+            }))
           )
           .toPromise();
         const weatherKeys = Object.keys(weather);
@@ -227,7 +214,9 @@ export class WeatherService {
         });
       }
     });
+    console.log('AFTER', weatherCitiesSaved);
     if (needUpdate) {
+      console.log('weatherCitiesSaved', weatherCitiesSaved);
       window.localStorage.setItem(
         'weatherCities',
         JSON.stringify(weatherCitiesSaved)

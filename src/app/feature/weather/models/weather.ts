@@ -25,7 +25,7 @@ export interface WeatherApp {
   icon: string;
   flag: any;
   timezone: string;
-  timestamp: moment.Moment;
+  timestamp: string;
   humidity: number;
 }
 
