@@ -8,7 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 export const routeTransitionAnimations = trigger('routeChange', [
-  transition('Home => Weather, Home => News, News <=> Weather', [
+  transition('Home => Weather, Home => News', [
     style({ position: 'relative' }),
     query(':enter, :leave', [
       style({
@@ -29,6 +29,84 @@ export const routeTransitionAnimations = trigger('routeChange', [
       ]),
     ]),
     query(':enter', animateChild()),
+  ]),
+  transition('News => Weather', [
+    query(':enter, :leave', style({ position: 'fixed', width: '100%' }), {
+      optional: true,
+    }),
+    group([
+      query(
+        ':enter',
+        [
+          style({ transform: 'translateY(100%)' }),
+          animate('1s ease-in-out', style({ transform: 'translateY(0%)' })),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          style({ opacity: 0 }),
+          animate('1.8s ease-in-out', style({ opacity: 1 })),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':leave',
+        [
+          style({ opacity: 1 }),
+          animate('300ms ease-in-out', style({ opacity: 0 })),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':leave',
+        [
+          style({ transform: 'translateY(0%)' }),
+          animate('1s ease-in-out', style({ transform: 'translateY(-100%)' })),
+        ],
+        { optional: true }
+      ),
+    ]),
+  ]),
+  transition('Weather => News', [
+    query(':enter, :leave', style({ position: 'fixed', width: '100%' }), {
+      optional: true,
+    }),
+    group([
+      query(
+        ':enter',
+        [
+          style({ transform: 'translateY(-100%)' }),
+          animate('1s ease-in-out', style({ transform: 'translateY(0%)' })),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          style({ opacity: 0 }),
+          animate('1.8s ease-in-out', style({ opacity: 1 })),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':leave',
+        [
+          style({ transform: 'translateY(0%)' }),
+          animate('1s ease-in-out', style({ transform: 'translateY(100%)' })),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':leave',
+        [
+          style({ opacity: 1 }),
+          animate('300ms ease-in-out', style({ opacity: 0 })),
+        ],
+        { optional: true }
+      ),
+    ]),
   ]),
   transition('Weather => Home, News => Home', [
     style({ position: 'relative' }),

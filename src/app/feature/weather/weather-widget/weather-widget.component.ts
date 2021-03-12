@@ -16,8 +16,9 @@ import { WeatherApp } from '../models/weather';
   style,
 } from '@angular/animations'; */
 import * as moment from 'moment-timezone';
-import { TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { WeatherService } from '../services/weather.service';
 // import * as kf from './keyframes';
 @Component({
   selector: 'app-weather-widget',
@@ -82,17 +83,25 @@ export class WeatherWidgetComponent implements OnInit, OnDestroy {
   currentLang$: Subscription;
   currentLang: string;
   // animationState: string;
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    private weatherService: WeatherService
+  ) {}
   ngOnDestroy(): void {
     this.currentLang$.unsubscribe();
   }
   ngOnInit(): void {
     // this.animationState = 'default';
     this.currentLang = this.translate.currentLang;
-    this.currentLang$ = this.translate.onLangChange.subscribe(() => {
-      this.currentLang = this.translate.currentLang;
-      this.convertTimezone();
-    });
+    this.currentLang$ = this.translate.onLangChange.subscribe(
+      (lang: LangChangeEvent) => {
+        this.currentLang = lang.lang;
+        this.convertTimezone();
+      }
+    );
+    if (!this.isGeoCity) {
+      this.weatherService.ceckDateWeather(this.weather.id);
+    }
   }
 
   deleteCity() {

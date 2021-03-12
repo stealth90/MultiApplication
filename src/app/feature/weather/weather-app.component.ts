@@ -69,7 +69,7 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
     this.myWeatherCollection = this.weatherService.weatherCollection;
   }
 
-  deleteCity(id: string) {
+  deleteCity(id: number) {
     this.weatherService.deleteWeather(id);
     this.myWeatherCollection = this.weatherService.weatherCollection;
   }
