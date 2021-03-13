@@ -6,9 +6,10 @@ import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from './news.component';
 import { BadgeModule } from 'primeng/badge';
 import { SharedModule } from '../../shared/shared.module';
+import { ArticleDirective } from './directive/article-directive';
 
 @NgModule({
-  declarations: [NewsComponent],
+  declarations: [NewsComponent, ArticleDirective],
   imports: [
     CommonModule,
     BadgeModule,

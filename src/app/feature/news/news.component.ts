@@ -4,6 +4,8 @@ import { Plugin } from '@egjs/flicking';
 import { NewsService } from './news.service';
 import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
+import { take } from 'rxjs/operators';
+import * as moment from 'moment';
 registerLocaleData(localeIt, 'it');
 
 @Component({
@@ -30,11 +32,13 @@ export class NewsComponent implements OnInit, OnDestroy {
         }));
       console.log(this.slidesStore);
     }); */
-    this.newsService.getItaNews().subscribe((news) => {
-      console.log('news', news);
-      this.slidesStore = news.articles;
-      this.totalResults = news.totalResults;
-    });
+    this.newsService
+      .getItaNews()
+      .pipe(take(1))
+      .subscribe((news) => {
+        this.slidesStore = news.articles;
+        this.totalResults = news.totalResults;
+      });
   }
 
   ngOnDestroy(): void {}
@@ -44,7 +48,9 @@ export class NewsComponent implements OnInit, OnDestroy {
     // ADD PANELS
   }
 
-  getShortDate(date: any) {}
+  getShortDate(date: any) {
+    console.log('hi');
+  }
 
   onMoveEnd(e) {
     // HANDLE INDEX CHANGE

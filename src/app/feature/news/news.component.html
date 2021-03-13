@@ -22,7 +22,8 @@
     >
       <ng-template>
         <div
-          class="p-d-flex p-flex-column p-jc-between panel p-shadow-5"
+          [articleCard]
+          class="p-flex-column panel p-shadow-5"
           *ngFor="let article of slidesStore"
         >
           <div
@@ -43,11 +44,7 @@
               [style.background-position]="'center'"
               [style.background-size]="'cover'"
             >
-              <p-badge
-                [value]="getShortDate(article.publishedAt)"
-                size="xlarge"
-                styleClass="p-mr-2"
-              ></p-badge>
+              <p-badge [value]="3" size="xlarge" styleClass="p-mr-2"></p-badge>
             </div>
           </ng-template>
           <div class="news-footer">
