@@ -44,7 +44,9 @@
               [style.background-position]="'center'"
               [style.background-size]="'cover'"
             >
-              <p-badge [value]="3" size="xlarge" styleClass="p-mr-2"></p-badge>
+              <app-date-badge
+                [date]="article.pub_date || article.publishedAt"
+              ></app-date-badge>
             </div>
           </ng-template>
           <div class="news-footer">
@@ -56,7 +58,8 @@
               <p style="font-size: small">
                 {{
                   article.pub_date || article.publishedAt
-                    | date: "MMM. d, y":"UTC":"it"
+                    | date: "MMM. d, y":"UTC":currentLang
+                    | uppercase
                 }}
               </p>
             </span>

@@ -6,6 +6,8 @@ import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 import { take } from 'rxjs/operators';
 import * as moment from 'moment';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 registerLocaleData(localeIt, 'it');
 
 @Component({
@@ -15,11 +17,23 @@ registerLocaleData(localeIt, 'it');
 })
 export class NewsComponent implements OnInit, OnDestroy {
   slidesStore: any[] = [];
+  currentLang: string;
   totalResults: number;
+  currentLang$: Subscription;
   plugins: Plugin[] = [new Fade(), new AutoPlay({ duration: 10000 }, 'NEXT')];
-  constructor(private newsService: NewsService) {}
+  constructor(
+    private newsService: NewsService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
+    this.currentLang = this.translate.currentLang;
+    this.currentLang$ = this.translate.onLangChange.subscribe(
+      (lang: LangChangeEvent) => {
+        this.currentLang = lang.lang;
+      }
+    );
+
     /* this.newsService.getNews('2021', '2').subscribe((news: any[]) => {
       this.slidesStore = news
         .filter((_, index) => index <= 10)
@@ -41,7 +55,9 @@ export class NewsComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.currentLang$.unsubscribe();
+  }
 
   onNeedPanel(e) {
     console.log(e);
