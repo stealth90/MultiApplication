@@ -11,6 +11,9 @@
   "weather": {
     "title": "City"
   },
+  "news": {
+    "readNews": "Read full article"
+  },
   "common": {
     "add": "Add"
   }
