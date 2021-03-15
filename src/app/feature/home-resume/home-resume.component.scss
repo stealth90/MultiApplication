@@ -1,3 +1,5 @@
+@import "../../../assets/colors/index.scss";
+
 :host {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -9,7 +11,7 @@
 }
 
 :host ::ng-deep div.iScrollIndicator {
-  background: #f14336 !important;
+  background: $secondary !important;
 }
 
 ::-webkit-scrollbar {
@@ -20,9 +22,9 @@
   background-color: #161616;
 }
 
-/* ::-webkit-scrollbar-thumb {
-  background-color: #cf000f;
-} */
+::-webkit-scrollbar-thumb {
+  background-color: $secondary;
+}
 
 h1,
 h2,

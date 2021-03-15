@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { options } from './models/fullpage';
-
 @Component({
   selector: 'app-home-resume',
   templateUrl: './home-resume.component.html',
