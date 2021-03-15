@@ -8,9 +8,10 @@ import { BadgeModule } from 'primeng/badge';
 import { SharedModule } from '../../shared/shared.module';
 import { ArticleDirective } from './directive/article-directive';
 import { DateBadgeComponent } from './components/date-badge/date-badge.component';
+import { NewsSliderComponent } from './components/news-slider/news-slider.component';
 
 @NgModule({
-  declarations: [NewsComponent, ArticleDirective, DateBadgeComponent],
+  declarations: [NewsComponent, ArticleDirective, DateBadgeComponent, NewsSliderComponent],
   imports: [
     CommonModule,
     BadgeModule,

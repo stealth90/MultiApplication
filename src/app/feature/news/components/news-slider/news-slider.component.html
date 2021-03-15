@@ -1,0 +1,49 @@
+<div class="container">
+  <ng-container
+    *ngTemplateOutlet="resumePosition === 'left' && resumeNews"
+  ></ng-container>
+  <ng-container *ngIf="data.length; else loader">
+    <ngx-flicking
+      [plugins]="sliderPlugins"
+      [options]="sliderOptions"
+      class="flicking"
+    >
+      <ng-template>
+        <div class="item" *ngFor="let news of data">
+          <div class="image-area">
+            <div class="image-inner-area">
+              <img class="img-item" [src]="news?.urlToImage" />
+            </div>
+          </div>
+          <div class="info">
+            <p class="title">{{ news?.title }}</p>
+            <br />
+            <p class="subtitle">{{ news?.author }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </ngx-flicking>
+  </ng-container>
+  <ng-container
+    *ngTemplateOutlet="resumePosition === 'right' && resumeNews"
+  ></ng-container>
+  <ng-template #loader>
+    <div class="loader">
+      <app-loader
+        customSpinner="true"
+        strokeWidth="4"
+        [loadingMessage]="'Caricamento in corso...'"
+      ></app-loader>
+    </div>
+  </ng-template>
+</div>
+<ng-template #resumeNews>
+  <div class="main">
+    <div class="content">
+      <h1>{{ title }}</h1>
+      <p class="description">
+        {{ description }}
+      </p>
+    </div>
+  </div>
+</ng-template>

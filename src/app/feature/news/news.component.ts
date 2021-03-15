@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Fade, AutoPlay } from '@egjs/flicking-plugins';
+import { Fade, AutoPlay, Parallax } from '@egjs/flicking-plugins';
 import { Plugin } from '@egjs/flicking';
 import { NewsService } from './news.service';
 import { registerLocaleData } from '@angular/common';
@@ -20,7 +20,11 @@ export class NewsComponent implements OnInit, OnDestroy {
   currentLang: string;
   totalResults: number;
   currentLang$: Subscription;
-  plugins: Plugin[] = [new Fade(), new AutoPlay({ duration: 10000 }, 'NEXT')];
+  /* plugins: Plugin[] = [new Fade(), new AutoPlay({ duration: 10000 }, 'NEXT')]; */
+  plugins: Plugin[] = [
+    new Parallax('img', 0.8),
+    new AutoPlay({ duration: 3000 }),
+  ];
   constructor(
     private newsService: NewsService,
     private translate: TranslateService
