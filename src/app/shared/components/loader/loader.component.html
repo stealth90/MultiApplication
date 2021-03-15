@@ -1,4 +1,8 @@
 <div class="loader-container">
-  <p-progressSpinner></p-progressSpinner>
+  <p-progressSpinner
+    [styleClass]="customSpinner && 'custom-spinner'"
+    [strokeWidth]="strokeWidth && strokeWidth"
+    [animationDuration]="animationDuration && animationDuration"
+  ></p-progressSpinner>
   <p>{{ message | translate }}</p>
 </div>

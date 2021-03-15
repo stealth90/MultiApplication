@@ -9,6 +9,9 @@ import { Subscription } from 'rxjs';
 })
 export class LoaderComponent implements OnInit, OnDestroy {
   @Input() message: string = 'loader.weather';
+  @Input() customSpinner: boolean;
+  @Input() strokeWidth: number;
+  @Input() animationDuration: string;
   lang$: Subscription;
   constructor(private translate: TranslateService) {
     this.lang$ = translate.onLangChange.subscribe((event: LangChangeEvent) => {
