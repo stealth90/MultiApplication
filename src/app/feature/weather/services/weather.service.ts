@@ -100,12 +100,8 @@ export class WeatherService {
           } else {
             const weatherKeys = Object.keys(weather);
             weatherKeys.forEach((key) => {
-              this.weatherCollection[0][key] = weather[key];
+              this.myCurrentWeather[0][key] = weather[key];
             });
-            localStorage.setItem(
-              'weatherCities',
-              JSON.stringify(this.weatherCollection)
-            );
           }
         }),
         (err) => {

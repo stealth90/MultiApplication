@@ -10,7 +10,7 @@ import { fromEvent, Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -24,8 +24,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   sidebarAnimation: boolean;
   currentLanguage: string;
   offsetNavbar: boolean = false;
+  currentRoute: string;
 
-  constructor(private translate: TranslateService, private router: Router) {}
+  constructor(private translate: TranslateService, private router: Router) {
+    const router$ = router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url.slice(1);
+      });
+    this.subscriptions.push(router$);
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize() {

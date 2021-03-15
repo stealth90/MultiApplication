@@ -12,13 +12,16 @@
         <div class="item" *ngFor="let news of data">
           <div class="image-area">
             <div class="image-inner-area">
-              <img class="img-item" [src]="news?.urlToImage" />
+              <img class="img-item" [src]="news.urlToImage" />
             </div>
           </div>
           <div class="info">
-            <p class="title">{{ news?.title }}</p>
+            <p class="title">{{ news.title }}</p>
             <br />
-            <p class="subtitle">{{ news?.author }}</p>
+            <p class="subtitle">{{ news.author }}</p>
+            <button class="p-d-flex button" (click)="goToArticle(news.url)">
+              Read
+            </button>
           </div>
         </div>
       </ng-template>

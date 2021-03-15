@@ -17,4 +17,8 @@ export class NewsSliderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  goToArticle(url: string) {
+    window.open(url, '_blank');
+  }
 }

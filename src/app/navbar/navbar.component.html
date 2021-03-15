@@ -46,11 +46,10 @@
           <li>
             <p-button
               type="button"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
               (click)="handleCloseSidebar('/')"
               [ngClass]="{
-                visible: sidebarAnimation
+                visible: sidebarAnimation,
+                active: currentRoute === ''
               }"
               label="{{ 'navbar.home' | translate }}"
               styleClass="p-button-text"
@@ -59,11 +58,10 @@
           <li>
             <p-button
               type="button"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
               (click)="handleCloseSidebar('weather')"
               [ngClass]="{
-                visible: sidebarAnimation
+                visible: sidebarAnimation,
+                active: currentRoute === 'weather'
               }"
               label="{{ 'navbar.weather-app' | translate }}"
               styleClass="p-button-text"
@@ -73,10 +71,9 @@
             <p-button
               type="button"
               (click)="handleCloseSidebar('news')"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
               [ngClass]="{
-                visible: sidebarAnimation
+                visible: sidebarAnimation,
+                active: currentRoute === 'news'
               }"
               label="{{ 'navbar.news-app' | translate }}"
               styleClass="p-button-text"
