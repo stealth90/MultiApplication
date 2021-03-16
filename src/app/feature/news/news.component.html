@@ -83,7 +83,6 @@
 </div> -->
 
 <app-news-slider
-  [data]="slidesStore"
   [title]="'news.top-headlines' | translate"
   [description]="'description'"
   [sliderPlugins]="plugins"
@@ -91,11 +90,12 @@
   [sliderOptions]="{
     moveTypeSnap: { type: 'snap', count: 4 },
     duration: 500,
-    autoResize: true
+    autoResize: true,
+    circular: true
   }"
 ></app-news-slider>
 
-<app-news-slider
+<!-- <app-news-slider
   [data]="slidesStore"
   [title]="'news.top-headlines' | translate"
   [description]="'description'"
@@ -107,4 +107,4 @@
     circular: true,
     autoResize: true
   }"
-></app-news-slider>
+></app-news-slider> -->

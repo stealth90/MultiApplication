@@ -16,11 +16,9 @@ registerLocaleData(localeIt, 'it');
   styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit, OnDestroy {
-  slidesStore: any[] = [];
   currentLang: string;
   totalResults: number;
   currentLang$: Subscription;
-  /* plugins: Plugin[] = [new Fade(), new AutoPlay({ duration: 10000 }, 'NEXT')]; */
   plugins: Plugin[] = [
     new Parallax('img', 0.8),
     new AutoPlay({ duration: 3000 }),
@@ -41,26 +39,6 @@ export class NewsComponent implements OnInit, OnDestroy {
         this.currentLang = lang.lang;
       }
     );
-
-    /* this.newsService.getNews('2021', '2').subscribe((news: any[]) => {
-      this.slidesStore = news
-        .filter((_, index) => index <= 10)
-        .map((news) => ({
-          title: news.headline.main,
-          pub_date: news.pub_date,
-          url: news.web_url,
-          author: news.byline.original,
-          image: news.multimedia[0]?.url,
-        }));
-      console.log(this.slidesStore);
-    }); */
-    this.newsService
-      .getItaNews()
-      .pipe(take(1))
-      .subscribe((news) => {
-        this.slidesStore = news.articles;
-        this.totalResults = news.totalResults;
-      });
   }
 
   ngOnDestroy(): void {
