@@ -1,24 +1,41 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FlickingOptions, Plugin } from '@egjs/flicking/declaration/types';
+import { Subscription } from 'rxjs';
 import { News } from '../../news.model';
+import { NewsService } from '../../news.service';
 
 @Component({
   selector: 'app-news-slider',
   templateUrl: './news-slider.component.html',
   styleUrls: ['./news-slider.component.scss'],
 })
-export class NewsSliderComponent implements OnInit {
+export class NewsSliderComponent implements OnInit, OnDestroy {
   @Input() resumePosition: 'left' | 'right';
   @Input() title: string;
   @Input() description: string;
   @Input() sliderOptions: Partial<FlickingOptions>;
   @Input() data: News[] = [];
   @Input() sliderPlugins: Plugin[];
-  constructor() {}
+  data$: Subscription;
+  constructor(private newsService: NewsService) {}
+  ngOnDestroy(): void {
+    this.data$.unsubscribe();
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.data$ = this.newsService
+      .getTopHeadlinesNews()
+      .subscribe((value: News[]) => (this.data = [...this.data, ...value]));
+  }
 
   goToArticle(url: string) {
     window.open(url, '_blank');
+  }
+
+  getNews({ category, country }) {
+    this.data = [];
+    this.data$ = this.newsService
+      .getTopHeadlinesNews(category, country)
+      .subscribe((value: News[]) => (this.data = [...this.data, ...value]));
   }
 }

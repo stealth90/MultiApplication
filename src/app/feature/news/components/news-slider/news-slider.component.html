@@ -2,7 +2,7 @@
   <ng-container
     *ngTemplateOutlet="resumePosition === 'left' && resumeNews"
   ></ng-container>
-  <ng-container *ngIf="data.length; else loader">
+  <ng-container *ngIf="data?.length; else loader">
     <ngx-flicking
       [plugins]="sliderPlugins"
       [options]="sliderOptions"
@@ -12,20 +12,25 @@
         <div class="item" *ngFor="let news of data">
           <div class="image-area">
             <div class="image-inner-area">
-              <img class="img-item" [src]="news.urlToImage" />
+              <img
+                class="img-item"
+                [src]="
+                  news.urlToImage ||
+                  '../../../../../assets/images/placeholder-image.png'
+                "
+              />
             </div>
           </div>
           <div class="info">
             <p class="title">{{ news.title }}</p>
             <br />
-            <p class="subtitle">{{ news.author }}</p>
-            <button
-              class="p-d-flex button"
-              (click)="goToArticle(news.url)"
-              [translate]
-            >
-              news.read-news
-            </button>
+            <p class="subtitle">{{ news.author || "-" }}</p>
+            <p-button
+              type="button"
+              label="{{ 'news.read-news' | translate }}"
+              class="button"
+              (onClick)="goToArticle(news.url)"
+            ></p-button>
           </div>
         </div>
       </ng-template>
@@ -49,6 +54,7 @@
     <app-news-resume-filter
       [title]="title"
       [description]="description"
+      (newsForm)="getNews($event)"
     ></app-news-resume-filter>
   </div>
 </ng-template>
