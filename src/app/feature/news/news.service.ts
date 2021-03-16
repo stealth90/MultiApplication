@@ -10,7 +10,7 @@ export class NewsService {
   baseUri = 'https://api.nytimes.com/svc/archive/v1/';
   api = 'ROLKmVA9wilvwsPzrAoTsuZFtlzZV0Dr';
   newsApi = 'e6984dc1ebcc45af920f5195a0bbc864';
-  newsUri = `https://newsapi.org/v2/top-headlines?sources=google-news-it&apiKey=${this.newsApi}`;
+  newsUri = `https://newsapi.org/v2/top-headlines?country=it&apiKey=${this.newsApi}`;
   newsCOllection: [] = [];
   headers: HttpHeaders;
   constructor(private http: HttpClient) {

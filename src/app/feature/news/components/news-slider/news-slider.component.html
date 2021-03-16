@@ -19,8 +19,12 @@
             <p class="title">{{ news.title }}</p>
             <br />
             <p class="subtitle">{{ news.author }}</p>
-            <button class="p-d-flex button" (click)="goToArticle(news.url)">
-              Read
+            <button
+              class="p-d-flex button"
+              (click)="goToArticle(news.url)"
+              [translate]
+            >
+              news.read-news
             </button>
           </div>
         </div>
@@ -42,11 +46,9 @@
 </div>
 <ng-template #resumeNews>
   <div class="main">
-    <div class="content">
-      <h1>{{ title }}</h1>
-      <p class="description">
-        {{ description }}
-      </p>
-    </div>
+    <app-news-resume-filter
+      [title]="title"
+      [description]="description"
+    ></app-news-resume-filter>
   </div>
 </ng-template>

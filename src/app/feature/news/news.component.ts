@@ -25,6 +25,10 @@ export class NewsComponent implements OnInit, OnDestroy {
     new Parallax('img', 0.8),
     new AutoPlay({ duration: 3000 }),
   ];
+  plugins2: Plugin[] = [
+    new Parallax('img', 0.8),
+    new AutoPlay({ duration: 3000 }),
+  ];
   constructor(
     private newsService: NewsService,
     private translate: TranslateService
