@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CATEGORY_NEWS, COUNTRIES } from '../../models';
 
 @Component({
@@ -9,6 +9,8 @@ import { CATEGORY_NEWS, COUNTRIES } from '../../models';
 export class NewsResumeFilterComponent implements OnInit {
   @Input() title: string;
   @Input() description: string;
+  @Output() newsForm: EventEmitter<any> = new EventEmitter();
+
   categoryList = CATEGORY_NEWS;
   countriesList = COUNTRIES;
   category: string;
@@ -16,4 +18,8 @@ export class NewsResumeFilterComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  submitForm(): void {
+    this.newsForm.emit({ category: this.category, country: this.country });
+  }
 }
