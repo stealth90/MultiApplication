@@ -1,0 +1,64 @@
+<div class="content">
+  <h1>{{ title }}</h1>
+  <div class="form">
+    <span class="p-float-label">
+      <p-dropdown
+        id="category"
+        filter="true"
+        [showClear]="true"
+        [panelStyle]="{ width: 'fits-content' }"
+        itemSize="7"
+        filterValue="value"
+        optionValue="value"
+        [autoDisplayFirst]="false"
+        [(ngModel)]="category"
+        [options]="categoryList"
+        optionLabel="name"
+      >
+        <ng-template let-item pTemplate="item">
+          {{ item.name | translate }}
+        </ng-template>
+
+        <ng-template let-item pTemplate="selectedItem">
+          {{ item.name | translate }}
+        </ng-template>
+      </p-dropdown>
+      <label class="dropdown-label" for="dropdown">{{
+        "news.category" | translate
+      }}</label>
+    </span>
+    <span class="p-float-label">
+      <p-dropdown
+        id="countries"
+        filter="true"
+        [showClear]="true"
+        [panelStyle]="{ width: 'fits-content' }"
+        itemSize="7"
+        filterValue="value"
+        optionValue="value"
+        [autoDisplayFirst]="false"
+        [(ngModel)]="country"
+        [options]="countriesList"
+        optionLabel="name"
+      >
+        <ng-template let-item pTemplate="item">
+          {{ item.name | translate }}
+        </ng-template>
+
+        <ng-template let-item pTemplate="selectedItem">
+          {{ item.name | translate }}
+        </ng-template>
+      </p-dropdown>
+      <label class="dropdown-label" for="dropdown">{{
+        "news.country" | translate
+      }}</label>
+    </span>
+    <p-button
+      icon="pi pi-plus"
+      iconPos="left"
+      type="button"
+      label="{{ 'news.search' | translate }}"
+      class="button"
+    ></p-button>
+  </div>
+</div>
