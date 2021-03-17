@@ -13,6 +13,7 @@
   },
   "news": {
     "top-headlines": "Titoli principali",
+    "top-headlines-description": "Visualizza le notizie principali con un click",
     "read-news": "Leggi articolo completo",
     "category": "Categoria",
     "country": "Nazione",
