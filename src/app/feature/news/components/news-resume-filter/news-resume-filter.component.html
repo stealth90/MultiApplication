@@ -1,6 +1,9 @@
 <div class="content">
-  <h1>{{ title }}</h1>
-  <div class="form">
+  <div class="content-header">
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+  </div>
+  <div class="content-form">
     <div class="p-d-flex dropdown-container">
       <span class="p-float-label dropdown">
         <p-dropdown
@@ -55,13 +58,14 @@
         }}</label>
       </span>
     </div>
-    <p-button
-      icon="pi pi-plus"
+    <button
+      pButton
+      icon="pi pi-search"
       iconPos="left"
       type="button"
       label="{{ 'news.search' | translate }}"
-      class="button"
-      (onClick)="submitForm()"
-    ></p-button>
+      class="submit-button"
+      (click)="submitForm()"
+    ></button>
   </div>
 </div>
