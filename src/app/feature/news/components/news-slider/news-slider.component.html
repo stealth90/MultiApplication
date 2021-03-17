@@ -25,12 +25,13 @@
             <p class="title">{{ news.title }}</p>
             <br />
             <p class="subtitle">{{ news.author || "-" }}</p>
-            <p-button
+            <button
+              pButton
               type="button"
               label="{{ 'news.read-news' | translate }}"
-              class="button"
-              (onClick)="goToArticle(news.url)"
-            ></p-button>
+              class="read-button"
+              (click)="goToArticle(news.url)"
+            ></button>
           </div>
         </div>
       </ng-template>
