@@ -3,7 +3,7 @@ import { FlickingOptions, Plugin } from '@egjs/flicking/declaration/types';
 import { Subscription } from 'rxjs';
 import { News } from '../../news.model';
 import { NewsService } from '../../news.service';
-
+import * as AOS from 'aos';
 @Component({
   selector: 'app-news-slider',
   templateUrl: './news-slider.component.html',
@@ -17,7 +17,9 @@ export class NewsSliderComponent implements OnInit, OnDestroy {
   @Input() data: News[] = [];
   @Input() sliderPlugins: Plugin[];
   data$: Subscription;
-  constructor(private newsService: NewsService) {}
+  constructor(private newsService: NewsService) {
+    AOS.init();
+  }
   ngOnDestroy(): void {
     this.data$.unsubscribe();
   }

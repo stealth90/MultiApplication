@@ -95,6 +95,19 @@
   }"
 ></app-news-slider>
 
+<app-news-slider
+  [title]="'news.top-headlines' | translate"
+  [description]="'news.top-headlines-description' | translate"
+  [sliderPlugins]="plugins"
+  [resumePosition]="'left'"
+  [sliderOptions]="{
+    moveTypeSnap: { type: 'snap', count: 4 },
+    duration: 500,
+    autoResize: true,
+    circular: true
+  }"
+></app-news-slider>
+
 <!-- <app-news-slider
   [data]="slidesStore"
   [title]="'news.top-headlines' | translate"
