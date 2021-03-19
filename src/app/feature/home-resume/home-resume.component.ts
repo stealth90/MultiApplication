@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { options } from './models/fullpage';
+import * as AOS from 'aos';
 @Component({
   selector: 'app-home-resume',
   templateUrl: './home-resume.component.html',
@@ -40,7 +41,9 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
     this.fullpage_api = fullPageRef;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    AOS.init();
+  }
   ngOnDestroy(): void {
     this.fullpage_api.destroy();
   }

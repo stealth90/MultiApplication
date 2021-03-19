@@ -261,3 +261,230 @@ footer a {
     margin-left: 72px;
   }
 }
+
+.firstPage {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media screen and (min-width: 576px) {
+  .firstPage {
+    max-width: 540px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .firstPage {
+    max-width: 720px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .firstPage {
+    max-width: 960px;
+  }
+}
+
+/*===========================
+        03.ABOUT css 
+===========================*/
+.about_image {
+  position: relative;
+}
+.about-image,
+.about_content {
+  margin-top: 50px;
+}
+.about_image img {
+  width: 100%;
+}
+/* .about_image .about_shape {
+  width: 404px;
+  height: 525px;
+  border-left: 15px solid #00a78e;
+  border-bottom: 15px solid #00a78e;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+} */
+/* @media (max-width: 767px) {
+  .about_image .about_shape {
+    width: 100%;
+    height: 380px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .about_image .about_shape {
+    width: 404px;
+    height: 525px;
+  }
+}
+.about_image .about_shape::before {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 85%;
+  background-color: #00a78e;
+  bottom: 0;
+  right: 0;
+}
+.about_image .about_shape::after {
+  position: absolute;
+  content: "";
+  width: 104%;
+  height: 15px;
+  background-color: #00a78e;
+  top: 36px;
+  right: -2px;
+  -webkit-transform: rotate(11deg);
+  -moz-transform: rotate(11deg);
+  -ms-transform: rotate(11deg);
+  -o-transform: rotate(11deg);
+  transform: rotate(11deg);
+  border-top-left-radius: 20px;
+}
+@media (max-width: 767px) {
+  .about_image .about_shape::after {
+    top: 27px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .about_image .about_shape::after {
+    top: 37px;
+  }
+} */
+
+/*===== All Section Title Style =====*/
+.section_title .sub_title {
+  font-size: 20px;
+  font-weight: 600;
+  color: $secondary;
+}
+@media (max-width: 767px) {
+  .section_title .sub_title {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .section_title .sub_title {
+    font-size: 18px;
+  }
+}
+.section_title .main_title {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+@media (max-width: 767px) {
+  .section_title .main_title {
+    font-size: 22px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .section_title .main_title {
+    font-size: 26px;
+  }
+}
+.section_title .line {
+  padding-top: 10px;
+}
+.section_title .line li {
+  display: inline-block;
+  background-color: $secondary;
+  border-radius: 50px;
+  height: 3px;
+}
+.section_title .line li:nth-of-type(1) {
+  width: 64px;
+}
+.section_title .line li:nth-of-type(2) {
+  width: 10px;
+}
+.section_title .line li:nth-of-type(3) {
+  width: 7px;
+}
+
+.about_content {
+  margin-top: 50px;
+  p {
+    color: white;
+    margin-top: 10px;
+  }
+}
+
+section {
+  &::before,
+  &::after {
+    width: 100%;
+    height: 100px;
+    content: "";
+    display: flex;
+  }
+}
+
+/* .padding-section {
+  width: 100%;
+  height: 100px;
+} */
+
+.about_skills {
+  padding-top: 15px;
+}
+
+.skill-item {
+  margin-top: 20px;
+}
+
+.skill_item .skill_header {
+  position: relative;
+}
+.skill_item .skill_header .skill_title {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+.skill_item .skill_header .skill_percentage {
+  position: absolute;
+  top: -3px;
+  right: 0;
+}
+.skill_item .skill_header .skill_percentage p {
+  font-size: 14px;
+  font-weight: 400;
+}
+.skill_item .skill_bar {
+  margin-top: 15px;
+}
+.skill_item .skill_bar .bar_inner {
+  width: 100%;
+  height: 9px;
+  border-radius: 5px;
+  background-color: rgba(100, 111, 135, 0.11);
+  position: relative;
+}
+.skill_item .skill_bar .bar_inner .progress_line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 9px;
+  border-radius: 5px;
+  background-color: #00a78e;
+  -webkit-transition: all 2s ease-out 0s;
+  -moz-transition: all 2s ease-out 0s;
+  -ms-transition: all 2s ease-out 0s;
+  -o-transition: all 2s ease-out 0s;
+  transition: all 2s ease-out 0s;
+  width: 0;
+}
+.skill_item .skill_bar .bar_inner .progress_line::before {
+  position: absolute;
+  content: "";
+  width: 7px;
+  height: 18px;
+  background-color: #fff;
+  border: 2px solid #00a78e;
+  top: -5px;
+  right: 0;
+}
