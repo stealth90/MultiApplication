@@ -1,7 +1,7 @@
 <div class="weather-app">
   <app-weather-form (addCity)="addCity($event)"></app-weather-form>
   <div
-    class="p-grid p-mt-2 widgets-container"
+    class="p-grid p-pb-2 widgets-container"
     *ngIf="myCurrentWeather.length; else noWeather"
   >
     <div class="p-col-12 p-sm-10 p-md-6 p-lg-3">
