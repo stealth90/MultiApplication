@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
 import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { CardSkeletonComponent } from './components/card-skeleton/card-skeleton.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { TranslateModule } from '@ngx-translate/core';
     WeatherAppComponent,
     NoWeatherComponent,
     WeatherIconComponent,
+    CardSkeletonComponent,
   ],
 })
 export class WeatherModule {}
