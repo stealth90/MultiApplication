@@ -1,43 +1,6 @@
-<div *ngIf="weather.prefetch; else loadedData">
-  <div
-    class="card p-d-flex p-flex-lg-column p-jc-between p-jc-lg-around p-ai-center p-ai-lg-start p-shadow-5"
-  >
-    <span class="card-header p-mt-5 p-mb-3">
-      <span class="p-d-flex p-mb-3">
-        <p-skeleton width="2rem" height="1rem" styleClass="p-mr-2"></p-skeleton>
-        <p-skeleton width="4rem" height="1rem"></p-skeleton>
-      </span>
-      <p-skeleton width="10rem" height="2rem" styleClass="p-mb-2"></p-skeleton>
-      <p-skeleton width="2rem" height="1.5rem"></p-skeleton>
-    </span>
-    <div class="card-content p-my-6">
-      <div class="card-content-buttons">
-        <p-skeleton width="1rem" styleClass="p-m-2"></p-skeleton>
-      </div>
-      <p-skeleton
-        shape="circle"
-        size="4rem"
-        styleClass="p-pb-6 p-ml-6"
-      ></p-skeleton>
-      <p-skeleton
-        height="3.5rem"
-        width="3.5rem"
-        styleClass="p-pb-6 p-ml-4"
-      ></p-skeleton>
-    </div>
-    <div class="card-footer">
-      <div class="p-d-flex">
-        <p-skeleton
-          width="2rem"
-          height="1.5rem"
-          styleClass="p-mb-2"
-        ></p-skeleton>
-        <p-skeleton width="2rem" height="1.5rem"></p-skeleton>
-        <p-skeleton width="2rem" height="1.5rem"></p-skeleton>
-      </div>
-    </div>
-  </div>
-</div>
+<app-card-skeleton
+  *ngIf="weather.prefetch; else loadedData"
+></app-card-skeleton>
 <ng-template #loadedData>
   <!-- <div
     [@cardAnimator]="animationState"
