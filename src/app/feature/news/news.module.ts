@@ -13,6 +13,9 @@ import { NewsResumeFilterComponent } from './components/news-resume-filter/news-
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { CustomerService } from './services/customerservice.service';
+import { NewsTableComponent } from './components/news-table/news-table.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { ButtonModule } from 'primeng/button';
     DateBadgeComponent,
     NewsSliderComponent,
     NewsResumeFilterComponent,
+    NewsTableComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +36,8 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     ButtonModule,
     ReactiveFormsModule,
+    TableModule,
   ],
+  providers: [CustomerService],
 })
 export class NewsModule {}
