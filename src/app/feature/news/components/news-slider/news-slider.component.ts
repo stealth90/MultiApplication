@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FlickingOptions, Plugin } from '@egjs/flicking/declaration/types';
 import { Subscription } from 'rxjs';
 import { News } from '../../news.model';
-import { NewsService } from '../../news.service';
+import { NewsService } from '../../services/news.service';
 import * as AOS from 'aos';
 @Component({
   selector: 'app-news-slider',
