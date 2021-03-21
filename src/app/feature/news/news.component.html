@@ -94,30 +94,6 @@
     circular: true
   }"
 ></app-news-slider>
-
-<app-news-slider
-  [title]="'news.top-headlines' | translate"
-  [description]="'news.top-headlines-description' | translate"
-  [sliderPlugins]="plugins"
-  [resumePosition]="'left'"
-  [sliderOptions]="{
-    moveTypeSnap: { type: 'snap', count: 4 },
-    duration: 500,
-    autoResize: true,
-    circular: true
-  }"
-></app-news-slider>
-
-<!-- <app-news-slider
-  [data]="slidesStore"
-  [title]="'news.top-headlines' | translate"
-  [description]="'description'"
-  [resumePosition]="'right'"
-  [sliderPlugins]="plugins2"
-  [sliderOptions]="{
-    moveTypeSnap: { type: 'snap', count: 4 },
-    duration: 500,
-    circular: true,
-    autoResize: true
-  }"
-></app-news-slider> -->
+<div class="p-mx-4 p-mb-6">
+  <app-news-table></app-news-table>
+</div>

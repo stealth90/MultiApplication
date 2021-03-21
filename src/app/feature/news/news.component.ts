@@ -1,11 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Fade, AutoPlay, Parallax } from '@egjs/flicking-plugins';
+import { AutoPlay, Parallax } from '@egjs/flicking-plugins';
 import { Plugin } from '@egjs/flicking';
-import { NewsService } from './news.service';
 import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
-import { take } from 'rxjs/operators';
-import * as moment from 'moment';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 registerLocaleData(localeIt, 'it');
@@ -23,14 +20,8 @@ export class NewsComponent implements OnInit, OnDestroy {
     new Parallax('img', 0.8),
     new AutoPlay({ duration: 3000 }),
   ];
-  plugins2: Plugin[] = [
-    new Parallax('img', 0.8),
-    new AutoPlay({ duration: 3000 }),
-  ];
-  constructor(
-    private newsService: NewsService,
-    private translate: TranslateService
-  ) {}
+
+  constructor(private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.currentLang = this.translate.currentLang;
