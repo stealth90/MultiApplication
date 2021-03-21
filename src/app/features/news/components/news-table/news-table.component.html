@@ -14,17 +14,8 @@
   >
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="name">
-          Name <p-sortIcon field="name"></p-sortIcon>
-        </th>
-        <th pSortableColumn="country.name">
-          Country <p-sortIcon field="country.name"></p-sortIcon>
-        </th>
-        <th pSortableColumn="representative.name">
-          Representative <p-sortIcon field="representative.name"></p-sortIcon>
-        </th>
-        <th pSortableColumn="status">
-          Status <p-sortIcon field="status"></p-sortIcon>
+        <th [pSortableColumn]="col.header" *ngFor="let col of columns">
+          {{ col.header }}
         </th>
       </tr>
       <tr>
@@ -74,38 +65,20 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-customer>
-      <tr [pSelectableRow]="customer">
+    <ng-template pTemplate="body" let-article>
+      <tr [pSelectableRow]="article">
         <td>
-          <span class="p-column-title">Name</span>
-          {{ customer.name }}
+          <span class="p-column-title">{{ article.title }}</span>
         </td>
         <td>
-          <span class="p-column-title">Country</span>
-          <img
-            src="assets/showcase/images/demo/flag/flag_placeholder.png"
-            [class]="'flag flag-' + customer.country.code"
-            width="30"
-          />
-          <span class="image-text">{{ customer.country.name }}</span>
+          <img [src]="article.urlToImage" width="100" />
         </td>
+        <td></td>
         <td>
-          <span class="p-column-title">Representative</span>
-          <img
-            [alt]="customer.representative.name"
-            src="assets/showcase/images/demo/avatar/{{
-              customer.representative.image
-            }}"
-            width="32"
-            style="vertical-align: middle"
-          />
-          <span class="image-text">{{ customer.representative.name }}</span>
+          <span class="p-column-title">Status</span>
         </td>
         <td>
           <span class="p-column-title">Status</span>
-          <span [class]="'customer-badge status-' + customer.status">{{
-            customer.status
-          }}</span>
         </td>
       </tr>
     </ng-template>

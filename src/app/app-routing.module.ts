@@ -5,18 +5,18 @@ const appRoutes: Routes = [
   {
     path: 'weather',
     loadChildren: () =>
-      import('./feature/weather/weather.module').then((m) => m.WeatherModule),
+      import('./features/weather/weather.module').then((m) => m.WeatherModule),
   },
   {
     path: 'news',
     loadChildren: () =>
-      import('./feature/news/news.module').then((m) => m.NewsModule),
+      import('./features/news/news.module').then((m) => m.NewsModule),
   },
   {
     path: '',
     pathMatch: 'full',
     loadChildren: () =>
-      import('./feature/home-resume/home-resume.module').then(
+      import('./features/home-resume/home-resume.module').then(
         (m) => m.HomeResumeModule
       ),
   },

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Article, ArticlesResp } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class NewsService {
   api = 'ROLKmVA9wilvwsPzrAoTsuZFtlzZV0Dr';
   newsApi = 'e6984dc1ebcc45af920f5195a0bbc864';
   topNewsUri = `https://newsapi.org/v2/top-headlines?`;
+  allNewsUri = `https://newsapi.org/v2/everything?`;
   newsCOllection: [] = [];
   headers: HttpHeaders;
   constructor(private http: HttpClient, private translate: TranslateService) {
@@ -32,7 +34,10 @@ export class NewsService {
     return this.http.get<any>(this.topNewsUri);
   }
 
-  getTopHeadlinesNews(category: string = null, country: string = null) {
+  getTopHeadlinesNews(
+    category: string = null,
+    country: string = null
+  ): Observable<any> {
     const currentCountry = country
       ? country
       : this.translate.currentLang === 'en'
@@ -43,6 +48,19 @@ export class NewsService {
     }&apiKey=${this.newsApi}`;
     return this.http
       .get<any>(api, { headers: this.headers })
+      .pipe(map((value) => value.articles));
+  }
+
+  getEverythingArticles(
+    query: string,
+    from?: string,
+    to?: string
+  ): Observable<Article[]> {
+    const url = `${this.allNewsUri}q=${encodeURIComponent(query)}${
+      from ? `&from=${from}` : ''
+    }${to ? `&to=${to}` : ''}&apiKey=${this.newsApi}`;
+    return this.http
+      .get<ArticlesResp>(url, { headers: this.headers })
       .pipe(map((value) => value.articles));
   }
 }
