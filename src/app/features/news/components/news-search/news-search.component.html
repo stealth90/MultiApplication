@@ -1,0 +1,49 @@
+<div class="outer-container">
+  <div class="form-container">
+    <div class="term-input">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          [style]="{ height: '45px', width: '100%' }"
+          type="text"
+          pInputText
+          placeholder="Search"
+        />
+      </span>
+    </div>
+    <div class="calendar-input">
+      <p-calendar
+        [style]="{ height: '45px', width: '100%' }"
+        [inputStyle]="{ width: '100%' }"
+        baseZIndex="9999999999"
+        [showIcon]="true"
+        placeholder="mm/dd/yyyy"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        yearRange="2000:2030"
+        inputId="navigators"
+      ></p-calendar>
+    </div>
+    <div class="calendar-input">
+      <p-calendar
+        [style]="{ height: '45px', width: '100%' }"
+        [inputStyle]="{ width: '100%' }"
+        baseZIndex="9999999999"
+        placeholder="mm/dd/yyyy"
+        [showIcon]="true"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        yearRange="2000:2030"
+        inputId="navigators"
+      ></p-calendar>
+    </div>
+  </div>
+  <div class="button-container">
+    <button
+      pButton
+      type="button"
+      label="{{ 'news.search' | translate }}"
+      class="search-button"
+    ></button>
+  </div>
+</div>

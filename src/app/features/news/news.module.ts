@@ -16,6 +16,9 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CustomerService } from './services/customerservice.service';
 import { NewsTableComponent } from './components/news-table/news-table.component';
+import { NewsSearchComponent } from './components/news-search/news-search.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { NewsTableComponent } from './components/news-table/news-table.component
     NewsSliderComponent,
     NewsResumeFilterComponent,
     NewsTableComponent,
+    NewsSearchComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +41,8 @@ import { NewsTableComponent } from './components/news-table/news-table.component
     ButtonModule,
     ReactiveFormsModule,
     TableModule,
+    InputTextModule,
+    CalendarModule,
   ],
   providers: [CustomerService],
 })

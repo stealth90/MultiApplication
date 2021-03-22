@@ -1,0 +1,53 @@
+@import "../../../../../assets/colors/index.scss";
+.outer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: rgba($color: #000, $alpha: 0.3);
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  width: 100%;
+  margin: 10px 5px 10px 10px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button {
+  border-radius: 0;
+  align-self: stretch;
+}
+
+.button-container {
+  display: flex;
+  align-self: stretch;
+  margin: 10px 10px 10px 0;
+}
+
+.term-input {
+  flex: 2;
+  span {
+    width: 100%;
+  }
+}
+
+.calendar-input {
+  flex: 1;
+}
+
+:host::ng-deep {
+  .p-calendar .p-datepicker {
+    transform: scale(0.5);
+  }
+  .p-button {
+    background: $secondary;
+    transition: background 300ms;
+    &:hover {
+      background: #a52d24;
+    }
+  }
+}
