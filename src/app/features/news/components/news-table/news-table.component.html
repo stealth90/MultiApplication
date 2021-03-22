@@ -1,35 +1,49 @@
 <div class="card">
   <h5>Local Storage</h5>
   <p-table
+    [scrollable]="true"
+    [style]="{ width: '100%' }"
+    scrollHeight="500px"
+    [resizableColumns]="true"
+    columnResizeMode="expand"
+    styleClass="p-datatable-gridlines"
     #dt2
     [value]="customers2"
-    selectionMode="single"
     [(selection)]="selectedCustomer2"
     dataKey="id"
-    styleClass="p-datatable-customers"
     [rows]="10"
     [paginator]="true"
     stateStorage="local"
     stateKey="statedemo-local"
+    [lazy]="true"
   >
+    <ng-template pTemplate="colgroup">
+      <colgroup>
+        <col *ngFor="let col of columns" style="width: 250px" />
+      </colgroup>
+    </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th [pSortableColumn]="col.header" *ngFor="let col of columns">
+        <th
+          pResizableColumn
+          [pSortableColumn]="col.header"
+          *ngFor="let col of columns"
+        >
           {{ col.header }}
         </th>
       </tr>
       <tr>
-        <th>
+        <th *ngFor="let col of columns">
           <input
             pInputText
             type="text"
-            (input)="dt2.filter($event.target.value, 'name', 'contains')"
-            [value]="dt2.filters['name']?.value"
+            (input)="dt2.filter($event.target.value, col.field, 'contains')"
+            [value]="dt2.filters[col.field]?.value"
             placeholder="Search by Name"
             class="p-column-filter"
           />
         </th>
-        <th>
+        <!-- <th>
           <input
             pInputText
             type="text"
@@ -62,15 +76,40 @@
             placeholder="Search by Status"
             class="p-column-filter"
           />
-        </th>
+        </th> -->
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-article>
-      <tr [pSelectableRow]="article">
-        <td>
-          <span class="p-column-title">{{ article.title }}</span>
+      <tr>
+        <td *ngFor="let col of columns">
+          <img
+            *ngIf="col.field === 'urlToImage'; else normalData"
+            [src]="article.urlToImage"
+            width="200"
+            height="200"
+          />
+          <a
+            *ngIf="col.field === 'url'"
+            target="_blank"
+            [href]="article[col.field]"
+            [translate]
+            >news.read-news</a
+          >
+          <span
+            *ngIf="col.field !== 'urlToImage' && col.field !== 'url'"
+            class="p-column-title"
+            >{{
+              col.field === "publishedAt"
+                ? (article[col.field] | date: "dd-mm-yyyy")
+                : col.field === "description"
+                ? article[col.field]
+                  ? article[col.field].slice(0, 20) + "..."
+                  : ""
+                : article[col.field]
+            }}</span
+          >
         </td>
-        <td>
+        <!--         <td>
           <img [src]="article.urlToImage" width="100" />
         </td>
         <td></td>
@@ -79,12 +118,14 @@
         </td>
         <td>
           <span class="p-column-title">Status</span>
-        </td>
+        </td> -->
       </tr>
     </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="4">No customers found.</td>
+    <ng-template pTemplate="loadingbody" let-columns="columns">
+      <tr style="height: 34px">
+        <td *ngFor="let col of columns">
+          <div class="loading-text"></div>
+        </td>
       </tr>
     </ng-template>
   </p-table>

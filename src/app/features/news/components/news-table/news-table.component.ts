@@ -23,6 +23,7 @@ export class NewsTableComponent implements OnInit {
       { field: 'title', header: 'Title' },
       { field: 'publishedAt', header: 'Published at' },
       { field: 'url', header: 'Url' },
+      { field: 'urlToImage', header: 'Image' },
       { field: 'description', header: 'Description' },
     ];
     this.newsService
