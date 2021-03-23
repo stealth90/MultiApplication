@@ -51,14 +51,21 @@ export class NewsService {
       .pipe(map((value) => value.articles));
   }
 
-  getEverythingArticles(
-    query: string,
-    from?: string,
-    to?: string
-  ): Observable<Article[]> {
-    const url = `${this.allNewsUri}q=${encodeURIComponent(query)}${
+  getEverythingArticles({
+    q,
+    from,
+    to,
+  }: {
+    q: string;
+    from?: string;
+    to?: string;
+  }): Observable<Article[]> {
+    const currentLanguage = this.translate.currentLang;
+    const url = `${this.allNewsUri}q=${encodeURIComponent(q)}${
       from ? `&from=${from}` : ''
-    }${to ? `&to=${to}` : ''}&apiKey=${this.newsApi}`;
+    }${to ? `&to=${to}` : ''}&language=${currentLanguage}&apiKey=${
+      this.newsApi
+    }`;
     return this.http
       .get<ArticlesResp>(url, { headers: this.headers })
       .pipe(map((value) => value.articles));
