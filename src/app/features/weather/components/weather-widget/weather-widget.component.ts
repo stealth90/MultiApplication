@@ -6,7 +6,7 @@ import {
   EventEmitter,
   OnDestroy,
 } from '@angular/core';
-import { WeatherApp } from '../models/weather';
+import { WeatherApp } from '../../models/weather';
 /* import {
   trigger,
   keyframes,
@@ -18,7 +18,7 @@ import { WeatherApp } from '../models/weather';
 import * as moment from 'moment-timezone';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { WeatherService } from '../services/weather.service';
+import { WeatherService } from '../../services/weather.service';
 // import * as kf from './keyframes';
 @Component({
   selector: 'app-weather-widget',
