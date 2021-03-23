@@ -10,6 +10,7 @@ import {
 } from '@angular/animations';
 import { TimeService } from './services/time.service';
 import { Subscription } from 'rxjs';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-weather-app',
@@ -48,16 +49,23 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
   currentTime: string;
   constructor(
     private weatherService: WeatherService,
-    private timerService: TimeService
+    private timerService: TimeService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
+    const lang$ = this.translate.onLangChange.subscribe(
+      (event: LangChangeEvent) => {
+        console.log('LANG CHANGE');
+        this.translate.use(event.lang);
+      }
+    );
     this.myCurrentWeather = this.weatherService.myCurrentWeather;
     this.myWeatherCollection = this.weatherService.weatherCollection;
     const currentTime$ = this.timerService.currentTime.subscribe(
       (time) => (this.currentTime = time)
     );
-    this.subscriptions.push(currentTime$);
+    this.subscriptions.push(currentTime$, lang$);
   }
 
   ngOnDestroy(): void {
