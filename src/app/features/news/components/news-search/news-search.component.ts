@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-news-search',
@@ -8,14 +7,16 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./news-search.component.scss'],
 })
 export class NewsSearchComponent implements OnInit {
-  lang$: Subscription;
-  constructor(private translate: TranslateService) {}
+  searchNewsForm = this.formBuilder.group({
+    terms: ['', Validators.required],
+    from: [''],
+    to: [''],
+  });
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.lang$ = this.translate.onLangChange.subscribe(
-      (event: LangChangeEvent) => {
-        this.translate.use(event.lang);
-      }
-    );
+  ngOnInit(): void {}
+
+  onSubmit(e) {
+    console.log(this.searchNewsForm);
   }
 }

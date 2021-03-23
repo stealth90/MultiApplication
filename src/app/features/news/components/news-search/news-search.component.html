@@ -1,5 +1,11 @@
-<div class="outer-container">
-  <div class="form-container">
+<form
+  class="outer-container"
+  [formGroup]="searchNewsForm"
+  (ngSubmit)="onSubmit($event)"
+>
+  <div
+    class="form-container p-ai-md-center p-d-flex p-flex-column p-flex-md-row"
+  >
     <div class="term-input">
       <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
@@ -8,6 +14,7 @@
           type="text"
           pInputText
           placeholder="Search"
+          formControlName="terms"
         />
       </span>
     </div>
@@ -21,7 +28,8 @@
         [monthNavigator]="true"
         [yearNavigator]="true"
         yearRange="2000:2030"
-        inputId="navigators"
+        inputId="dateFrom"
+        formControlName="from"
       ></p-calendar>
     </div>
     <div class="calendar-input">
@@ -34,16 +42,18 @@
         [monthNavigator]="true"
         [yearNavigator]="true"
         yearRange="2000:2030"
-        inputId="navigators"
+        inputId="dateTo"
+        formControlName="to"
       ></p-calendar>
     </div>
   </div>
   <div class="button-container">
     <button
       pButton
-      type="button"
+      [disabled]="!(searchNewsForm.touched && searchNewsForm.valid)"
       label="{{ 'news.search' | translate }}"
       class="search-button"
+      type="submit"
     ></button>
   </div>
-</div>
+</form>
