@@ -1,0 +1,8 @@
+<div class="p-grid p-pb-6">
+  <div class="p-mx-auto p-offset-2 p-col-11 p-lg-10 p-xl-8">
+    <app-news-search (dataSearch)="searchNews($event)"></app-news-search>
+  </div>
+  <div class="p-mx-auto p-col-11">
+    <app-news-table [data]="data"></app-news-table>
+  </div>
+</div>
