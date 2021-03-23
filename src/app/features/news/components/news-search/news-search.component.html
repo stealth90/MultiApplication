@@ -1,7 +1,7 @@
 <form
   class="outer-container"
   [formGroup]="searchNewsForm"
-  (ngSubmit)="onSubmit($event)"
+  (ngSubmit)="onSubmit()"
 >
   <div
     class="form-container p-ai-md-center p-d-flex p-flex-column p-flex-md-row"
@@ -13,8 +13,8 @@
           [style]="{ height: '45px', width: '100%' }"
           type="text"
           pInputText
-          placeholder="Search"
-          formControlName="terms"
+          placeholder="{{ 'news.search' | translate }}"
+          formControlName="q"
         />
       </span>
     </div>

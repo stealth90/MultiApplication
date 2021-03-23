@@ -19,6 +19,7 @@ import { NewsTableComponent } from './components/news-table/news-table.component
 import { NewsSearchComponent } from './components/news-search/news-search.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
+import { NewsContainerComponent } from './components/news-container/news-container.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CalendarModule } from 'primeng/calendar';
     NewsResumeFilterComponent,
     NewsTableComponent,
     NewsSearchComponent,
+    NewsContainerComponent,
   ],
   imports: [
     CommonModule,

@@ -8,10 +8,10 @@
     columnResizeMode="expand"
     styleClass="p-datatable-gridlines"
     #dt2
-    [value]="customers2"
+    [value]="data"
     [(selection)]="selectedCustomer2"
     dataKey="id"
-    [rows]="10"
+    [rows]="5"
     [paginator]="true"
     stateStorage="local"
     stateKey="statedemo-local"
@@ -32,7 +32,7 @@
           {{ col.header }}
         </th>
       </tr>
-      <tr>
+      <!-- <tr>
         <th *ngFor="let col of columns">
           <input
             pInputText
@@ -43,41 +43,7 @@
             class="p-column-filter"
           />
         </th>
-        <!-- <th>
-          <input
-            pInputText
-            type="text"
-            (input)="
-              dt2.filter($event.target.value, 'country.name', 'contains')
-            "
-            [value]="dt2.filters['country.name']?.value"
-            placeholder="Search by Country"
-            class="p-column-filter"
-          />
-        </th>
-        <th>
-          <input
-            pInputText
-            type="text"
-            (input)="
-              dt2.filter($event.target.value, 'representative.name', 'contains')
-            "
-            [value]="dt2.filters['representative.name']?.value"
-            placeholder="Search by Representative"
-            class="p-column-filter"
-          />
-        </th>
-        <th>
-          <input
-            pInputText
-            type="text"
-            (input)="dt2.filter($event.target.value, 'status', 'contains')"
-            [value]="dt2.filters['status']?.value"
-            placeholder="Search by Status"
-            class="p-column-filter"
-          />
-        </th> -->
-      </tr>
+      </tr> -->
     </ng-template>
     <ng-template pTemplate="body" let-article>
       <tr>

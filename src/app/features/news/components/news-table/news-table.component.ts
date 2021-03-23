@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Article, Customer } from '../../models';
-import { CustomerService } from '../../services/customerservice.service';
 import { NewsService } from '../../services/news.service';
 @Component({
   selector: 'app-news-table',
@@ -9,13 +8,11 @@ import { NewsService } from '../../services/news.service';
 })
 export class NewsTableComponent implements OnInit {
   selectedCustomer2: Customer;
+  @Input() data: Article[];
   customers2: Article[];
   columns: any[];
 
-  constructor(
-    private customerService: CustomerService,
-    private newsService: NewsService
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.columns = [
@@ -26,11 +23,5 @@ export class NewsTableComponent implements OnInit {
       { field: 'urlToImage', header: 'Image' },
       { field: 'description', header: 'Description' },
     ];
-    this.newsService
-      .getEverythingArticles('covid')
-      .subscribe((data) => (this.customers2 = data));
-    /* this.customerService
-      .getCustomersMedium()
-      .then((data) => (this.customers2 = data)); */
   }
 }

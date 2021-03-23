@@ -6,6 +6,7 @@ import localeIt from '@angular/common/locales/it';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { PrimeNGConfig } from 'primeng/api';
+import { NewsService } from './services/news.service';
 registerLocaleData(localeIt, 'it');
 
 @Component({
@@ -24,7 +25,8 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private config: PrimeNGConfig
+    private config: PrimeNGConfig,
+    private newsService: NewsService
   ) {}
 
   ngOnInit(): void {
