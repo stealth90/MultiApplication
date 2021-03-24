@@ -10,6 +10,8 @@ import * as Moment from 'moment';
 })
 export class NewsSearchComponent implements OnInit {
   @Output() dataSearch: EventEmitter<any> = new EventEmitter();
+  maxDateValue: Date;
+  yearRange: string;
   searchNewsForm = this.formBuilder.group({
     q: ['', Validators.required],
     from: [undefined],
@@ -17,7 +19,10 @@ export class NewsSearchComponent implements OnInit {
   });
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.maxDateValue = new Date();
+    this.yearRange = `2000:${new Date().getFullYear()}`;
+  }
 
   onSubmit() {
     console.log(this.searchNewsForm);
@@ -35,6 +40,11 @@ export class NewsSearchComponent implements OnInit {
           : null
       );
       this.dataSearch.emit(data);
+      this.searchNewsForm.reset();
     }
+  }
+
+  clearInput(inputField: string) {
+    this.searchNewsForm.controls[inputField].reset();
   }
 }

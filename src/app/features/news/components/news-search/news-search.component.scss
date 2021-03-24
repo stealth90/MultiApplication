@@ -26,6 +26,16 @@
   margin: 10px 10px 10px 0;
 }
 
+.clear-button {
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
 .term-input {
   flex: 2;
   span {
@@ -35,6 +45,7 @@
 
 .calendar-input {
   flex: 1;
+  position: relative;
 }
 
 :host::ng-deep {
@@ -46,6 +57,30 @@
     transition: background 300ms;
     &:hover {
       background: #a52d24;
+    }
+  }
+  .p-calendar-w-btn {
+    .p-inputtext,
+    .p-datepicker-trigger {
+      border-radius: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .outer-container {
+    padding: 1rem;
+  }
+  .form-container,
+  .button-container {
+    margin: 0;
+  }
+  :host::ng-deep {
+    .button-container {
+      .p-button {
+        width: 100%;
+        padding: 1rem;
+      }
     }
   }
 }
