@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../../models';
+import { Article, ArticleReq, ArticlesResp } from '../../models';
 import { NewsService } from '../../services/news.service';
 
 @Component({
@@ -9,19 +9,23 @@ import { NewsService } from '../../services/news.service';
 })
 export class NewsContainerComponent implements OnInit {
   data: Article[] = [];
+  loading: boolean = false;
+  noResult: boolean = false;
   constructor(private newsService: NewsService) {}
 
-  ngOnInit(): void {
-    console.log('data', this.data);
-  }
+  ngOnInit(): void {}
 
-  searchNews(event) {
-    console.log('event', event);
+  searchNews(articleReq: ArticleReq): void {
+    this.loading = true;
+    this.noResult = false;
     this.newsService
-      .getEverythingArticles(event)
-      .subscribe((values: Article[]) => {
-        this.data = [...values];
-        console.log('data', this.data);
+      .getEverythingArticles(articleReq)
+      .subscribe((response: ArticlesResp) => {
+        if (response.totalResults === 0) {
+          this.noResult = true;
+        }
+        this.data = [...response.articles];
+        this.loading = false;
       });
   }
 }
