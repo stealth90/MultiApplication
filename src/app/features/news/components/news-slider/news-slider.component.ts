@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FlickingOptions, Plugin } from '@egjs/flicking/declaration/types';
 import { Subscription } from 'rxjs';
-import { News } from '../../news.model';
+import { News } from '../../models';
 import { NewsService } from '../../services/news.service';
 import * as AOS from 'aos';
 @Component({

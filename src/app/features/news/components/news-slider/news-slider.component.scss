@@ -3,11 +3,11 @@
 .container {
   width: 100%;
   display: flex;
-  margin: 200px 0 100px;
+  margin-top: 8rem;
   background-color: $secondary;
 }
 .flicking {
-  height: 400px;
+  height: 30rem;
   width: 100%;
   cursor: grab;
 }
