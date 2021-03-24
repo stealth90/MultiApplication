@@ -70,10 +70,23 @@ export const COUNTRIES = [
   { name: 'news.countries.south-africa', value: 'za' },
 ];
 
+export interface ArticleReq {
+  q: string;
+  from?: string;
+  to?: string;
+}
 export interface ArticlesResp {
   status: string;
   totalResults: number;
   articles: Article[];
+}
+
+export interface News {
+  title: string;
+  pub_date: string;
+  url: string;
+  author: string;
+  image?: string;
 }
 
 export interface Article {
