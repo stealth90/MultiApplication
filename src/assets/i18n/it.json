@@ -87,6 +87,9 @@
     "category": "Categoria",
     "country": "Nazione",
     "search": "Cerca",
+    "no-result-title": "Nessuna risultato",
+    "no-result-body": "Sembra che non ci siano risultati molto pertinenti alla tua ricerca.",
+    "on-search": "Ricerca in corso...",
     "categories": {
       "health": "Salute",
       "business": "Lavoro",
@@ -154,6 +157,8 @@
     }
   },
   "common": {
-    "add": "Aggiungi"
+    "add": "Aggiungi",
+    "date-from": "da",
+    "date-to": "a"
   }
 }

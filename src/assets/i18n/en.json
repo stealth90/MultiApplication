@@ -87,6 +87,9 @@
     "category": "Category",
     "country": "Country",
     "search": "Search",
+    "no-result-title": "No result",
+    "no-result-body": "It looks like there aren't very relevant results to your search.",
+    "on-search": "Search in progress...",
     "categories": {
       "health": "Health",
       "business": "Business",
@@ -154,6 +157,8 @@
     }
   },
   "common": {
-    "add": "Add"
+    "add": "Add",
+    "date-from": "from",
+    "date-to": "to"
   }
 }
