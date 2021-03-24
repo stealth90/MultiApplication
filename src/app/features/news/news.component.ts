@@ -6,7 +6,6 @@ import localeIt from '@angular/common/locales/it';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { PrimeNGConfig } from 'primeng/api';
-import { NewsService } from './services/news.service';
 registerLocaleData(localeIt, 'it');
 
 @Component({
@@ -25,8 +24,7 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private config: PrimeNGConfig,
-    private newsService: NewsService
+    private config: PrimeNGConfig
   ) {}
 
   ngOnInit(): void {
@@ -45,18 +43,5 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
-  }
-
-  onNeedPanel(e) {
-    console.log(e);
-    // ADD PANELS
-  }
-
-  getShortDate(date: any) {
-    console.log('hi');
-  }
-
-  onMoveEnd(e) {
-    // HANDLE INDEX CHANGE
   }
 }

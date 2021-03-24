@@ -14,7 +14,6 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { CustomerService } from './services/customerservice.service';
 import { NewsTableComponent } from './components/news-table/news-table.component';
 import { NewsSearchComponent } from './components/news-search/news-search.component';
 import { InputTextModule } from 'primeng/inputtext';
@@ -46,6 +45,5 @@ import { NewsContainerComponent } from './components/news-container/news-contain
     InputTextModule,
     CalendarModule,
   ],
-  providers: [CustomerService],
 })
 export class NewsModule {}

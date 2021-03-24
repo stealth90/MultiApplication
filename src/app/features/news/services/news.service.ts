@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { Article, ArticlesResp } from '../models';
+import { map } from 'rxjs/operators';
+import { ArticleReq, ArticlesResp } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -51,23 +51,13 @@ export class NewsService {
       .pipe(map((value) => value.articles));
   }
 
-  getEverythingArticles({
-    q,
-    from,
-    to,
-  }: {
-    q: string;
-    from?: string;
-    to?: string;
-  }): Observable<Article[]> {
+  getEverythingArticles({ q, from, to }: ArticleReq): Observable<ArticlesResp> {
     const currentLanguage = this.translate.currentLang;
     const url = `${this.allNewsUri}q=${encodeURIComponent(q)}${
       from ? `&from=${from}` : ''
     }${to ? `&to=${to}` : ''}&language=${currentLanguage}&apiKey=${
       this.newsApi
     }`;
-    return this.http
-      .get<ArticlesResp>(url, { headers: this.headers })
-      .pipe(map((value) => value.articles));
+    return this.http.get<ArticlesResp>(url, { headers: this.headers });
   }
 }
