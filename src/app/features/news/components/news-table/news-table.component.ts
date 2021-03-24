@@ -9,6 +9,8 @@ import { NewsService } from '../../services/news.service';
 export class NewsTableComponent implements OnInit {
   selectedCustomer2: Customer;
   @Input() data: Article[];
+  @Input() loading: boolean;
+  @Input() noResult: boolean;
   customers2: Article[];
   columns: any[];
 
@@ -23,5 +25,18 @@ export class NewsTableComponent implements OnInit {
       { field: 'urlToImage', header: 'Image' },
       { field: 'description', header: 'Description' },
     ];
+  }
+
+  onNeedPanel(e) {
+    console.log(e);
+    // ADD PANELS
+  }
+
+  getShortDate(date: any) {
+    console.log('hi');
+  }
+
+  onMoveEnd(e) {
+    // HANDLE INDEX CHANGE
   }
 }

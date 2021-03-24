@@ -1,98 +1,99 @@
-<div class="card">
-  <h5>Local Storage</h5>
-  <p-table
-    [scrollable]="true"
-    [style]="{ width: '100%' }"
-    scrollHeight="500px"
-    [resizableColumns]="true"
-    columnResizeMode="expand"
-    styleClass="p-datatable-gridlines"
-    #dt2
-    [value]="data"
-    [(selection)]="selectedCustomer2"
-    dataKey="id"
-    [rows]="5"
-    [paginator]="true"
-    stateStorage="local"
-    stateKey="statedemo-local"
-    [lazy]="true"
-  >
-    <ng-template pTemplate="colgroup">
-      <colgroup>
-        <col *ngFor="let col of columns" style="width: 250px" />
-      </colgroup>
-    </ng-template>
-    <ng-template pTemplate="header">
-      <tr>
-        <th
-          pResizableColumn
-          [pSortableColumn]="col.header"
-          *ngFor="let col of columns"
+<div
+  class="news-container"
+  [style.padding-bottom]="!data.length ? '10rem' : null"
+>
+  <div class="news-title" *ngIf="data.length && !loading">
+    <h1>Articoli trovati ({{ data.length || 0 }})</h1>
+  </div>
+  <div class="articles-slider" *ngIf="data.length && !loading">
+    <ngx-flicking
+      [options]="{
+        circular: false,
+
+        gap: 20,
+        duration: 800,
+        moveType: 'freeScroll',
+        isEqualSize: true,
+        isConstantSize: true,
+        autoResize: true,
+        bounce: '20%',
+        height: 500
+      }"
+      class="flicking"
+      (needPanel)="onNeedPanel($event)"
+      (moveEnd)="onMoveEnd($event)"
+    >
+      <ng-template>
+        <div
+          [articleCard]
+          class="p-flex-column panel p-shadow-5"
+          *ngFor="let article of data"
         >
-          {{ col.header }}
-        </th>
-      </tr>
-      <!-- <tr>
-        <th *ngFor="let col of columns">
-          <input
-            pInputText
-            type="text"
-            (input)="dt2.filter($event.target.value, col.field, 'contains')"
-            [value]="dt2.filters[col.field]?.value"
-            placeholder="Search by Name"
-            class="p-column-filter"
-          />
-        </th>
-      </tr> -->
-    </ng-template>
-    <ng-template pTemplate="body" let-article>
-      <tr>
-        <td *ngFor="let col of columns">
-          <img
-            *ngIf="col.field === 'urlToImage'; else normalData"
-            [src]="article.urlToImage"
-            width="200"
-            height="200"
-          />
-          <a
-            *ngIf="col.field === 'url'"
-            target="_blank"
-            [href]="article[col.field]"
-            [translate]
-            >news.read-news</a
+          <div
+            *ngIf="!article.image && !article.urlToImage; else articleImg"
+            [style.background]="
+              'url(../../../../../../../assets/images/placeholder-image.png)'
+            "
+            [style.background-position]="'center'"
+            [style.background-size]="'cover'"
+            class="article-img"
           >
-          <span
-            *ngIf="col.field !== 'urlToImage' && col.field !== 'url'"
-            class="p-column-title"
-            >{{
-              col.field === "publishedAt"
-                ? (article[col.field] | date: "dd-mm-yyyy")
-                : col.field === "description"
-                ? article[col.field]
-                  ? article[col.field].slice(0, 20) + "..."
-                  : ""
-                : article[col.field]
-            }}</span
-          >
-        </td>
-        <!--         <td>
-          <img [src]="article.urlToImage" width="100" />
-        </td>
-        <td></td>
-        <td>
-          <span class="p-column-title">Status</span>
-        </td>
-        <td>
-          <span class="p-column-title">Status</span>
-        </td> -->
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="loadingbody" let-columns="columns">
-      <tr style="height: 34px">
-        <td *ngFor="let col of columns">
-          <div class="loading-text"></div>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+            <p-badge [value]="2" styleClass="p-mr-2"></p-badge>
+          </div>
+          <ng-template #articleImg>
+            <div
+              class="article-img"
+              [style.background]="'url(' + article.urlToImage + ')'"
+              [style.background-position]="'center'"
+              [style.background-size]="'cover'"
+            >
+              <app-date-badge
+                [date]="article.pub_date || article.publishedAt"
+              ></app-date-badge>
+            </div>
+          </ng-template>
+          <div class="news-footer">
+            <h3 class="article-title">
+              {{ article.title | truncate: [65] }}
+            </h3>
+            <span class="p-d-flex p-jc-left">
+              <i class="pi pi-clock p-as-center p-m-2"></i>
+              <p style="font-size: small">
+                {{
+                  article.pub_date || article.publishedAt
+                    | date: "MMM. d, y":"UTC":currentLang
+                    | uppercase
+                }}
+              </p>
+            </span>
+            <p style="font-size: small; font-weight: bold; text-align: left">
+              {{ article.author || "Sconosciuto" }}
+            </p>
+          </div>
+          <div class="news-button">
+            <a target="_blank" href="{{ article.url }}" [translate]
+              >news.read-news</a
+            >
+          </div>
+        </div>
+      </ng-template>
+    </ngx-flicking>
+  </div>
+  <div class="no-news-container" *ngIf="noResult">
+    <div class="alert-container">
+      <div class="icon-container">
+        <i class="pi pi-info"></i>
+      </div>
+      <div class="text-container">
+        <h2 [translate]>news.no-result-title</h2>
+        <p [translate]>news.no-result-body</p>
+      </div>
+    </div>
+  </div>
+  <app-loader
+    *ngIf="loading"
+    strokeWidth="5"
+    customSpinner="true"
+    [message]="'news.on-search' | translate"
+  ></app-loader>
 </div>

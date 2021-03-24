@@ -1,0 +1,141 @@
+.news-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.news-title {
+  margin: 2% auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  h1 {
+    color: white;
+  }
+}
+
+.article-slider {
+  height: 100%;
+}
+
+.panel {
+  width: 300px;
+  height: 100%;
+  border: thin solid rgba(128, 128, 128, 0.37);
+  display: flex;
+  overflow: hidden;
+}
+
+.news-footer {
+  background-color: #fff;
+  padding-bottom: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 500ms;
+
+  &.hover {
+    height: 0;
+    padding-bottom: 0;
+    + .news-button {
+      background-color: #f14336;
+      padding: 5%;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+.news-button {
+  background-color: #fff;
+  padding: 0 0 5px;
+  transition: all 500ms;
+  a {
+    color: black;
+    transition: color 500ms;
+  }
+}
+
+.news-button .article {
+  border: thin solid gray;
+  border-radius: 20px;
+}
+
+.article-title {
+  font-weight: bold;
+}
+
+.article-img {
+  width: 100%;
+  height: 100%;
+}
+
+.flicking {
+  height: 450px;
+  width: 100%;
+}
+
+.panel:hover {
+  cursor: grab;
+}
+
+:host ::ng-deep .p-badge {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #1875d1;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: white;
+}
+
+.no-news-container {
+  display: flex;
+  justify-content: center;
+}
+
+.alert-container {
+  margin: 5px;
+  width: 70%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  background-color: #ff6347;
+  border-radius: 10px;
+  align-items: center;
+  color: #fff;
+  padding: 0 1rem;
+}
+
+@media only screen and (max-width: 575px) {
+  .alert-container {
+    width: 100%;
+  }
+}
+
+.icon-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.text-container {
+  margin-left: 1rem;
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+i {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
