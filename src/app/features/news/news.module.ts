@@ -6,7 +6,7 @@ import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from './news.component';
 import { BadgeModule } from 'primeng/badge';
 import { SharedModule } from '../../shared/shared.module';
-import { ArticleDirective } from './directive/article-directive';
+import { NewsDirective } from './directive/news.directive';
 import { DateBadgeComponent } from './components/date-badge/date-badge.component';
 import { NewsSliderComponent } from './components/news-slider/news-slider.component';
 import { NewsResumeFilterComponent } from './components/news-resume-filter/news-resume-filter.component';
@@ -19,17 +19,19 @@ import { NewsSearchComponent } from './components/news-search/news-search.compon
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { NewsContainerComponent } from './components/news-container/news-container.component';
+import { SourceBadgeComponent } from './components/source-badge/source-badge.component';
 
 @NgModule({
   declarations: [
     NewsComponent,
-    ArticleDirective,
+    NewsDirective,
     DateBadgeComponent,
     NewsSliderComponent,
     NewsResumeFilterComponent,
     NewsTableComponent,
     NewsSearchComponent,
     NewsContainerComponent,
+    SourceBadgeComponent,
   ],
   imports: [
     CommonModule,

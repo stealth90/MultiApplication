@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from 'moment';
-
 @Component({
   selector: 'app-date-badge',
   templateUrl: './date-badge.component.html',
@@ -10,5 +8,7 @@ export class DateBadgeComponent implements OnInit {
   @Input() date: string;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('date', this.date);
+  }
 }
