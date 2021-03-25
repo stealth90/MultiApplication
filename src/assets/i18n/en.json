@@ -87,6 +87,8 @@
     "category": "Category",
     "country": "Country",
     "search": "Search",
+    "author": "Author",
+    "unknow": "Unknow",
     "no-result-title": "No result",
     "no-result-body": "It looks like there aren't very relevant results to your search.",
     "on-search": "Search in progress...",

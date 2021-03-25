@@ -87,6 +87,8 @@
     "category": "Categoria",
     "country": "Nazione",
     "search": "Cerca",
+    "author": "Autore",
+    "unknow": "Sconosciuto",
     "no-result-title": "Nessuna risultato",
     "no-result-body": "Sembra che non ci siano risultati molto pertinenti alla tua ricerca.",
     "on-search": "Ricerca in corso...",
