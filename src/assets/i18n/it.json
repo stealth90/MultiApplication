@@ -82,6 +82,7 @@
   },
   "news": {
     "top-headlines": "Titoli principali",
+    "last-articles": "Cerca le ultime news",
     "top-headlines-description": "Visualizza le notizie principali con un click",
     "read-news": "Leggi articolo completo",
     "category": "Categoria",
