@@ -25,8 +25,7 @@
     >
       <ng-template>
         <div
-          [articleCard]
-          class="p-flex-column panel p-shadow-5"
+          class="p-flex-column panel p-shadow-5 article-card"
           *ngFor="let article of data"
         >
           <div
@@ -36,9 +35,16 @@
             "
             [style.background-position]="'center'"
             [style.background-size]="'cover'"
-            class="article-img"
+            class="article-img p-d-relative"
           >
-            <p-badge [value]="2" styleClass="p-mr-2"></p-badge>
+            <app-date-badge
+              [date]="article.pub_date || article.publishedAt"
+            ></app-date-badge>
+            <div class="source-badge">
+              <app-source-badge
+                [source]="article.source.name"
+              ></app-source-badge>
+            </div>
           </div>
           <ng-template #articleImg>
             <div
@@ -50,30 +56,44 @@
               <app-date-badge
                 [date]="article.pub_date || article.publishedAt"
               ></app-date-badge>
+              <div class="source-badge">
+                <app-source-badge
+                  [source]="article.source.name"
+                ></app-source-badge>
+              </div>
             </div>
           </ng-template>
-          <div class="news-footer">
+          <div class="news-content">
             <h3 class="article-title">
               {{ article.title | truncate: [65] }}
             </h3>
-            <span class="p-d-flex p-jc-left">
-              <i class="pi pi-clock p-as-center p-m-2"></i>
-              <p style="font-size: small">
-                {{
-                  article.pub_date || article.publishedAt
-                    | date: "MMM. d, y":"UTC":currentLang
-                    | uppercase
-                }}
-              </p>
-            </span>
-            <p style="font-size: small; font-weight: bold; text-align: left">
-              {{ article.author || "Sconosciuto" }}
-            </p>
+            <div class="news-footer">
+              <span class="p-d-flex p-jc-left">
+                <i class="pi pi-clock p-as-center p-m-2"></i>
+                <p>
+                  {{
+                    article.pub_date || article.publishedAt
+                      | date: "MMM. d, y":"UTC":currentLang
+                      | uppercase
+                  }}
+                </p>
+              </span>
+              <span class="p-d-flex p-jc-left">
+                <i class="pi pi-user-edit p-as-center p-m-2"></i>
+                <p>
+                  {{
+                    article.author
+                      ? article.author
+                      : ("news.unknow" | translate)
+                  }}
+                </p>
+              </span>
+            </div>
           </div>
           <div class="news-button">
-            <a target="_blank" href="{{ article.url }}" [translate]
-              >news.read-news</a
-            >
+            <a target="_blank" href="{{ article.url }}">{{
+              "news.read-news" | translate | uppercase
+            }}</a>
           </div>
         </div>
       </ng-template>
