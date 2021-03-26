@@ -13,7 +13,9 @@ export class NewsContainerComponent implements OnInit {
   noResult: boolean = false;
   constructor(private newsService: NewsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.data = this.newsService.newsCollection;
+  }
 
   searchNews(articleReq: ArticleReq): void {
     this.loading = true;
@@ -23,8 +25,12 @@ export class NewsContainerComponent implements OnInit {
       .subscribe((response: ArticlesResp) => {
         if (response.totalResults === 0) {
           this.noResult = true;
+          this.data = [];
+        } else {
+          this.data = [...response.articles];
+          this.newsService.newsCollection = [...this.data];
+          localStorage.setItem('lastArticles', JSON.stringify(this.data));
         }
-        this.data = [...response.articles];
         this.loading = false;
       });
   }
