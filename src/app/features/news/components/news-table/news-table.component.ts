@@ -17,6 +17,7 @@ export class NewsTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    console.log('data', this.data);
     this.columns = [
       { field: 'author', header: 'Author' },
       { field: 'title', header: 'Title' },

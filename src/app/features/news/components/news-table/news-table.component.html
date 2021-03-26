@@ -3,7 +3,7 @@
   [style.padding-bottom]="!data.length ? '10rem' : null"
 >
   <div class="news-title" *ngIf="data.length && !loading">
-    <h1>Articoli trovati ({{ data.length || 0 }})</h1>
+    <h1>{{ "news.news-founded" | translate }} ({{ data.length || 0 }})</h1>
   </div>
   <div class="articles-slider" *ngIf="data.length && !loading">
     <ngx-flicking
@@ -63,8 +63,13 @@
               </div>
             </div>
           </ng-template>
+          <div class="news-description">
+            <div>
+              <p>{{ article.description }}</p>
+            </div>
+          </div>
           <div class="news-content">
-            <h3 class="article-title">
+            <h3 class="article-title p-mx-1">
               {{ article.title | truncate: [65] }}
             </h3>
             <div class="news-footer">
@@ -78,9 +83,9 @@
                   }}
                 </p>
               </span>
-              <span class="p-d-flex p-jc-left">
-                <i class="pi pi-user-edit p-as-center p-m-2"></i>
-                <p>
+              <span class="author-container">
+                <i class="pi pi-user-edit p-as-center p-ml-2"></i>
+                <p class="p-m-2">
                   {{
                     article.author
                       ? article.author

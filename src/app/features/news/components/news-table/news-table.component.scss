@@ -24,6 +24,7 @@
   height: 100%;
   border: thin solid rgba(128, 128, 128, 0.37);
   display: flex;
+  cursor: grab;
 }
 
 .news-footer {
@@ -36,8 +37,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  opacity: 1;
-  transition: all 500ms;
+  transition: height 300ms;
   i {
     color: $secondary;
   }
@@ -46,35 +46,69 @@
   }
 }
 
+.news-description {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 300ms, bottom 300ms;
+  div {
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+}
+
 .article-card:hover {
   .news-content {
     height: 0;
-    opacity: 0;
     + .news-button {
       background-color: #f14336;
-      padding: 5%;
       a {
         color: white;
+        padding: 5%;
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
+  }
+  .news-description {
+    opacity: 1;
+    bottom: 10%;
   }
   .source-badge {
     opacity: 0;
   }
 }
+
 .source-badge {
   opacity: 1;
-  transition: opacity 500ms;
+  transition: opacity 300ms;
 }
+
 .news-button {
   background-color: #fff;
-  padding: 0 0 5px;
-  transition: all 500ms;
+  transition: background-color 300ms;
+  z-index: 10;
+  cursor: pointer;
   a {
     color: $secondary;
+    transform: scale(1);
     font-weight: bold;
-    transition: color 500ms;
+    transition: padding 300ms, color 300ms, transform 300ms;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    padding: 0 0 1rem;
   }
+}
+
+.author-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .news-button .article {
@@ -97,8 +131,8 @@
   width: 100%;
 }
 
-.panel:hover {
-  cursor: grab;
+.panel:active {
+  cursor: grabbing;
 }
 
 :host ::ng-deep .p-badge {
@@ -149,6 +183,7 @@ a:hover {
 
 .text-container {
   margin-left: 1rem;
+  border-left: 1px solid;
   h2 {
     margin-bottom: 0;
   }
