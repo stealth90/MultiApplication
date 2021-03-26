@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ArticleReq, ArticlesResp } from '../models';
+import { Article, ArticleReq, ArticlesResp } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +14,13 @@ export class NewsService {
   newsApi = 'e6984dc1ebcc45af920f5195a0bbc864';
   topNewsUri = `https://newsapi.org/v2/top-headlines?`;
   allNewsUri = `https://newsapi.org/v2/everything?`;
-  newsCOllection: [] = [];
+  newsCollection: Article[] = [];
   headers: HttpHeaders;
   constructor(private http: HttpClient, private translate: TranslateService) {
+    const newsCollectionSaved: Article[] = JSON.parse(
+      localStorage.getItem('lastArticles')
+    );
+    this.newsCollection = newsCollectionSaved || [];
     this.headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');

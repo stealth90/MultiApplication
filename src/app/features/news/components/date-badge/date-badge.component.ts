@@ -8,7 +8,5 @@ export class DateBadgeComponent implements OnInit {
   @Input() date: string;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log('date', this.date);
-  }
+  ngOnInit(): void {}
 }

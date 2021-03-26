@@ -25,7 +25,6 @@ export class NewsSearchComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.searchNewsForm);
     const updatedValue = Object.values(this.searchNewsForm.value).filter(
       (value) => value !== null
     );
