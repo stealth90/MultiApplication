@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Article, ArticleReq, ArticlesResp } from '../../models';
+import { PopupMessageService } from '../../../../services/popup-message.service';
+import { Article, ArticleReq, ArticlesResp, NewsError } from '../../models';
 import { NewsService } from '../../services/news.service';
 
 @Component({
@@ -11,7 +12,11 @@ export class NewsContainerComponent implements OnInit {
   data: Article[] = [];
   loading: boolean = false;
   noResult: boolean = false;
-  constructor(private newsService: NewsService) {}
+  newsError: NewsError;
+  constructor(
+    private newsService: NewsService,
+    private popupService: PopupMessageService
+  ) {}
 
   ngOnInit(): void {
     this.data = this.newsService.newsCollection;
@@ -20,9 +25,8 @@ export class NewsContainerComponent implements OnInit {
   searchNews(articleReq: ArticleReq): void {
     this.loading = true;
     this.noResult = false;
-    this.newsService
-      .getEverythingArticles(articleReq)
-      .subscribe((response: ArticlesResp) => {
+    this.newsService.getEverythingArticles(articleReq).subscribe(
+      (response: ArticlesResp) => {
         if (response.totalResults === 0) {
           this.noResult = true;
           this.data = [];
@@ -32,6 +36,12 @@ export class NewsContainerComponent implements OnInit {
           localStorage.setItem('lastArticles', JSON.stringify(this.data));
         }
         this.loading = false;
-      });
+      },
+      (error: NewsError) => {
+        this.popupService.showPopup();
+        this.newsError = error;
+        this.loading = false;
+      }
+    );
   }
 }

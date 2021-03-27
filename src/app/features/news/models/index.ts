@@ -13,6 +13,21 @@ export const CATEGORY_NEWS = [
   { name: 'news.categories.technology', value: 'technology' },
 ];
 
+export interface NewsError {
+  error: Error;
+  message: string;
+  name: string;
+  ok: boolean;
+  status: number;
+  statusText: string;
+  url: string;
+}
+interface Error {
+  status: string;
+  code: string;
+  message: string;
+}
+
 export const COUNTRIES = [
   { name: 'news.countries.emirate', value: 'ae' },
   { name: 'news.countries.argentina', value: 'ar' },
