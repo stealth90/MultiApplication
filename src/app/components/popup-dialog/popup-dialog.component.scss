@@ -1,0 +1,29 @@
+.popup {
+  position: fixed;
+  display: flex;
+  top: 18.2%;
+  right: 1%;
+  padding: 1%;
+  min-width: 300px;
+  color: aliceblue;
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 0.5rem;
+  z-index: 999999999999;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.close-icon {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  cursor: pointer;
+}
+
+.icon-container {
+  border: 1px solid white;
+  padding: 2%;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+}

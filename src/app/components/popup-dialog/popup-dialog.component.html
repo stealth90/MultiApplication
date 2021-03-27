@@ -1,0 +1,9 @@
+<div [@openPopup]="'visible'" *ngIf="showPopup$ | async" class="popup">
+  <div class="icon-container">
+    <i class="pi pi-check" style="font-size: 1.5rem"></i>
+  </div>
+  <p>popup-dialog works!</p>
+  <div class="close-icon" (click)="handleClosePopup()">
+    <i class="pi pi-times-circle"></i>
+  </div>
+</div>
