@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AutoPlay, Parallax } from '@egjs/flicking-plugins';
 import { Plugin } from '@egjs/flicking';
 import { registerLocaleData } from '@angular/common';

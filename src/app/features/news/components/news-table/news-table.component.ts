@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Article, Customer } from '../../models';
-import { NewsService } from '../../services/news.service';
 @Component({
   selector: 'app-news-table',
   templateUrl: './news-table.component.html',
@@ -17,7 +16,6 @@ export class NewsTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('data', this.data);
     this.columns = [
       { field: 'author', header: 'Author' },
       { field: 'title', header: 'Title' },
@@ -26,18 +24,5 @@ export class NewsTableComponent implements OnInit {
       { field: 'urlToImage', header: 'Image' },
       { field: 'description', header: 'Description' },
     ];
-  }
-
-  onNeedPanel(e) {
-    console.log(e);
-    // ADD PANELS
-  }
-
-  getShortDate(date: any) {
-    console.log('hi');
-  }
-
-  onMoveEnd(e) {
-    // HANDLE INDEX CHANGE
   }
 }
