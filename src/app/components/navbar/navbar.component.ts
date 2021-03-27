@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.router
           .navigate([routeName])
           .then(() => (this.isVisibleSidebar = false))
-          .catch(console.log);
+          .catch(console.error);
       } else this.isVisibleSidebar = false;
     }, 1600);
   };
