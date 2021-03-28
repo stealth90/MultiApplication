@@ -2,7 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Observable, of } from 'rxjs';
-import { catchError, delay, map, mergeMap, retryWhen } from 'rxjs/operators';
+import {
+  catchError,
+  delay,
+  map,
+  mergeMap,
+  retryWhen,
+  tap,
+} from 'rxjs/operators';
+import { PopupMessageService } from 'src/app/services/popup-message.service';
+import { PopupType } from 'src/assets/models';
 import { WeatherApp, Weather } from '../models/weather';
 
 @Injectable({
@@ -18,7 +27,10 @@ export class WeatherService {
   hasGeoPermission: boolean = true;
   coordinates$: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private popupService: PopupMessageService
+  ) {
     const weatherCitiesSaved: WeatherApp[] = JSON.parse(
       localStorage.getItem('weatherCities')
     );
@@ -33,7 +45,19 @@ export class WeatherService {
           observer.next(position.coords);
           observer.complete();
         },
-        (error) => observer.error(error),
+        (error) => {
+          if (this.hasGeoPermission) {
+            this.popupService.showPopup(
+              {
+                message: 'weather.errors.no-permission',
+                popupType: PopupType.ERROR,
+              },
+              0
+            );
+            this.hasGeoPermission = false;
+          }
+          return observer.error(error);
+        },
         { timeout: 5000 }
       );
     }).pipe(retryWhen((error) => error.pipe(delay(2000))));
@@ -74,7 +98,11 @@ export class WeatherService {
           ),
           map(
             (
-              result: Weather & { flag: string; timezone: string; name: string }
+              result: Weather & {
+                flag: string;
+                timezone: string;
+                name: string;
+              }
             ): WeatherApp => ({
               prefetch: false,
               id: result.id,
@@ -94,19 +122,21 @@ export class WeatherService {
         .subscribe((weather) => {
           console.log(weather);
           if (!weather) {
-            console.log(
-              'Non è stato possibile trovare la tua attuale posizione'
-            );
+            this.popupService.showPopup({
+              message: 'weather.errors.no-position',
+              popupType: PopupType.WARNING,
+            });
           } else {
+            this.popupService.closePopup();
+            this.hasGeoPermission = true;
             const weatherKeys = Object.keys(weather);
             weatherKeys.forEach((key) => {
               this.myCurrentWeather[0][key] = weather[key];
             });
           }
         }),
-        (err) => {
-          console.log(err.code);
-          this.hasGeoPermission = false;
+        (err: GeolocationPositionError) => {
+          console.log('err', err.message);
         };
     });
   }
@@ -166,8 +196,16 @@ export class WeatherService {
       .subscribe((value) => {
         if (value === false) {
           alert('Hai inserito una città non esistente');
+          this.popupService.showPopup({
+            message: 'weather.errors.no-city',
+            popupType: PopupType.ERROR,
+          });
           this.weatherCollection.pop();
         } else {
+          this.popupService.showPopup({
+            message: 'common.item-added',
+            popupType: PopupType.SUCCESS,
+          });
           const weatherKeys = Object.keys(value);
           weatherKeys.forEach((key) => {
             this.weatherCollection[lastElement][key] = value[key];
@@ -188,6 +226,10 @@ export class WeatherService {
       'weatherCities',
       JSON.stringify(this.weatherCollection)
     );
+    this.popupService.showPopup({
+      message: 'common.item-deleted',
+      popupType: PopupType.SUCCESS,
+    });
   };
 
   ceckDateWeather = (id: number) => {

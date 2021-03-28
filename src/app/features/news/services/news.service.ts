@@ -59,8 +59,7 @@ export class NewsService {
     const currentLanguage = this.translate.currentLang;
     const url = `${this.allNewsUri}q=${encodeURIComponent(q)}${
       from ? `&from=${from}` : ''
-    }${to ? `&to=${to}` : ''}&language=${currentLanguage}&apiKey=${
-      this.newsApi
+    }${to ? `&to=${to}` : ''}&language=${currentLanguage}
     }`;
     return this.http.get<ArticlesResp>(url, { headers: this.headers });
   }
