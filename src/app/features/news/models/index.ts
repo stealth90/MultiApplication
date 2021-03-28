@@ -13,6 +13,19 @@ export const CATEGORY_NEWS = [
   { name: 'news.categories.technology', value: 'technology' },
 ];
 
+export const ERROR_MESSAGES = {
+  apiKeyDisabled: 'news.errors.apiKeyDisabled',
+  apiKeyExhausted: 'news.errors.apiKeyExhausted',
+  apiKeyInvalid: 'news.errors.apiKeyInvalid',
+  apiKeyMissing: 'news.errors.apiKeyMissing',
+  parameterInvalid: 'news.errors.parameterInvalid',
+  parametersMissing: 'news.errors.parametersMissing',
+  rateLimited: 'news.errors.rateLimited',
+  sourcesTooMany: 'news.errors.sourcesTooMany',
+  sourceDoesNotExist: 'news.errors.sourceDoesNotExist',
+  unexpectedError: 'news.errors.unexpectedError',
+};
+
 export interface NewsError {
   error: Error;
   message: string;

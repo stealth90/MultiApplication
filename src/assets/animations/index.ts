@@ -5,3 +5,4 @@ export {
   showButton,
   hideButton,
 } from './weather-widget-animations';
+export { popupAnimation } from './popup-animation';
