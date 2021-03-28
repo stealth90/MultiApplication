@@ -56,7 +56,6 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const lang$ = this.translate.onLangChange.subscribe(
       (event: LangChangeEvent) => {
-        console.log('LANG CHANGE');
         this.translate.use(event.lang);
       }
     );

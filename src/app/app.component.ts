@@ -10,6 +10,7 @@ import { routeTransitionAnimations } from '../assets/animations';
 })
 export class AppComponent implements OnInit {
   constructor(private translate: TranslateService) {}
+
   ngOnInit(): void {
     const currentLanguage = this.translate.getBrowserLang();
     this.translate.setDefaultLang(currentLanguage);

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { PopupType } from 'src/assets/models';
 import { PopupMessageService } from '../../../../services/popup-message.service';
-import { Article, ArticleReq, ArticlesResp, NewsError } from '../../models';
+import {
+  Article,
+  ArticleReq,
+  ArticlesResp,
+  NewsError,
+  ERROR_MESSAGES,
+} from '../../models';
 import { NewsService } from '../../services/news.service';
 
 @Component({
@@ -38,7 +45,10 @@ export class NewsContainerComponent implements OnInit {
         this.loading = false;
       },
       (error: NewsError) => {
-        this.popupService.showPopup();
+        this.popupService.showPopup({
+          popupType: PopupType.WARNING,
+          message: ERROR_MESSAGES[error.error.code],
+        });
         this.newsError = error;
         this.loading = false;
       }
