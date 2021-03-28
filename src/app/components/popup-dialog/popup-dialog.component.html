@@ -1,9 +1,21 @@
-<div [@openPopup]="'visible'" *ngIf="showPopup$ | async" class="popup">
-  <div class="icon-container">
-    <i class="pi pi-check" style="font-size: 1.5rem"></i>
+<ng-container *ngIf="showPopup$ | async as popup">
+  <div
+    [@openPopup]="'visible'"
+    *ngIf="popup.isShow"
+    class="popup-container"
+    [ngClass]="popup.popupType"
+  >
+    <div class="icon-container">
+      <i class="pi icon" [ngClass]="popup.icon" style="font-size: 2rem"></i>
+    </div>
+    <div>
+      <h4 class="p-mx-2 p-my-0">
+        {{ "common.popup." + popup.popupType | translate }}
+      </h4>
+      <p class="p-mx-2 p-mb-0">{{ popup.message | translate }}</p>
+    </div>
+    <div class="close-icon" (click)="handleClosePopup()">
+      <i class="pi pi-times-circle"></i>
+    </div>
   </div>
-  <p>popup-dialog works!</p>
-  <div class="close-icon" (click)="handleClosePopup()">
-    <i class="pi pi-times-circle"></i>
-  </div>
-</div>
+</ng-container>

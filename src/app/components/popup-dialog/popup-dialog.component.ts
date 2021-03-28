@@ -1,59 +1,26 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PopupMessageService } from 'src/app/services/popup-message.service';
+import { PopupContent } from '../../../assets/models';
+import { popupAnimation } from '../../../assets/animations';
 
 @Component({
   selector: 'app-popup-dialog',
   templateUrl: './popup-dialog.component.html',
   styleUrls: ['./popup-dialog.component.scss'],
-  animations: [
-    trigger('openPopup', [
-      state(
-        'visible',
-        style({
-          transform: 'translateX(0)',
-          opacity: 1,
-        })
-      ),
-      transition('void => *', [
-        style({ transform: 'translateX(50%)', opacity: 0 }),
-        animate('300ms ease-out'),
-      ]),
-      transition('* => void', [
-        animate(
-          '300ms ease-in',
-          style({
-            opacity: 0,
-            transform: 'translateX(50%)',
-          })
-        ),
-      ]),
-    ]),
-  ],
+  animations: [popupAnimation],
 })
 export class PopupDialogComponent implements OnInit {
-  @Input() alertType: AlertType;
-  showPopup$: Observable<boolean>;
+  @Input() alertType: PopupContent;
+  showPopup$: Observable<PopupContent>;
 
   constructor(private popupMessageService: PopupMessageService) {}
 
   ngOnInit(): void {
-    this.showPopup$ = this.popupMessageService.isOpen;
+    this.showPopup$ = this.popupMessageService.popup;
   }
 
   handleClosePopup() {
     this.popupMessageService.closePopup();
   }
-}
-
-const enum AlertType {
-  Error = 1,
-  Info,
 }

@@ -1,29 +1,46 @@
-.popup {
+@import "../../../assets/colors/index.scss";
+
+.popup-container {
   position: fixed;
   display: flex;
   top: 18.2%;
   right: 1%;
   padding: 1%;
-  min-width: 300px;
-  color: aliceblue;
-  background-color: rgba(255, 0, 0, 0.8);
+  min-width: 20%;
+  width: 50%;
+  color: #fff;
+  background-color: $secondary-alpha;
   border-radius: 0.5rem;
   z-index: 999999999999;
   align-items: center;
   justify-content: space-around;
+  border-left: 0.5rem solid $secondary;
+  &.warning {
+    background-color: $warning-alpha;
+    border-left: 0.5rem solid $warning;
+  }
+  &.info {
+    background-color: $info-alpha;
+    border-left: 0.5rem solid $info;
+  }
+  &.success {
+    background-color: $success-alpha;
+    border-left: 0.5rem solid $success;
+  }
 }
 
 .close-icon {
   position: absolute;
   top: 5%;
-  right: 3%;
+  right: 1%;
   cursor: pointer;
 }
 
 .icon-container {
-  border: 1px solid white;
-  padding: 2%;
-  border-radius: 2rem;
   display: flex;
-  align-items: center;
+  align-self: stretch;
+}
+
+.icon {
+  padding: 0.5rem 0;
 }
