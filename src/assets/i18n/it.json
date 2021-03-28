@@ -78,7 +78,12 @@
     "weather": "Fetch in corso..."
   },
   "weather": {
-    "title": "Città"
+    "title": "Città",
+    "errors": {
+      "no-position": "Non è stato possibile trovare la tua attuale posizione",
+      "no-city": "La città che hai inserito non è stata trovata.",
+      "no-permission": "Hai negato la geolocalizzazione. Per favore fornisci il permesso"
+    }
   },
   "news": {
     "top-headlines": "Titoli principali",
@@ -158,11 +163,31 @@
       "united-states": "Stati Uniti",
       "venezuela": "Venezuela",
       "south-africa": "Sud Africa"
+    },
+    "errors": {
+      "apiKeyDisabled": "La tua chiave API è stata disabilitata.",
+      "apiKeyExhausted": "La tua chiave API non ha più richieste disponibili.",
+      "apiKeyInvalid": "La tua chiave API non è stata inserita correttamente. Ricontrolla e riprova.",
+      "apiKeyMissing": "La tua chiave API manca nella richiesta. Aggiungila alla richiesta con uno di questi metodi.",
+      "parameterInvalid": "Hai incluso un parametro nella tua richiesta che attualmente non è supportato. Controlla la proprietà del messaggio per maggiori dettagli.",
+      "parametersMissing": "I parametri richiesti mancano nella richiesta e non può essere completata. Controlla la proprietà del messaggio per maggiori dettagli.",
+      "rateLimited": "Sei stato limitato nella velocità. Fai marcia indietro per un po' prima di riprovare la richiesta.",
+      "sourcesTooMany": "Hai richiesto troppe fonti in una sola richiesta. Prova a dividere la richiesta in 2 richieste più piccole.",
+      "sourceDoesNotExist": "Hai richiesto una fonte che non esiste.",
+      "unexpectedError": "Questo non dovrebbe succedere, e se succede è colpa nostra, non vostra. Riprova la richiesta a breve."
     }
   },
   "common": {
     "add": "Aggiungi",
     "date-from": "da",
-    "date-to": "a"
+    "date-to": "a",
+    "popup": {
+      "warning": "Avviso",
+      "info": "Info",
+      "success": "Successo",
+      "error": "Errore"
+    },
+    "item-deleted": "L'elemento è stato eliminato con successo",
+    "item-added": "L'elemento è stato aggiunto con successo"
   }
 }
