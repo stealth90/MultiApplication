@@ -68,6 +68,10 @@
     "today": "Oggi",
     "weekHeader": "Wk"
   },
+  "home": {
+    "experience": "Esperienze",
+    "work-experience": "Esperienze lavorative"
+  },
   "navbar": {
     "home": "Home",
     "weather-app": "App Meteo",
