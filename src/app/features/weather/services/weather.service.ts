@@ -228,7 +228,7 @@ export class WeatherService {
     );
     this.popupService.showPopup({
       message: 'common.item-deleted',
-      popupType: PopupType.SUCCESS,
+      popupType: PopupType.INFO,
     });
   };
 
