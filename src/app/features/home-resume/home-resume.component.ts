@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { options } from './models/fullpage';
 import * as AOS from 'aos';
+import 'vanilla-tilt';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-home-resume',
