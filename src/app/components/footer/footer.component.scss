@@ -1,5 +1,4 @@
-/* LAYOUT: FOOTER
--------------------------------------------- */
+@import "../../../assets/colors/index.scss";
 
 .footer {
   width: 100%;
@@ -8,6 +7,7 @@
   display: -ms-flexbox;
   display: flex;
   padding: 0 1.875rem 1.875rem;
+  background-color: $primary;
   pointer-events: none;
   color: #fff;
   -webkit-box-pack: justify;
