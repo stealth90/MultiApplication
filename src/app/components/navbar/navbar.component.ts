@@ -1,7 +1,6 @@
 import {
   Component,
   ElementRef,
-  HostListener,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -20,8 +19,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   faLinkedinIn = faLinkedinIn;
   subscriptions: Subscription[] = [];
   isVisibleSidebar: boolean;
-  innerWidth: number;
+  /* innerWidth: number; */
   sidebarAnimation: boolean;
+  sidebarSubscription$: Subscription;
   currentLanguage: string;
   offsetNavbar: boolean = false;
   currentRoute: string;
@@ -35,15 +35,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscriptions.push(router$);
   }
 
-  @HostListener('window:resize', ['$event'])
+  /* @HostListener('window:resize', ['$event'])
   onResize() {
+    console.log('hostlistener');
     this.innerWidth = window.innerWidth;
-  }
+  } */
 
   @ViewChild('navbar', { read: ElementRef, static: true }) navbar: ElementRef;
 
   ngOnInit(): void {
-    this.innerWidth = window.innerWidth;
     const lang$ = this.translate.onLangChange.subscribe(
       (langEvent: LangChangeEvent) => {
         this.currentLanguage = langEvent.lang;
@@ -64,19 +64,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
   handleOpenSidebar = () => {
     this.isVisibleSidebar = !this.isVisibleSidebar;
     this.sidebarAnimation = !this.sidebarAnimation;
-    const sidebarSubscription = fromEvent<any>(document, 'click')
+    this.sidebarSubscription$ = fromEvent<any>(document, 'click')
       .pipe(
-        filter((event) => {
-          if (event.target.className === 'p-component-overlay p-sidebar-mask')
-            return event;
-        }),
+        filter(
+          (event) =>
+            event.target.className === 'p-component-overlay p-sidebar-mask'
+        ),
         take(1)
       )
       .subscribe(() => this.handleCloseSidebar());
-    this.subscriptions.push(sidebarSubscription);
+    this.subscriptions.push(this.sidebarSubscription$);
   };
 
   handleCloseSidebar = (routeName?: string) => {
+    this.sidebarSubscription$.unsubscribe();
     this.sidebarAnimation = !this.sidebarAnimation;
     setTimeout(() => {
       if (routeName) {

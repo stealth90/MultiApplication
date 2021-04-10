@@ -1,5 +1,16 @@
 <header class="header" role="banner">
-  <div #navbar [ngClass]="{ background: offsetNavbar }" class="toolbar-inner">
+  <div
+    #navbar
+    [ngClass]="{
+      background:
+        offsetNavbar &&
+        !['#secondPage', '#thirdPage', '#fourthPage'].includes(currentRoute),
+      homeBackground: !['#secondPage', '#thirdPage', '#fourthPage'].includes(
+        currentRoute
+      )
+    }"
+    class="toolbar-inner"
+  >
     <span routerLink="/" class="home-title"
       >Petralia<span class="home-title-dot">.</span></span
     >
@@ -18,7 +29,7 @@
   [showCloseIcon]="false"
   [blockScroll]="true"
   [dismissible]="false"
-  [baseZIndex]="1000"
+  [baseZIndex]="2000"
 >
   <div class="sidebar-menu">
     <div class="menu-header" [ngClass]="{ visible: sidebarAnimation }">
@@ -49,7 +60,13 @@
               (click)="handleCloseSidebar('/')"
               [ngClass]="{
                 visible: sidebarAnimation,
-                active: currentRoute === ''
+                active: [
+                  '',
+                  '#firstPage',
+                  '#secondPage',
+                  '#thirdPage',
+                  '#fourthPage'
+                ].includes(currentRoute)
               }"
               label="{{ 'navbar.home' | translate }}"
               styleClass="p-button-text"
