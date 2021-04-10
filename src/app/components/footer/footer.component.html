@@ -1,4 +1,14 @@
-<footer class="footer">
+<footer
+  #footer
+  class="footer"
+  [ngClass]="{
+    background:
+      offsetFooter &&
+      !['', '#firstPage', '#secondPage', '#thirdPage', '#fourthPage'].includes(
+        currentRoute
+      )
+  }"
+>
   <div class="footer-copyright">
     <p>© Petralia. 2021</p>
   </div>

@@ -6,8 +6,8 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0 1.875rem 1.875rem;
-  background-color: $primary;
+  padding: 1rem 2rem;
+  background-color: transparent;
   pointer-events: none;
   color: #fff;
   -webkit-box-pack: justify;
@@ -19,36 +19,30 @@
   right: 0;
   bottom: 0;
   left: 0;
+  transition: background-color 0.2s;
+}
+
+.footer.background {
+  background-color: rgba(101, 35, 245, 0.9);
 }
 @media only screen and (min-width: 1200px) {
   .footer {
-    padding: 0 3.75rem 2.5rem;
-    position: fixed;
-    z-index: 10;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    padding: 1.5rem 3.75rem;
+    z-index: 2001;
   }
 }
 
-/* FOOTER COPYRIGHT
--------------------------------------------- */
 .footer-copyright {
   font-size: 0.9375rem;
-
   pointer-events: auto;
 }
-.footer-copyright p {
-  margin-bottom: 0;
-}
 
-/* PARTIAL: LANGUAGE SWITCHER
--------------------------------------------- */
 .language-switcher {
   font-size: 0.9375rem;
   align-self: flex-end;
   text-transform: uppercase;
   pointer-events: auto;
+  padding: 1rem 0;
 }
 
 .language-switcher a {
@@ -60,7 +54,7 @@
 
 .language-switcher a.is-active,
 .language-switcher a:hover {
-  color: #cf000f;
+  color: $secondary;
 }
 
 .language-switcher a + a {
