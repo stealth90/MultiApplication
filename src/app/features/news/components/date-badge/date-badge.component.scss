@@ -1,10 +1,11 @@
+@import "../../../../../assets/colors/index.scss";
 .badge {
   position: absolute;
   top: 5%;
   right: 5%;
   padding: 2% 3%;
-  background-color: #f14336;
-  color: white;
+  background-color: $secondary;
+  color: #fff;
   border-radius: 50%;
   font-weight: bold;
   .day {

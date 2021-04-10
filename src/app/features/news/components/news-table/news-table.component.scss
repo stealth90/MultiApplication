@@ -11,7 +11,7 @@
   flex-direction: column;
   align-content: center;
   h1 {
-    color: white;
+    color: #fff;
   }
 }
 
@@ -62,9 +62,9 @@
   .news-content {
     height: 0;
     + .news-button {
-      background-color: #f14336;
+      background-color: $secondary;
       a {
-        color: white;
+        color: #fff;
         padding: 5%;
         &:hover {
           transform: scale(1.2);
@@ -143,12 +143,12 @@
 
 a {
   text-decoration: none;
-  color: #1875d1;
+  color: $info;
   transition: color 0.2s;
 }
 
 a:hover {
-  color: white;
+  color: #fff;
 }
 
 .no-news-container {
@@ -162,7 +162,7 @@ a:hover {
   display: flex;
   position: relative;
   justify-content: center;
-  background-color: #ff6347;
+  background-color: $secondary;
   border-radius: 10px;
   align-items: center;
   color: #fff;

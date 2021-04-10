@@ -1,3 +1,4 @@
+@import "../../../assets/colors/index.scss";
 .news-container {
   text-align: center;
 }
@@ -39,7 +40,7 @@
     height: 0;
     padding-bottom: 0;
     + .news-button {
-      background-color: #f14336;
+      background-color: $secondary;
       padding: 5%;
       a {
         color: white;

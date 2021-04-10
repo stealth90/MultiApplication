@@ -1,3 +1,4 @@
+@import "../../../../../assets/colors/index.scss";
 .input-container {
   width: 80%;
   margin: 10% auto 5%;
@@ -25,11 +26,11 @@ input::placeholder {
   margin-left: 5%;
 }
 .dropdown-label {
-  color: black;
+  color: #000;
 }
 
 :host ::ng-deep .p-button {
-  background: #f14336;
+  background: $secondary;
 }
 
 .panelResult {

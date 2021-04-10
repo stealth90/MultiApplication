@@ -1,3 +1,4 @@
+@import "../../../../../assets/colors/index.scss";
 .fixed-socials {
   position: fixed;
   z-index: 10;
@@ -80,6 +81,6 @@
 .social-icon > i:hover,
 .social-icon > fa-icon:hover {
   transform: scale(1.1);
-  color: #f14336;
+  color: $secondary;
   transition: all 200ms linear;
 }

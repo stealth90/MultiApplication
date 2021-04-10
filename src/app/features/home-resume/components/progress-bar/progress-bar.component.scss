@@ -1,3 +1,4 @@
+@import "../../../../../assets/colors/index.scss";
 .fullpage-slider-progress-bar {
   position: fixed;
   z-index: 10;
@@ -30,7 +31,7 @@
 }
 
 :host ::ng-deep .p-progressbar-value {
-  background: #f14336;
+  background: $secondary;
 }
 @media only screen and (min-width: 1200px) {
   .fullpage-slider-progress-bar {

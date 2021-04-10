@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~fullpage.js/dist/fullpage.min.css";
-
+@import "./assets/colors/index.scss";
 html,
 body {
   height: 100%;
@@ -8,5 +8,5 @@ body {
 body {
   margin: 0;
   font-family: "RubikRegular", "Helvetica Neue", sans-serif;
-  background: #4d05e8;
+  background: $primary;
 }
