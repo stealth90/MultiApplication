@@ -1,0 +1,37 @@
+h5 {
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+}
+.circle {
+  display: inline-block;
+  margin: 1em;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #fff;
+}
+
+.circle-border {
+  position: relative;
+  display: inline-block;
+}
+.circles-text {
+  font-size: 36px;
+  color: #fff;
+  font-weight: 500;
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  text-align: center;
+  width: 92%;
+  height: 91%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
