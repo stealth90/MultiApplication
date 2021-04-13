@@ -10,7 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import * as d3 from 'd3';
 import 'd3-selection-multi';
 import { Subscription } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 export interface Options {
   skin?: {
@@ -106,9 +106,8 @@ export class KnobDirective implements OnInit {
       .pipe(
         filter(
           (event) =>
-            event instanceof NavigationEnd && event.url === '/#fourthPage'
-        ),
-        tap(console.log)
+            event instanceof NavigationEnd && event.url === '/#fivePage'
+        )
       )
       .subscribe(() => {
         this.draw();
@@ -126,7 +125,7 @@ export class KnobDirective implements OnInit {
         enabled: true,
         duration: 1000,
         ease: 'bounce',
-        delay: 500,
+        delay: 200,
       },
       size: 200,
       startAngle: 0,
