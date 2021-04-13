@@ -70,7 +70,15 @@
   },
   "home": {
     "experience": "Esperienze",
-    "work-experience": "Esperienze lavorative"
+    "experience-subtitle": "Esperienze lavorative",
+    "about": "About me",
+    "about-subtitle": "chi sono",
+    "about-me": "Ciao e grazie per essere qui e visitare il mio sito, spero vi piaccia. Sono uno sviluppatore web front end, curioso e appassionato di nuove tecnologie. Il mio background di sviluppatore è iniziato studiando per conto mio e poi frequentando la scuola ITS Steve Jobs Academy. In questa scuola ho imparato molti linguaggi di programmazione front end e back end. Ho lavorato con vari framework e librerie come Angular 2, Ionic, React e React Native utilizzando JavaScript e TypeScript e devo ammettere che tra tutti preferisco React.",
+    "download-resume": "Scarica il cv",
+    "education": "Educazione",
+    "education-subtitle": "studio",
+    "skills": "Skills",
+    "skills-subtitle": "esperto in"
   },
   "navbar": {
     "home": "Home",
