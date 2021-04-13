@@ -70,7 +70,15 @@
   },
   "home": {
     "experience": "Experience",
-    "work-experience": "Work experience"
+    "experience-subtitle": "Work experience",
+    "about": "About me",
+    "about-subtitle": "who am i",
+    "about-me": "Hello and thanks for for being here, i hope you enjoy it. I am a front end web developer, curious and passionate about new technologies. My developer background started by studying on my own and then attending ITS Steve Jobs Academy school. In this school I learned many front end and back end programming languages. I worked with various frameworks and libraries such as Angular 2, Ionic, React and React Native using JavaScript and TypeScript and I must admit that among all I prefer React.",
+    "download-resume": "Download resume",
+    "education": "Education",
+    "education-subtitle": "learning",
+    "skills": "Skills",
+    "skills-subtitle": "expert in"
   },
   "navbar": {
     "home": "Home",
