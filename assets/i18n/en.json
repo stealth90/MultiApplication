@@ -118,7 +118,15 @@
       "general": "General",
       "science": "Science",
       "sports": "Sports",
-      "technology": "Technology"
+      "technology": "Technology",
+      "world": "World",
+      "music": "Music",
+      "food": "Food",
+      "travel": "Travel",
+      "beauty": "Beauty",
+      "economics": "Economics",
+      "finance": "Finance",
+      "politics": "Politics"
     },
     "countries": {
       "emirate": "Emirate",
