@@ -4,9 +4,14 @@
   [ngClass]="{
     background:
       offsetFooter &&
-      !['', '#firstPage', '#secondPage', '#thirdPage', '#fourthPage'].includes(
-        currentRoute
-      )
+      ![
+        '',
+        '#firstPage',
+        '#secondPage',
+        '#thirdPage',
+        '#fourthPage',
+        '#fivePage'
+      ].includes(currentRoute)
   }"
 >
   <div class="footer-copyright">

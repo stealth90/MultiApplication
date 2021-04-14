@@ -7,8 +7,9 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { fromEvent, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-footer',
@@ -21,7 +22,11 @@ export class FooterComponent implements OnInit, OnDestroy {
   offsetFooter: boolean = false;
   currentRoute: string;
 
-  constructor(private translate: TranslateService, private router: Router) {
+  constructor(
+    private translate: TranslateService,
+    private router: Router,
+    private uiService: UiService
+  ) {
     const router$ = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -38,7 +43,7 @@ export class FooterComponent implements OnInit, OnDestroy {
         this.currentLanguage = event.lang;
       }
     );
-    const footerHeight$ = fromEvent(window, 'scroll').subscribe(() => {
+    const footerHeight$ = this.uiService.getCurrentHeight().subscribe(() => {
       const footerHeight = this.footer.nativeElement.clientHeight;
       const body = document.body,
         html = document.documentElement;
