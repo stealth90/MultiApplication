@@ -1,0 +1,43 @@
+@import "../../../../../assets/colors/index.scss";
+.education-header {
+  margin-bottom: 50px;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  h2 {
+    font-size: 40px;
+    margin: 0px;
+    text-transform: uppercase;
+    position: relative;
+    width: auto;
+    font-weight: 500;
+    padding-bottom: 15px;
+    color: #fff;
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: #ffffff;
+      width: 100%;
+      height: 2px;
+      top: 100%;
+      left: 0;
+    }
+  }
+  p {
+    text-align: right;
+    width: auto;
+    text-transform: uppercase;
+    background-color: $primary;
+    margin: 0px;
+    padding-left: 10px;
+    position: absolute;
+    right: 0;
+    bottom: -8px;
+    color: $secondary;
+    font-weight: 500;
+  }
+}
