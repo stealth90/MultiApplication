@@ -10,6 +10,7 @@ import { filter, take } from 'rxjs/operators';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { UiService } from 'src/app/services/ui.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -26,14 +27,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   offsetNavbar: boolean = false;
   currentRoute: string;
 
-  constructor(private translate: TranslateService, private router: Router) {
-    const router$ = router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.currentRoute = event.url.slice(1);
-      });
-    this.subscriptions.push(router$);
-  }
+  constructor(
+    private translate: TranslateService,
+    private router: Router,
+    private uiService: UiService
+  ) {}
 
   /* @HostListener('window:resize', ['$event'])
   onResize() {
@@ -44,17 +42,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
   @ViewChild('navbar', { read: ElementRef, static: true }) navbar: ElementRef;
 
   ngOnInit(): void {
+    const router$ = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url.slice(1);
+      });
     const lang$ = this.translate.onLangChange.subscribe(
       (langEvent: LangChangeEvent) => {
         this.currentLanguage = langEvent.lang;
       }
     );
-    const navbarHeigh$ = fromEvent(window, 'scroll').subscribe(() => {
+    const navbarHeigh$ = this.uiService.getCurrentHeight().subscribe(() => {
       const navbarHeight = this.navbar.nativeElement.clientHeight;
       const windowHeight = window.pageYOffset;
       this.offsetNavbar = navbarHeight / 2 - windowHeight > 0 ? false : true;
     });
-    this.subscriptions.push(lang$, navbarHeigh$);
+    this.subscriptions.push(lang$, navbarHeigh$, router$);
   }
 
   ngOnDestroy(): void {

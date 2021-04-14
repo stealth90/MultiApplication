@@ -4,10 +4,15 @@
     [ngClass]="{
       background:
         offsetNavbar &&
-        !['#secondPage', '#thirdPage', '#fourthPage'].includes(currentRoute),
-      homeBackground: !['#secondPage', '#thirdPage', '#fourthPage'].includes(
-        currentRoute
-      )
+        !['#secondPage', '#thirdPage', '#fourthPage', '#fivePage'].includes(
+          currentRoute
+        ),
+      homeBackground: ![
+        '#secondPage',
+        '#thirdPage',
+        '#fourthPage',
+        '#fivePage'
+      ].includes(currentRoute)
     }"
     class="toolbar-inner"
   >
