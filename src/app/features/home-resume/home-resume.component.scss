@@ -1,4 +1,16 @@
 @import "../../../assets/colors/index.scss";
+@keyframes pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
 
 :host {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -417,12 +429,202 @@ footer a {
   }
 }
 
+.skills-container {
+  justify-content: center;
+}
+.about-details p {
+  margin-bottom: 30px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.education-header-wrapper {
+  text-align: center;
+  background-color: $primary;
+}
+@media (min-width: 992px) {
+  .education .row:after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0px auto;
+    z-index: -1;
+  }
+}
+.education-info:after {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  border: 3px solid #fff;
+  top: 50%;
+  left: -16px;
+  margin-top: -7px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+@media (max-width: 479px) {
+  .row {
+    .education-info,
+    .education-info.p-text-right {
+      .education-detail {
+        width: 100%;
+      }
+      .education-year {
+        display: table-caption;
+        width: 100%;
+        vertical-align: middle;
+        padding-top: 0px;
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .education-info {
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .education-info:after {
+    top: 0;
+    left: 0;
+    margin-top: 0;
+  }
+  .education-info.p-text-right:after {
+    right: 0 !important;
+  }
+}
+
+.education-info {
+  display: table;
+  width: 100%;
+  margin-bottom: 30px;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  &.p-text-right {
+    &:after {
+      right: -16px;
+      left: unset;
+    }
+    .education-year {
+      float: right;
+      padding-top: 30px;
+      display: table-cell;
+      width: 200px;
+      vertical-align: middle;
+    }
+
+    .education-detail {
+      float: left;
+    }
+  }
+  .education-year {
+    display: table-cell;
+    width: 200px;
+    vertical-align: middle;
+
+    h4 {
+      font-size: 60px;
+      margin: 0px;
+      color: #202020;
+      font-weight: 500;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+  }
+  .education-detail {
+    display: table-cell;
+    width: calc(100% - 200px);
+    h4 {
+      font-size: 18px;
+      text-transform: capitalize;
+      margin-top: 0px;
+      color: #fff;
+      -webkit-transition: color 0.3s;
+      -moz-transition: color 0.3s;
+      -ms-transition: color 0.3s;
+      -o-transition: color 0.3s;
+      transition: color 0.3s;
+    }
+    span {
+      display: inline-block;
+      width: 100%;
+      color: $secondary;
+      text-transform: capitalize;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    p {
+      margin: 0;
+      color: #fff;
+    }
+  }
+  &:hover {
+    &:after {
+      background-color: #ffffff;
+      border: 3px solid #f6483b;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+    .education-year h4 {
+      -webkit-animation-duration: 2s;
+      -moz-animation-duration: 2s;
+      -ms-animation-duration: 2s;
+      -o-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-delay: 300ms;
+      -moz-animation-delay: 300ms;
+      -ms-animation-delay: 300ms;
+      -o-animation-delay: 300ms;
+      animation-delay: 300ms;
+      animation-iteration-count: infinite;
+      animation-name: pulse;
+      color: #f6483b;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .education-info {
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 30px;
+  }
+}
+
 section {
   &::before,
   &::after {
     width: 100%;
     content: "";
     display: flex;
+    background-color: $primary;
   }
   &::after {
     height: 82px;
@@ -591,14 +793,23 @@ section {
   position: relative;
   margin-top: 30px;
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 991px) and (max-width: 1060px) {
+  .work_experience {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 991px) {
   .work_experience {
     margin-top: 0;
   }
 }
-@media (max-width: 767px) {
-  .work_experience {
-    margin-top: 0;
+
+.about-img {
+  display: inline-block;
+  text-align: center;
+  img {
+    width: 100%;
   }
 }
 .work_experience::before {
@@ -817,7 +1028,7 @@ section {
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 80%;
   }
 }
 
@@ -826,8 +1037,6 @@ section {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 .order-first {

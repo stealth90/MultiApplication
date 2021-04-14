@@ -18,112 +18,125 @@
     </div>
   </div>
   <div class="section">
-    <section id="about">
-      <div class="firstPage">
-        <div class="p-grid p-ai-center p-jc-center">
-          <div class="p-col-12 p-md-9 p-lg-6">
-            <div class="about_image">
-              <img
-                src="../../../assets/images/placeholder-image.png"
-                alt="Hero"
-              />
-            </div>
-            <!-- about image -->
-          </div>
-          <div class="p-col-12 p-lg-6">
-            <div class="about_content">
-              <div class="section_title">
-                <h5 class="sub_title">About</h5>
-                <h3 class="main_title">Why You Hire Me?</h3>
-                <ul class="line">
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </div>
-              <!-- section title -->
-              <p class="animate__animated animate__bounce">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus.
-              </p>
-
-              <div class="about_skills pt-15">
-                <div class="skill_item mt-20">
-                  <div class="skill_header">
-                    <h6 class="skill_title">UI/UX Design</h6>
-                    <div class="skill_percentage">
-                      <p><span class="counter">85</span>%</p>
-                    </div>
-                  </div>
-                  <div class="skill_bar">
-                    <div class="bar_inner">
-                      <div class="bar progress_line" data-width="85"></div>
-                    </div>
-                  </div>
-                </div>
-                <!-- skill item -->
-                <div class="skill_item mt-20">
-                  <div class="skill_header">
-                    <h6 class="skill_title">Web Design</h6>
-                    <div class="skill_percentage">
-                      <p><span class="counter">75</span>%</p>
-                    </div>
-                  </div>
-                  <div class="skill_bar">
-                    <div class="bar_inner">
-                      <div class="bar progress_line" data-width="75"></div>
-                    </div>
-                  </div>
-                </div>
-                <!-- skill item -->
-                <div class="skill_item mt-20">
-                  <div class="skill_header">
-                    <h6 class="skill_title">HTML/CSS</h6>
-                    <div class="skill_percentage">
-                      <p><span class="counter">90</span>%</p>
-                    </div>
-                  </div>
-                  <div class="skill_bar">
-                    <div class="bar_inner">
-                      <div class="bar progress_line" data-width="90"></div>
-                    </div>
-                  </div>
-                </div>
-                <!-- skill item -->
-                <div class="skill_item mt-20">
-                  <div class="skill_header">
-                    <h6 class="skill_title">Sketch</h6>
-                    <div class="skill_percentage">
-                      <p><span class="counter">65</span>%</p>
-                    </div>
-                  </div>
-                  <div class="skill_bar">
-                    <div class="bar_inner">
-                      <div class="bar progress_line" data-width="65"></div>
-                    </div>
-                  </div>
-                </div>
-                <!-- skill item -->
-              </div>
-              <!-- about skill -->
-            </div>
-            <!-- about content -->
+    <section class="container">
+      <div class="row p-jc-center">
+        <div class="p-md-6 p-sm-12">
+          <div class="about-img">
+            <img
+              src="../../../assets/images/placeholder-image.png"
+              alt="About"
+            />
           </div>
         </div>
-        <!-- row -->
+        <div class="p-md-6 p-sm-12">
+          <div class="prt_heading_wrapper_2">
+            <header-section
+              [title]="'home.about' | translate"
+              [subtitle]="'home.about-subtitle' | translate"
+            ></header-section>
+          </div>
+          <div class="about-details">
+            <p [translate]>home.about-me</p>
+            <button
+              pButton
+              type="button"
+              [label]="'home.download-resume' | translate"
+              class="p-button-raised p-button-danger"
+            ></button>
+          </div>
+        </div>
       </div>
-      <!-- container -->
+    </section>
+  </div>
+  <div class="section">
+    <section class="container">
+      <div class="row p-jc-center">
+        <div class="education-header-wrapper">
+          <header-section
+            [title]="'home.education' | translate"
+            [subtitle]="'home.education-subtitle' | translate"
+          ></header-section>
+        </div>
+        <div class="education">
+          <div class="row">
+            <div class="p-lg-6 p-md-12 p-lg-offset-6 p-md-offset-0">
+              <div class="education-info">
+                <div class="education-year">
+                  <h4>2004</h4>
+                </div>
+                <div class="education-detail">
+                  <h4>Diploma In UI/UX Design</h4>
+                  <span>New York</span>
+                  <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit
+                    voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-lg-6 p-md-12">
+              <div class="education-info p-text-right">
+                <div class="education-year">
+                  <h4>2006</h4>
+                </div>
+                <div class="education-detail">
+                  <h4>Diploma In Web Design</h4>
+                  <span>New York</span>
+                  <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit
+                    voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-lg-6 p-md-12 p-lg-offset-6 p-md-offset-0">
+              <div class="education-info">
+                <div class="education-year">
+                  <h4>2008</h4>
+                </div>
+                <div class="education-detail">
+                  <h4>Diploma In UI/UX Design</h4>
+                  <span>New York</span>
+                  <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit
+                    voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-lg-6 p-md-12">
+              <div class="education-info p-text-right">
+                <div class="education-year">
+                  <h4>2010</h4>
+                </div>
+                <div class="education-detail">
+                  <h4>Diploma In Web Design</h4>
+                  <span>New York</span>
+                  <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit
+                    voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
   <div class="section">
     <section id="work">
       <div class="container">
         <div class="row p-jc-center">
-          <div class="p-lg-6">
-            <div class="section_title p-text-center pb-30">
+          <header-section
+            [title]="'home.experience' | translate"
+            [subtitle]="'home.experience-subtitle' | translate"
+          ></header-section>
+          <!-- <div class="section_title p-text-center pb-30">
               <h5 class="sub_title" [translate]>home.experience</h5>
               <h3 class="main_title" [translate]>home.work-experience</h3>
               <ul class="line">
@@ -131,8 +144,7 @@
                 <li></li>
                 <li></li>
               </ul>
-            </div>
-          </div>
+            </div> -->
         </div>
         <div class="work_experience">
           <div class="row">
@@ -247,5 +259,26 @@
       </div>
     </section>
   </div>
-  <div class="section"></div>
+  <div class="section">
+    <section class="container">
+      <div class="row">
+        <div class="p-col-12 p-text-center">
+          <header-section
+            [title]="'home.skills' | translate"
+            [subtitle]="'home.skills-subtitle' | translate"
+          ></header-section>
+        </div>
+        <div class="p-col-12 p-text-center">
+          <div class="row skills-container">
+            <div
+              class="p-lg-3 p-md-4 p-sm-6 p-text-center"
+              *ngFor="let skill of mySkills; let i = index"
+            >
+              <skills-badge [id]="i" [skill]="skill"></skills-badge>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

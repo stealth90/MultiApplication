@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { options } from './models/fullpage';
 import * as AOS from 'aos';
-import 'vanilla-tilt';
-import { TranslateService } from '@ngx-translate/core';
+import { Skill } from './models/skill';
 @Component({
   selector: 'app-home-resume',
   templateUrl: './home-resume.component.html',
@@ -13,15 +12,30 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
   config: options;
   currentIndex = 0;
   fullpage_api;
+  mySkills: Skill[] = [
+    { name: 'JavaScript', percentage: 90, icon: 'javascript.png' },
+    { name: 'TypeScript', percentage: 75, icon: 'typescript.png' },
+    { name: 'Angular 2+', percentage: 70, icon: 'angular.png' },
+    { name: 'React.js', percentage: 80, icon: 'react.png' },
+    { name: 'HTML 5', percentage: 80, icon: 'html.png' },
+    { name: 'CSS', percentage: 90, icon: 'css.png' },
+    { name: 'Redux', percentage: 70, icon: 'redux.png' },
+    { name: 'RxJs', percentage: 75, icon: 'rxjs.svg' },
+  ];
 
   constructor() {
     this.config = {
       licenseKey: null,
-      anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
+      anchors: [
+        'firstPage',
+        'secondPage',
+        'thirdPage',
+        'fourthPage',
+        'fivePage',
+      ],
       sectionsColor: ['#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8'],
       scrollOverflow: true,
-      normalScrollElements: '.scrollable-content',
-      bigSectionsDestination: 'top',
+      /* normalScrollElements: '.scrollable-content', */
       loopBottom: true,
       // navigation: true,
       // slidesNavigation: true,
