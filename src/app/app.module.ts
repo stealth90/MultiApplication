@@ -19,7 +19,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PopupDialogComponent } from './components/popup-dialog/popup-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, PopupDialogComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    PopupDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,5 +49,5 @@ import { PopupDialogComponent } from './components/popup-dialog/popup-dialog.com
 export class AppModule {}
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
