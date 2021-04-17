@@ -1,4 +1,4 @@
-@import "../../../assets/colors/index.scss";
+@import "src/assets/colors/index.scss";
 
 .footer {
   width: 100%;
@@ -23,7 +23,7 @@
 }
 
 .footer.background {
-  background-color: rgba(101, 35, 245, 0.9);
+  position: unset;
 }
 @media only screen and (min-width: 1200px) {
   .footer {

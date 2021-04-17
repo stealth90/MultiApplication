@@ -9,7 +9,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { UiService } from 'src/app/services/ui.service';
+/* import { UiService } from 'src/app/services/ui.service'; */
 
 @Component({
   selector: 'app-footer',
@@ -24,9 +24,9 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private router: Router,
-    private uiService: UiService
-  ) {
+    private router: Router
+  ) /*  private uiService: UiService */
+  {
     const router$ = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -43,7 +43,7 @@ export class FooterComponent implements OnInit, OnDestroy {
         this.currentLanguage = event.lang;
       }
     );
-    const footerHeight$ = this.uiService.getCurrentHeight().subscribe(() => {
+    /* const footerHeight$ = this.uiService.getCurrentHeight().subscribe(() => {
       const footerHeight = this.footer.nativeElement.clientHeight;
       const body = document.body,
         html = document.documentElement;
@@ -57,9 +57,9 @@ export class FooterComponent implements OnInit, OnDestroy {
       const windowHeight =
         window.pageYOffset + window.innerHeight > height - footerHeight / 2;
       this.offsetFooter = !windowHeight;
-    });
+    }); */
 
-    this.subscriptions.push(lang$, footerHeight$);
+    /* this.subscriptions.push(lang$, footerHeight$); */
   }
 
   ngOnDestroy(): void {
