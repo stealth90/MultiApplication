@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PopupMessageService } from 'src/app/services/popup-message.service';
-import { PopupContent } from '../../../assets/models';
-import { popupAnimation } from '../../../assets/animations';
+import { PopupContent } from 'src/assets/models';
+import { popupAnimation } from 'src/assets/animations';
 
 @Component({
   selector: 'app-popup-dialog',
