@@ -1,9 +1,9 @@
-@import "../../../../../assets/colors/index.scss";
+@import "src/assets/colors/index.scss";
 .fullpage-slider-progress-bar {
   position: fixed;
   z-index: 10;
   top: 50%;
-  right: -10rem;
+  right: -10.5rem;
   width: 25rem;
   height: 2px;
   transform: rotate(90deg);
