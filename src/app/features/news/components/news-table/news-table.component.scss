@@ -1,4 +1,4 @@
-@import "../../../../../assets/colors/index.scss";
+@import "src/assets/colors/index.scss";
 .news-container {
   text-align: center;
   margin-bottom: 2rem;
@@ -58,26 +58,28 @@
   }
 }
 
-.article-card:hover {
-  .news-content {
-    height: 0;
-    + .news-button {
-      background-color: $secondary;
-      a {
-        color: #fff;
-        padding: 5%;
-        &:hover {
-          transform: scale(1.2);
+@media only screen and (min-device-width: 640px) {
+  .article-card:hover {
+    .news-content {
+      height: 0;
+      + .news-button {
+        background-color: $secondary;
+        a {
+          color: #fff;
+          padding: 5%;
+          &:hover {
+            transform: scale(1.2);
+          }
         }
       }
     }
-  }
-  .news-description {
-    opacity: 1;
-    bottom: 10%;
-  }
-  .source-badge {
-    opacity: 0;
+    .news-description {
+      opacity: 1;
+      bottom: 10%;
+    }
+    .source-badge {
+      opacity: 0;
+    }
   }
 }
 

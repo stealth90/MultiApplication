@@ -9,7 +9,6 @@
     <ngx-flicking
       [options]="{
         circular: false,
-
         gap: 20,
         duration: 800,
         moveType: 'freeScroll',
@@ -27,43 +26,33 @@
           *ngFor="let article of data"
         >
           <div
-            *ngIf="!article.image && !article.urlToImage; else articleImg"
-            [style.background]="
-              'url(../../../../../../../assets/images/placeholder-image.png)'
-            "
+            *ngIf="!article.media && !article.urlToImage; else articleImg"
+            [style.background]="'url(assets/images/placeholder-image.png)'"
             [style.background-position]="'center'"
             [style.background-size]="'cover'"
             class="article-img p-d-relative"
           >
-            <app-date-badge
-              [date]="article.pub_date || article.publishedAt"
-            ></app-date-badge>
+            <app-date-badge [date]="article.published_date"></app-date-badge>
             <div class="source-badge">
-              <app-source-badge
-                [source]="article.source.name"
-              ></app-source-badge>
+              <app-source-badge [source]="article.clean_url"></app-source-badge>
             </div>
           </div>
           <ng-template #articleImg>
             <div
               class="article-img"
-              [style.background]="'url(' + article.urlToImage + ')'"
+              [style.background]="'url(' + article.media + ')'"
               [style.background-position]="'center'"
               [style.background-size]="'cover'"
             >
-              <app-date-badge
-                [date]="article.pub_date || article.publishedAt"
-              ></app-date-badge>
+              <app-date-badge [date]="article.published_date"></app-date-badge>
               <div class="source-badge">
-                <app-source-badge
-                  [source]="article.source.name"
-                ></app-source-badge>
+                <app-source-badge [source]="article.author"></app-source-badge>
               </div>
             </div>
           </ng-template>
           <div class="news-description">
             <div>
-              <p>{{ article.description }}</p>
+              <p>{{ article.summary }}</p>
             </div>
           </div>
           <div class="news-content">
@@ -75,7 +64,7 @@
                 <i class="pi pi-clock p-as-center p-m-2"></i>
                 <p>
                   {{
-                    article.pub_date || article.publishedAt
+                    article.published_date
                       | date: "MMM. d, y":"UTC":currentLang
                       | uppercase
                   }}
@@ -94,7 +83,7 @@
             </div>
           </div>
           <div class="news-button">
-            <a target="_blank" href="{{ article.url }}">{{
+            <a target="_blank" href="{{ article.link }}">{{
               "news.read-news" | translate | uppercase
             }}</a>
           </div>
