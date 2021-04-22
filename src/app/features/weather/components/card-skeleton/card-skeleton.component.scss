@@ -27,3 +27,10 @@
     bottom: 1rem;
   }
 }
+
+@media (min-width: 991px) {
+  .card-content {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
