@@ -6,11 +6,19 @@ export type Position = {
 export const CATEGORY_NEWS = [
   { name: 'news.categories.business', value: 'business' },
   { name: 'news.categories.entertainment', value: 'entertainment' },
-  { name: 'news.categories.general', value: 'general' },
+  { name: 'news.categories.general', value: 'news' },
   { name: 'news.categories.health', value: 'health' },
   { name: 'news.categories.science', value: 'science' },
-  { name: 'news.categories.sports', value: 'sports' },
-  { name: 'news.categories.technology', value: 'technology' },
+  { name: 'news.categories.sports', value: 'sport' },
+  { name: 'news.categories.technology', value: 'tech' },
+  { name: 'news.categories.world', value: 'world' },
+  { name: 'news.categories.music', value: 'music' },
+  { name: 'news.categories.food', value: 'food' },
+  { name: 'news.categories.travel', value: 'travel' },
+  { name: 'news.categories.beauty', value: 'beauty' },
+  { name: 'news.categories.economics', value: 'economics' },
+  { name: 'news.categories.finance', value: 'finance' },
+  { name: 'news.categories.politics', value: 'politics' },
 ];
 
 export const ERROR_MESSAGES = {
@@ -111,21 +119,21 @@ export interface ArticlesResp {
 
 export interface News {
   title: string;
-  pub_date: string;
-  url: string;
+  published_date: string;
+  link: string;
   author: string;
-  image?: string;
+  media?: string;
 }
 
 export interface Article {
   source: Source;
   author: string;
   title: string;
-  description: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
-  content: string;
+  link: string;
+  media: string;
+  published_date: string;
+  summary: string;
+  clean_url: string;
 }
 
 interface Source {
