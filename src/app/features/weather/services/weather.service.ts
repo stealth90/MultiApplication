@@ -2,14 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Observable, of } from 'rxjs';
-import {
-  catchError,
-  delay,
-  map,
-  mergeMap,
-  retryWhen,
-  tap,
-} from 'rxjs/operators';
+import { catchError, delay, map, mergeMap, retryWhen } from 'rxjs/operators';
 import { PopupMessageService } from 'src/app/services/popup-message.service';
 import { PopupType } from 'src/assets/models';
 import { WeatherApp, Weather } from '../models/weather';
@@ -23,7 +16,7 @@ export class WeatherService {
   api: string = '448b2429a71b8c55510f42a62897d676';
   geoApi: string = 'c762178c3b604aa1b807eb867f8a1058';
   baseGeoUri: string = `https://api.opencagedata.com/geocode/v1/json?key=${this.geoApi}&languange=native&&q=`;
-  baseUri: string = 'http://api.openweathermap.org/data/2.5/';
+  baseUri: string = 'https://api.openweathermap.org/data/2.5/';
   hasGeoPermission: boolean = true;
   coordinates$: Observable<any>;
 
