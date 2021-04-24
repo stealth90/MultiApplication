@@ -1,4 +1,4 @@
-@import "../../../../../assets/colors/index.scss";
+@import "src/assets/colors/index.scss";
 .input-container {
   width: 80%;
   margin: 10% auto 5%;
@@ -6,6 +6,12 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
+}
+
+@media (max-width: 576px) {
+  .input-container {
+    margin-top: 20%;
+  }
 }
 
 h2 {
@@ -20,6 +26,8 @@ input::placeholder {
 .button-container {
   display: flex;
   margin-bottom: 5%;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {
