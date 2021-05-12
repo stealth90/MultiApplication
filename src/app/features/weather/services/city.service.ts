@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class CityService {
   allCityCollection: [] = [];
   allCityUri: string =
-    'https://parseapi.back4app.com/classes/Italycities_City?limit=10000&order=name';
+    'https://parseapi.back4app.com/classes/Italycities_City?limit=90000&order=name';
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
