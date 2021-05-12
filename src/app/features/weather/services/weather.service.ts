@@ -113,12 +113,12 @@ export class WeatherService {
           catchError((err) => of(err.ok))
         )
         .subscribe((weather) => {
-          console.log(weather);
           if (!weather) {
             this.popupService.showPopup({
               message: 'weather.errors.no-position',
               popupType: PopupType.WARNING,
             });
+            this.myCurrentWeather.pop();
           } else {
             this.popupService.closePopup();
             this.hasGeoPermission = true;
