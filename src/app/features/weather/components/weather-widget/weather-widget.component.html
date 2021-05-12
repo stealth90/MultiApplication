@@ -9,7 +9,16 @@
     class="card p-shadow-5"
   > -->
   <div
-    class="card p-d-flex p-flex-lg-column p-jc-between p-jc-lg-around p-ai-center p-ai-lg-start p-shadow-5"
+    class="
+      card
+      p-d-flex
+      p-flex-lg-column
+      p-jc-between
+      p-jc-lg-around
+      p-ai-center
+      p-ai-lg-start
+      p-shadow-5
+    "
   >
     <!-- <div
       [@buttonAnimator]="animationState"
@@ -30,32 +39,42 @@
       </p>
       <h2 #city>{{ weather.city }} {{ weather.flag }}</h2>
     </span>
-    <div class="card-content">
-      <div class="card-content-buttons">
-        <button
-          *ngIf="!isGeoCity"
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-trash"
-          (click)="deleteCity()"
-          class="p-button-rounded p-button-danger p-button-text deleteButton"
-        ></button>
-        <i *ngIf="isGeoCity" class="pi pi-map-marker marker"></i>
+    <div class="card-content-wrapper">
+      <div class="card-content p-mr-3">
+        <div class="card-content-buttons">
+          <button
+            *ngIf="!isGeoCity"
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            (click)="deleteCity()"
+            class="p-button-rounded p-button-danger p-button-text deleteButton"
+          ></button>
+          <i *ngIf="isGeoCity" class="pi pi-map-marker marker"></i>
+        </div>
+        <app-weather-icon [icon]="weather?.icon"></app-weather-icon>
+        <p class="temperature">{{ weather.temp.toFixed() }}°</p>
       </div>
-      <app-weather-icon [icon]="weather?.icon"></app-weather-icon>
-      <p class="temperature">{{ weather.temp.toFixed() }}°</p>
-    </div>
-    <div class="card-footer">
-      <div class="p-d-flex">
-        <img class="icon" draggable="false" src="assets/svg/dry.svg" />{{
-          weather.humidity ? weather.humidity.toFixed() : "-"
-        }}% <img class="icon" draggable="false" src="assets/svg/hot.svg" />{{
-          weather.temp_max ? weather.temp_max.toFixed() : "-"
-        }}° <img class="icon" draggable="false" src="assets/svg/cold.svg" />{{
-          weather.temp_min ? weather.temp_min.toFixed() : "-"
-        }}°
+      <!--     <div class="card-footer"> -->
+      <div class="p-d-flex p-jc-end p-mr-3">
+        <div class="card-extra">
+          <img class="icon" draggable="false" src="assets/svg/dry.svg" />{{
+            weather.humidity ? weather.humidity.toFixed() : "-"
+          }}%
+        </div>
+        <div class="card-extra">
+          <img class="icon" draggable="false" src="assets/svg/hot.svg" />{{
+            weather.temp_max ? weather.temp_max.toFixed() : "-"
+          }}°
+        </div>
+        <div class="card-extra">
+          <img class="icon" draggable="false" src="assets/svg/cold.svg" />{{
+            weather.temp_min ? weather.temp_min.toFixed() : "-"
+          }}°
+        </div>
       </div>
     </div>
+    <!--     </div> -->
   </div>
 </ng-template>

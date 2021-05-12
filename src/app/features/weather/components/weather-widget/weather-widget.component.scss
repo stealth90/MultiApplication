@@ -46,7 +46,6 @@
     max-width: 150px;
     margin-left: 1rem;
   }
-
   &-content {
     margin-right: 0.5rem;
     display: flex;
@@ -57,10 +56,7 @@
       right: 5px;
     }
   }
-  &-footer {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+  &-extra {
     .icon {
       width: 1.5rem;
     }
@@ -68,6 +64,9 @@
 }
 @media only screen and (min-width: 991px) {
   .card {
+    &-content-wrapper {
+      width: 100%;
+    }
     h2 {
       margin: 0;
       font-size: 2rem;
