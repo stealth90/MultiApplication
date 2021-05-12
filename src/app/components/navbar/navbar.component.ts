@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   faLinkedinIn = faLinkedinIn;
   subscriptions: Subscription[] = [];
   isVisibleSidebar: boolean;
-  /* innerWidth: number; */
   sidebarAnimation: boolean;
   sidebarSubscription$: Subscription;
   currentLanguage: string;
@@ -32,12 +31,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private uiService: UiService
   ) {}
-
-  /* @HostListener('window:resize', ['$event'])
-  onResize() {
-    console.log('hostlistener');
-    this.innerWidth = window.innerWidth;
-  } */
 
   @ViewChild('navbar', { read: ElementRef, static: true }) navbar: ElementRef;
 
@@ -82,14 +75,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
   handleCloseSidebar = (routeName?: string) => {
     this.sidebarSubscription$.unsubscribe();
     this.sidebarAnimation = !this.sidebarAnimation;
-    setTimeout(() => {
-      if (routeName) {
+    console.log('this.currentRout', this.currentRoute);
+    if (routeName) {
+      if (this.currentRoute === '') {
+        setTimeout(
+          () =>
+            this.router
+              .navigate([routeName])
+              .then(() => (this.isVisibleSidebar = false))
+              .catch(console.error),
+          1600
+        );
+      } else {
         this.router
           .navigate([routeName])
-          .then(() => (this.isVisibleSidebar = false))
+          .then(() => setTimeout(() => (this.isVisibleSidebar = false), 1600))
           .catch(console.error);
-      } else this.isVisibleSidebar = false;
-    }, 1600);
+      }
+    } else {
+      setTimeout(() => (this.isVisibleSidebar = false), 1600);
+    }
   };
 
   changeLanguage(lang: string) {

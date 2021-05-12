@@ -1,6 +1,6 @@
 <div
   class="circle"
-  [style.background-image]="'url(../../../assets/images/' + skill.icon"
+  [style.background-image]="'url(assets/images/' + skill.icon"
 >
   <div
     ui-knob
@@ -9,7 +9,9 @@
     class="circle-border"
     [options]="knobOptions"
   >
-    <div class="circles-text">{{ skill.percentage + "%" }}</div>
+    <div counter [digit]="skill.percentage" [id]="id" class="circles-text">
+      <span></span>
+    </div>
   </div>
 </div>
 <h5>{{ skill.name }}</h5>

@@ -9,11 +9,9 @@ import { Article, ArticleReq, ArticlesResp } from '../models';
   providedIn: 'root',
 })
 export class NewsService {
-  baseUri = 'https://api.nytimes.com/svc/archive/v1/';
-  api = 'ROLKmVA9wilvwsPzrAoTsuZFtlzZV0Dr';
-  newsApi = 'e6984dc1ebcc45af920f5195a0bbc864';
-  topNewsUri = `https://newsapi.org/v2/top-headlines?`;
-  allNewsUri = `https://newsapi.org/v2/everything?`;
+  topNewsUri = `https://newscatcher.p.rapidapi.com/v1/latest_headlines?`;
+  allNewsUri = `https://newscatcher.p.rapidapi.com/v1/search?`;
+  allNewsFreeUri = `https://newscatcher.p.rapidapi.com/v1/search_free?`;
   newsCollection: Article[] = [];
   headers: HttpHeaders;
   constructor(private http: HttpClient, private translate: TranslateService) {
@@ -22,21 +20,24 @@ export class NewsService {
     );
     this.newsCollection = newsCollectionSaved || [];
     this.headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
+      .set(
+        'x-rapidapi-key',
+        '0aaaf61640msh0a9c87855438186p15c6a1jsnff30d535d768'
+      )
+      .set('x-rapidapi-host', 'newscatcher.p.rapidapi.com');
   }
 
-  getNews(year: string, month: string): Observable<any> {
+  /* getNews(year: string, month: string): Observable<any> {
     return this.http
       .get<any>(`${this.baseUri}${year}/${month}.json?api-key=${this.api}`, {
         headers: this.headers,
       })
       .pipe(map((collection) => collection.response.docs));
-  }
+  } */
 
-  getItaNews(): Observable<any> {
+  /* getItaNews(): Observable<any> {
     return this.http.get<any>(this.topNewsUri);
-  }
+  } */
 
   getTopHeadlinesNews(
     category: string = null,
@@ -47,20 +48,24 @@ export class NewsService {
       : this.translate.currentLang === 'en'
       ? 'gb'
       : this.translate.currentLang;
-    const api = `${this.topNewsUri}country=${currentCountry}${
-      category ? `&category=${category}` : ''
-    }&apiKey=${this.newsApi}`;
+    const url = `${this.topNewsUri}country=${currentCountry}&media=True${
+      category ? `&topic=${category}` : ''
+    }`;
     return this.http
-      .get<any>(api, { headers: this.headers })
+      .get<any>(url, { headers: this.headers })
       .pipe(map((value) => value.articles));
   }
 
   getEverythingArticles({ q, from, to }: ArticleReq): Observable<ArticlesResp> {
     const currentLanguage = this.translate.currentLang;
-    const url = `${this.allNewsUri}q=${encodeURIComponent(q)}${
-      from ? `&from=${from}` : ''
-    }${to ? `&to=${to}` : ''}&language=${currentLanguage}
-    }`;
+    const withoutRangeDate = !from && !to;
+    const url = `${
+      withoutRangeDate ? this.allNewsFreeUri : this.allNewsUri
+    }q=${q}${from ? `&from=${from}` : ''}${
+      to ? `&to=${to}` : ''
+    }&lang=${currentLanguage}&media=True${
+      withoutRangeDate ? '' : '&from_rank = 30000'
+    }}`;
     return this.http.get<ArticlesResp>(url, { headers: this.headers });
   }
 }
