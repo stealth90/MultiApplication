@@ -21,23 +21,20 @@
             <div class="image-inner-area">
               <img
                 class="img-item"
-                [src]="
-                  news.urlToImage ||
-                  '../../../../../assets/images/placeholder-image.png'
-                "
+                [src]="news.media || 'assets/images/placeholder-image.png'"
               />
             </div>
           </div>
           <div class="info">
             <p class="title">{{ news.title }}</p>
             <br />
-            <p class="subtitle">{{ news.source.name }}</p>
+            <p class="subtitle">{{ news.author }}</p>
             <button
               pButton
               type="button"
               label="{{ 'news.read-news' | translate }}"
               class="read-button"
-              (click)="goToArticle(news.url)"
+              (click)="goToArticle(news.link)"
             ></button>
           </div>
         </div>
@@ -50,9 +47,9 @@
   <ng-template #loader>
     <div class="loader">
       <app-loader
-        customSpinner="true"
-        strokeWidth="4"
-        [loadingMessage]="'Caricamento in corso...'"
+        [customSpinner]="true"
+        [strokeWidth]="4"
+        [message]="'Caricamento in corso...'"
       ></app-loader>
     </div>
   </ng-template>
