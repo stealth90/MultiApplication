@@ -16,6 +16,8 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { CardSkeletonComponent } from './components/card-skeleton/card-skeleton.component';
+import { MobileCityPickerComponent } from './components/mobile-city-picker/mobile-city-picker.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { CardSkeletonComponent } from './components/card-skeleton/card-skeleton.
     ButtonModule,
     SkeletonModule,
     SharedModule,
+    ProgressSpinnerModule,
     TranslateModule.forChild({ extend: true }),
   ],
   declarations: [
@@ -38,6 +41,7 @@ import { CardSkeletonComponent } from './components/card-skeleton/card-skeleton.
     NoWeatherComponent,
     WeatherIconComponent,
     CardSkeletonComponent,
+    MobileCityPickerComponent,
   ],
 })
 export class WeatherModule {}

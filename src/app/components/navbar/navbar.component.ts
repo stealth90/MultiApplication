@@ -75,7 +75,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   handleCloseSidebar = (routeName?: string) => {
     this.sidebarSubscription$.unsubscribe();
     this.sidebarAnimation = !this.sidebarAnimation;
-    console.log('this.currentRout', this.currentRoute);
     if (routeName) {
       if (this.currentRoute === '') {
         setTimeout(

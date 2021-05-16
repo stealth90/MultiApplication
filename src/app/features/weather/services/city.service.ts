@@ -1,15 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, Observable } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
+import { capitalize } from '../../../utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CityService {
   allCityCollection: [] = [];
-  allCityUri: string =
-    'https://parseapi.back4app.com/classes/Italycities_City?limit=90000&order=name';
+  /* allCityUri: string =
+    'https://parseapi.back4app.com/classes/Italycities_City?limit=90000&order=name'; */
+  allItaCityUri: string = 'https://comuni-ita.herokuapp.com/api/comuni';
+  allItaTownUri: string = 'https://comuni-ita.herokuapp.com/api/province';
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
@@ -18,9 +21,45 @@ export class CityService {
       .set('X-Parse-REST-API-Key', 'IE7tFkoH6rPQ2EUaWnsaqvL7ggnzXgzRkVdt0Fl7');
   }
 
-  getAllCity(): Observable<any[]> {
+  /* getAllCity(): Observable<any[]> {
     return this.http
       .get<any>(this.allCityUri, { headers: this.headers })
       .pipe(map((citiesList) => citiesList.results));
+  } */
+
+  getAllItaCity(): Observable<any[]> {
+    return this.http
+      .get<any>(`${this.allItaCityUri}?onlyname=true`)
+      .pipe(
+        map((citiesList) =>
+          citiesList.sort().map((city: string) => ({ name: capitalize(city) }))
+        )
+      );
+  }
+
+  getAllTownCity(): Observable<any> {
+    return this.http.get<any[]>(`${this.allItaTownUri}?onlyname=true`).pipe(
+      mergeMap((mainItemArr) => {
+        return forkJoin(
+          mainItemArr.sort().map((city) => {
+            return this.http
+              .get<any[]>(
+                `${this.allItaCityUri}/provincia/${city}?onlyname=true`
+              )
+              .pipe(
+                map((someInfo) => {
+                  return {
+                    value: capitalize(city),
+                    id: city,
+                    childs: someInfo.map((info) => {
+                      return { id: info, value: capitalize(info) };
+                    }),
+                  };
+                })
+              );
+          })
+        );
+      })
+    );
   }
 }

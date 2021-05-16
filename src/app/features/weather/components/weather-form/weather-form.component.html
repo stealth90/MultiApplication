@@ -1,33 +1,41 @@
 <div class="input-container">
   <h2>{{ "weather.title" | translate }}</h2>
-  <span class="button-container">
-    <span class="p-float-label">
-      <p-dropdown
-        [autoDisplayFirst]="false"
-        [showClear]="true"
-        placeholder=""
-        [options]="citiesList$ | async"
-        [(ngModel)]="myName"
-        filter="true"
-        filterValue="name"
-        optionLabel="name"
-        optionValue="name"
-        [virtualScroll]="true"
-        [panelStyle]="{ width: 'max-content' }"
-        itemSize="30"
-      ></p-dropdown>
-      <label class="dropdown-label" for="dropdown">{{
-        "weather.title" | translate
-      }}</label>
+  <ng-container *ngIf="isMobileDevice; else desktopPicker">
+    <mobile-city-picker (addCity)="onSelectCity($event)"></mobile-city-picker>
+  </ng-container>
+  <ng-template #desktopPicker>
+    <span class="button-container">
+      <span class="p-float-label">
+        <p-dropdown
+          [autoDisplayFirst]="false"
+          [showClear]="true"
+          placeholder=""
+          [options]="citiesList$ | async"
+          [(ngModel)]="myName"
+          filter="true"
+          filterValue="name"
+          optionLabel="name"
+          optionValue="name"
+          resetFilterOnHide
+          autofocusFilter
+          filterMatchMode="startsWith"
+          [virtualScroll]="true"
+          [panelStyle]="{ width: 'max-content' }"
+          itemSize="30"
+        ></p-dropdown>
+        <label class="dropdown-label" for="dropdown">{{
+          "weather.title" | translate
+        }}</label>
+      </span>
+      <p-button
+        [disabled]="!myName"
+        icon="pi pi-plus"
+        iconPos="left"
+        (click)="onAddCity()"
+        type="button"
+        label="{{ 'common.add' | translate }}"
+        class="button"
+      ></p-button>
     </span>
-    <p-button
-      [disabled]="!myName"
-      icon="pi pi-plus"
-      iconPos="left"
-      (click)="onAddCity()"
-      type="button"
-      label="{{ 'common.add' | translate }}"
-      class="button"
-    ></p-button>
-  </span>
+  </ng-template>
 </div>
