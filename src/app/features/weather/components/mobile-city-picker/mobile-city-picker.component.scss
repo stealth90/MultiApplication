@@ -1,0 +1,15 @@
+@import "src/assets/colors/index.scss";
+
+.picker-button {
+  padding: 10px;
+  background-color: $secondary;
+  color: #fff;
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.picker-icon {
+  font-size: 1rem;
+}
