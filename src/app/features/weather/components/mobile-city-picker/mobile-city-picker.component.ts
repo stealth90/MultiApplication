@@ -16,7 +16,16 @@ import { CityService } from '../../services/city.service';
 })
 export class MobileCityPickerComponent implements OnInit {
   mobileSelect: any;
-  allCities: any[] = [{ value: 'Caricamento...', childs: [{ value: '' }] }];
+  allCities: any[] = [
+    {
+      value: `<i class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>`,
+      childs: [
+        {
+          value: `<i class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>`,
+        },
+      ],
+    },
+  ];
   bodyNode: HTMLBodyElement;
   loadingCities: boolean = false;
   @Output() addCity = new EventEmitter<string>();
@@ -53,14 +62,14 @@ export class MobileCityPickerComponent implements OnInit {
 
   fetchData() {
     if (this.allCities.length === 1) {
-      this.mobileSelect.setTitle(
+      /* this.mobileSelect.setTitle(
         `<i class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>`
-      );
+      ); */
       this.cityService
         .getAllTownCity()
         .toPromise()
         .then((res) => {
-          this.mobileSelect.setTitle('');
+          /* this.mobileSelect.setTitle(''); */
           this.allCities = res;
           this.mobileSelect.updateWheels(this.allCities);
         })
