@@ -1,10 +1,7 @@
 <div class="weather-app">
   <app-weather-form (addCity)="addCity($event)"></app-weather-form>
-  <div
-    class="p-grid p-pb-2 widgets-container"
-    *ngIf="myCurrentWeather.length; else noWeather"
-  >
-    <div class="p-col-12 p-sm-10 p-md-6 p-lg-3">
+  <div class="p-grid p-pb-2 widgets-container">
+    <div *ngIf="myCurrentWeather.length" class="p-col-12 p-sm-10 p-md-6 p-lg-3">
       <app-weather-widget
         [isGeoCity]="true"
         [time]="currentTime"
@@ -25,8 +22,8 @@
     </div>
   </div>
 
-  <ng-template #noWeather>
+  <ng-container *ngIf="!myCurrentWeather.length && !myWeatherCollection.length">
     <app-loader [message]="'loader.weather'"></app-loader>>
     <!-- <app-no-weather></app-no-weather> -->
-  </ng-template>
+  </ng-container>
 </div>

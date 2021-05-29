@@ -12,3 +12,8 @@ export const detectDeviceType = (): 'Mobile' | 'Desktop' =>
   )
     ? 'Mobile'
     : 'Desktop';
+
+export const insertAt = <T>(arr: T[], i: number, value: T) => {
+  arr.splice(i, 0, value);
+  return arr;
+};

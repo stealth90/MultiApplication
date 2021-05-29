@@ -6,6 +6,7 @@ import { catchError, delay, map, mergeMap, retryWhen } from 'rxjs/operators';
 import { PopupMessageService } from 'src/app/services/popup-message.service';
 import { PopupType } from 'src/assets/models';
 import { WeatherApp, Weather } from '../models/weather';
+import { insertAt } from '../../../utils';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +41,7 @@ export class WeatherService {
         },
         (error) => {
           if (this.hasGeoPermission) {
+            this.myCurrentWeather.pop();
             this.popupService.showPopup(
               {
                 message: 'weather.errors.no-permission',
@@ -122,10 +124,14 @@ export class WeatherService {
           } else {
             this.popupService.closePopup();
             this.hasGeoPermission = true;
-            const weatherKeys = Object.keys(weather);
-            weatherKeys.forEach((key) => {
-              this.myCurrentWeather[0][key] = weather[key];
-            });
+            if (!this.myCurrentWeather.length) {
+              this.myCurrentWeather.push(weather);
+            } else {
+              const weatherKeys = Object.keys(weather);
+              weatherKeys.forEach((key) => {
+                this.myCurrentWeather[0][key] = weather[key];
+              });
+            }
           }
         }),
         (err: GeolocationPositionError) => {
@@ -135,7 +141,13 @@ export class WeatherService {
   }
 
   addCity = (city: string) => {
-    if (this.weatherCollection.find((weather) => weather.city === city)) return;
+    if (this.weatherCollection.find((weather) => weather.city === city)) {
+      this.popupService.showPopup({
+        message: 'common.item-exist',
+        popupType: PopupType.WARNING,
+      });
+      return;
+    }
     let newCity: WeatherApp = {
       prefetch: true,
       id: 0,
@@ -149,7 +161,7 @@ export class WeatherService {
       humidity: 0,
       timestamp: moment().toISOString(),
     };
-    const lastElement = this.weatherCollection.push(newCity) - 1;
+    this.weatherCollection = insertAt(this.weatherCollection, 0, newCity);
     this.http
       .get<any>(`${this.baseGeoUri}${city}`)
       .pipe(
@@ -193,7 +205,7 @@ export class WeatherService {
             message: 'weather.errors.no-city',
             popupType: PopupType.ERROR,
           });
-          this.weatherCollection.pop();
+          this.weatherCollection = this.weatherCollection.splice(0);
         } else {
           this.popupService.showPopup({
             message: 'common.item-added',
@@ -201,7 +213,7 @@ export class WeatherService {
           });
           const weatherKeys = Object.keys(value);
           weatherKeys.forEach((key) => {
-            this.weatherCollection[lastElement][key] = value[key];
+            this.weatherCollection[0][key] = value[key];
           });
           localStorage.setItem(
             'weatherCities',
