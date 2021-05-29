@@ -208,6 +208,7 @@
       "error": "Error"
     },
     "item-deleted": "The item has been successfully deleted",
-    "item-added": "The item was successfully added"
+    "item-added": "The item was successfully added",
+    "item-exist": "The desired item is already present"
   }
 }
