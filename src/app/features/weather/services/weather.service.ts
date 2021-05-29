@@ -41,7 +41,9 @@ export class WeatherService {
         },
         (error) => {
           if (this.hasGeoPermission) {
-            this.myCurrentWeather.pop();
+            if (this.myCurrentWeather.length) {
+              this.myCurrentWeather.pop();
+            }
             this.popupService.showPopup(
               {
                 message: 'weather.errors.no-permission',
