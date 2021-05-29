@@ -208,6 +208,7 @@
       "error": "Errore"
     },
     "item-deleted": "L'elemento è stato eliminato con successo",
-    "item-added": "L'elemento è stato aggiunto con successo"
+    "item-added": "L'elemento è stato aggiunto con successo",
+    "item-exist": "L'elemento desiderato è già presente"
   }
 }
