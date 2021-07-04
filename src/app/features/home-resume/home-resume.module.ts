@@ -15,6 +15,8 @@ import { KnobDirective } from './directives/knob.directive';
 import { CounterDirective } from './directives/counter.directive';
 import { ButtonModule } from 'primeng/button';
 import { HeaderSectionComponent } from './components/header-section/header-section.component';
+import { AngularTiltModule } from 'angular-tilt';
+import { NgParticlesModule } from 'ng-particles';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { HeaderSectionComponent } from './components/header-section/header-secti
   imports: [
     CommonModule,
     HomeResumeRoutingModule,
+    AngularTiltModule,
+    NgParticlesModule,
     AngularFullpageModule,
     FontAwesomeModule,
     ProgressBarModule,

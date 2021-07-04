@@ -2,16 +2,27 @@
 <app-progress-bar [currentIndex]="currentIndex"></app-progress-bar>
 
 <div fullpage id="fullpage" [options]="config" (ref)="getRef($event)">
-  <div class="section">
+  <div class="section" aTilt [tiltSettings]="tiltSettings">
+    <ng-particles
+      [id]="id"
+      [options]="particlesOptions"
+      (particlesLoaded)="particlesLoaded($event)"
+      (particlesInit)="particlesInit($event)"
+    ></ng-particles>
     <div class="container home p-as-center p-text-center">
-      <div class="avatar p-mb-6">
-        <div class="avatar-bord avatar-shape-rounded bg-white"></div>
-        <img
-          src="assets/images/pierantonio_petralia.jpg"
-          alt=""
-          class="avatar-image shadow-light"
-        />
-      </div>
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/in/pierantonio-petralia/"
+      >
+        <div class="avatar p-mb-6">
+          <div class="avatar-bord avatar-shape-rounded bg-white"></div>
+          <img
+            src="assets/images/pierantonio_petralia.jpg"
+            alt=""
+            class="avatar-image shadow-light"
+          />
+        </div>
+      </a>
       <h1 class="p-mb-2 p-mb-lg-3">Pierantonio Petralia</h1>
       <p class="lead p-mb-0">Front end Developer</p>
       <span class="cover-letter" data-tilt>P</span>
@@ -59,11 +70,11 @@
             <div class="p-lg-6 p-md-12 p-lg-offset-6 p-md-offset-0">
               <div class="education-info">
                 <div class="education-year">
-                  <h4>2004</h4>
+                  <h4>2020</h4>
                 </div>
                 <div class="education-detail">
-                  <h4>Diploma In UI/UX Design</h4>
-                  <span>New York</span>
+                  <h4>Post diploma Development and Data Analysis</h4>
+                  <span>Catania</span>
                   <p>
                     Sed ut perspiciatis unde omnis iste natus error sit
                     voluptatem accusantium doloremque laudantium, totam rem
@@ -75,43 +86,11 @@
             <div class="p-lg-6 p-md-12">
               <div class="education-info p-text-right">
                 <div class="education-year">
-                  <h4>2006</h4>
+                  <h4>2009</h4>
                 </div>
                 <div class="education-detail">
-                  <h4>Diploma In Web Design</h4>
-                  <span>New York</span>
-                  <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="p-lg-6 p-md-12 p-lg-offset-6 p-md-offset-0">
-              <div class="education-info">
-                <div class="education-year">
-                  <h4>2008</h4>
-                </div>
-                <div class="education-detail">
-                  <h4>Diploma In UI/UX Design</h4>
-                  <span>New York</span>
-                  <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="p-lg-6 p-md-12">
-              <div class="education-info p-text-right">
-                <div class="education-year">
-                  <h4>2010</h4>
-                </div>
-                <div class="education-detail">
-                  <h4>Diploma In Web Design</h4>
-                  <span>New York</span>
+                  <h4>Diploma in Elettronica e Telecomunicazioni</h4>
+                  <span>Catania</span>
                   <p>
                     Sed ut perspiciatis unde omnis iste natus error sit
                     voluptatem accusantium doloremque laudantium, totam rem
@@ -154,9 +133,9 @@
                 "
               >
                 <div class="experience_title order-last">
-                  <h3 class="title">Graphic Designer</h3>
-                  <p>PageBulb</p>
-                  <span class="date">March 2019- August 2024</span>
+                  <h3 class="title">Front End Developer</h3>
+                  <p>TECMA Solutions S.p.A.</p>
+                  <span class="date">April 2021 - Current</span>
                 </div>
                 <div class="experience_number">
                   <span>01</span>
@@ -195,9 +174,9 @@
                 "
               >
                 <div class="experience_title text-lg-right">
-                  <h3 class="title">UI/UX Designer</h3>
-                  <p>UIdeck</p>
-                  <span class="date">March 2019- August 2019</span>
+                  <h3 class="title">Front End Developer</h3>
+                  <p>Alten Italia</p>
+                  <span class="date">Febrary 2021 - April 2021</span>
                 </div>
                 <div class="experience_number">
                   <span>02</span>
@@ -236,9 +215,9 @@
                 "
               >
                 <div class="experience_title order-last">
-                  <h3 class="title">Web Developer</h3>
-                  <p>GrayGrids</p>
-                  <span class="date">June 2018- August 2019</span>
+                  <h3 class="title">Front End Developer</h3>
+                  <p>Paradigma</p>
+                  <span class="date">Febrary 2020 - Febrary 2021</span>
                 </div>
                 <div class="experience_number">
                   <span>03</span>

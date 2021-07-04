@@ -251,6 +251,12 @@ a:hover {
   }
 }
 
+/* :host ::ng-deep#tsparticles {
+  position: fixed;
+  top: 0;
+  height: 100%;
+} */
+
 section {
   &::before,
   &::after {
@@ -356,10 +362,17 @@ section {
 }
 
 .avatar {
+  transform: scale(1);
+  transition: transform 300ms;
   width: 6.25rem;
   height: 6.25rem;
   font-size: 2.0833333333rem;
   display: inline-block;
+  cursor: pointer;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
 }
 
 .cover-letter {

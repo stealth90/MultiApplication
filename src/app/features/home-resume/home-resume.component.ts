@@ -22,6 +22,105 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
     { name: 'Redux', percentage: 70, icon: 'redux.png' },
     { name: 'RxJs', percentage: 75, icon: 'rxjs.svg' },
   ];
+  id = 'tsparticles';
+
+  particlesOptions = {
+    autoplay: true,
+    background: {
+      color: {
+        value: '#4d05e8',
+      },
+      position: '50% 50%',
+      repeat: 'no-repeat',
+      size: 'cover',
+      opacity: 0,
+    },
+    fullScreen: {
+      enable: true,
+      zIndex: 1,
+    },
+    fpsLimit: 60,
+    interactivity: {
+      detectsOn: 'canvas',
+      events: {
+        onHover: {
+          enable: true,
+          mode: 'repulse',
+        },
+        resize: true,
+      },
+      modes: {
+        repulse: {
+          distance: 200,
+          duration: 0.4,
+        },
+      },
+    },
+    particles: {
+      color: {
+        value: '#fff',
+      },
+      links: {
+        color: '#f14336',
+        distance: 150,
+        enable: true,
+        opacity: 0.5,
+        width: 1,
+      },
+      collisions: {
+        enable: true,
+      },
+      move: {
+        direction: 'none',
+        enable: true,
+        outMode: 'bounce',
+        random: false,
+        speed: 3,
+        straight: true,
+      },
+      number: {
+        density: {
+          enable: true,
+          value_area: 800,
+        },
+        value: 80,
+      },
+      opacity: {
+        value: 0.5,
+      },
+      shape: {
+        type: 'circle',
+      },
+      size: {
+        random: true,
+        value: 5,
+      },
+    },
+    detectRetina: true,
+  };
+
+  particlesLoaded(container): void {
+    console.log(container);
+  }
+
+  particlesInit(main): void {
+    console.log(main);
+
+    // Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
+  }
+  tiltSettings = {
+    reverse: true,
+    maxTilt: 20,
+    perspective: 1000,
+    easing: 'cubic-bezier(.03,.98,.52,.99)',
+    scale: 1.2,
+    speed: 300,
+    transition: true,
+    disableAxis: null,
+    reset: true,
+    glare: false,
+    maxGlare: 0.5,
+  };
 
   constructor() {
     this.config = {
