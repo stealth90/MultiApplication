@@ -3,12 +3,6 @@
 
 <div fullpage id="fullpage" [options]="config" (ref)="getRef($event)">
   <div class="section" aTilt [tiltSettings]="tiltSettings">
-    <ng-particles
-      [id]="id"
-      [options]="particlesOptions"
-      (particlesLoaded)="particlesLoaded($event)"
-      (particlesInit)="particlesInit($event)"
-    ></ng-particles>
     <div class="container home p-as-center p-text-center">
       <a
         target="_blank"
