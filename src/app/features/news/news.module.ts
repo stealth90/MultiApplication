@@ -9,6 +9,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NewsDirective } from './directive/news.directive';
 import { DateBadgeComponent } from './components/date-badge/date-badge.component';
 import { NewsSliderComponent } from './components/news-slider/news-slider.component';
+import { NewsItemComponent } from './components/news-item/news-item.component';
 import { NewsResumeFilterComponent } from './components/news-resume-filter/news-resume-filter.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +31,7 @@ import { SourceBadgeComponent } from './components/source-badge/source-badge.com
     NewsResumeFilterComponent,
     NewsTableComponent,
     NewsSearchComponent,
+    NewsItemComponent,
     NewsContainerComponent,
     SourceBadgeComponent,
   ],

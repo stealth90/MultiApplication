@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { Article, Customer } from '../../models';
 @Component({
   selector: 'app-news-table',
@@ -12,8 +13,11 @@ export class NewsTableComponent implements OnInit {
   @Input() noResult: boolean;
   customers2: Article[];
   columns: any[];
+  isMobileDevice: boolean;
 
-  constructor() {}
+  constructor(private deviceService: DeviceDetectorService) {
+    this.isMobileDevice = this.deviceService.isMobile();
+  }
 
   ngOnInit(): void {
     this.columns = [
@@ -24,5 +28,6 @@ export class NewsTableComponent implements OnInit {
       { field: 'urlToImage', header: 'Image' },
       { field: 'description', header: 'Description' },
     ];
+    console.log('data', this.data);
   }
 }

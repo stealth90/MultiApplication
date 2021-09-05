@@ -5,92 +5,109 @@
   <div class="news-title" *ngIf="data.length && !loading">
     <h1>{{ "news.news-founded" | translate }} ({{ data.length || 0 }})</h1>
   </div>
+
   <div class="articles-slider" *ngIf="data.length && !loading">
-    <ngx-flicking
-      [options]="{
-        circular: false,
-        gap: 20,
-        duration: 800,
-        moveType: 'snap',
-        count: 2,
-        isEqualSize: true,
-        isConstantSize: true,
-        autoResize: true,
-        bounce: '20%',
-        height: 500
-      }"
-      class="flicking"
-    >
-      <ng-template>
-        <div
-          class="p-flex-column panel p-shadow-5 article-card"
-          *ngFor="let article of data"
-        >
+    <ng-container *ngIf="isMobileDevice; else isNotMobile">
+      <div
+        class="p-flex-column p-mb-4 p-mx-1 p-shadow-5"
+        *ngFor="let article of data"
+      >
+        <app-news-item [data]="article"></app-news-item>
+      </div>
+    </ng-container>
+    <ng-template #isNotMobile>
+      <ngx-flicking
+        [options]="{
+          circular: false,
+          gap: 20,
+          duration: 800,
+          moveType: 'snap',
+          count: 2,
+          isEqualSize: true,
+          isConstantSize: true,
+          autoResize: true,
+          bounce: '20%',
+          height: 500
+        }"
+        class="flicking"
+      >
+        <ng-template>
           <div
-            *ngIf="!article.media && !article.urlToImage; else articleImg"
-            [style.background]="'url(assets/images/placeholder-image.png)'"
-            [style.background-position]="'center'"
-            [style.background-size]="'cover'"
-            class="article-img p-d-relative"
+            class="p-flex-column panel p-shadow-5 article-card"
+            *ngFor="let article of data"
           >
-            <app-date-badge [date]="article.published_date"></app-date-badge>
-            <div class="source-badge">
-              <app-source-badge [source]="article.clean_url"></app-source-badge>
-            </div>
-          </div>
-          <ng-template #articleImg>
             <div
-              class="article-img"
-              [style.background]="'url(' + article.media + ')'"
+              *ngIf="!article.media && !article.urlToImage; else articleImg"
+              [style.background]="'url(assets/images/placeholder-image.png)'"
               [style.background-position]="'center'"
               [style.background-size]="'cover'"
+              class="article-img p-d-relative"
             >
               <app-date-badge [date]="article.published_date"></app-date-badge>
               <div class="source-badge">
-                <app-source-badge [source]="article.author"></app-source-badge>
+                <app-source-badge
+                  [source]="article.clean_url"
+                ></app-source-badge>
               </div>
             </div>
-          </ng-template>
-          <div class="news-description">
-            <div>
-              <p>{{ article.summary }}</p>
+            <ng-template #articleImg>
+              <div
+                class="article-img"
+                [style.background]="'url(' + article.media + ')'"
+                [style.background-position]="'center'"
+                [style.background-size]="'cover'"
+              >
+                <app-date-badge
+                  [date]="article.published_date"
+                ></app-date-badge>
+                <div class="source-badge">
+                  <app-source-badge
+                    [source]="article.author"
+                  ></app-source-badge>
+                </div>
+              </div>
+            </ng-template>
+            <div class="news-description">
+              <div>
+                <p>{{ article.summary }}</p>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3 class="article-title p-mx-1">
+                {{ article.title | truncate: [65] }}
+              </h3>
+              <div class="news-footer">
+                <span class="p-d-flex p-jc-left">
+                  <i class="pi pi-clock p-as-center p-m-2"></i>
+                  <p>
+                    {{
+                      article.published_date
+                        | date: "MMM. d, y":"UTC":currentLang
+                        | uppercase
+                    }}
+                  </p>
+                </span>
+                <span class="author-container">
+                  <i class="pi pi-user-edit p-as-center p-ml-2"></i>
+                  <p class="p-m-2">
+                    {{
+                      article.author
+                        ? article.author
+                        : ("news.unknow" | translate)
+                    }}
+                  </p>
+                </span>
+              </div>
+            </div>
+            <div class="news-button">
+              <a target="_blank" href="{{ article.link }}">{{
+                "news.read-news" | translate | uppercase
+              }}</a>
             </div>
           </div>
-          <div class="news-content">
-            <h3 class="article-title p-mx-1">
-              {{ article.title | truncate: [65] }}
-            </h3>
-            <div class="news-footer">
-              <span class="p-d-flex p-jc-left">
-                <i class="pi pi-clock p-as-center p-m-2"></i>
-                <p>
-                  {{
-                    article.published_date
-                      | date: "MMM. d, y":"UTC":currentLang
-                      | uppercase
-                  }}
-                </p>
-              </span>
-              <span class="author-container">
-                <i class="pi pi-user-edit p-as-center p-ml-2"></i>
-                <p class="p-m-2">
-                  {{
-                    article.author
-                      ? article.author
-                      : ("news.unknow" | translate)
-                  }}
-                </p>
-              </span>
-            </div>
-          </div>
-          <div class="news-button">
-            <a target="_blank" href="{{ article.link }}">{{
-              "news.read-news" | translate | uppercase
-            }}</a>
-          </div>
-        </div>
-      </ng-template>
-    </ngx-flicking>
+        </ng-template>
+      </ngx-flicking>
+    </ng-template>
   </div>
   <div class="no-news-container" *ngIf="noResult">
     <div class="alert-container">

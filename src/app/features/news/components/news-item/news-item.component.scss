@@ -1,0 +1,22 @@
+.news-container {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.news-content {
+  text-align: left;
+  margin: 5px;
+  font-weight: bold;
+  .news-author {
+    color: red;
+    span {
+      color: gray;
+      font-weight: 300;
+    }
+  }
+}
+
+.news-image {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

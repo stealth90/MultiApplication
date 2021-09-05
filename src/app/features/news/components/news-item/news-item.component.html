@@ -1,0 +1,27 @@
+<div class="news-container p-grid">
+  <div class="news-content p-col-9">
+    <div class="news-title">
+      {{ data.title | truncate: [55] }}
+    </div>
+    <div class="news-author">
+      {{ data.author || "N.A." }}
+      <span> - {{ data.published_date | date }}</span>
+    </div>
+  </div>
+  <ng-container *ngIf="!data.media; else articleImg">
+    <div
+      [style.background]="'url(assets/images/placeholder-image.png)'"
+      [style.background-position]="'center'"
+      [style.background-size]="'cover'"
+      class="news-image p-col"
+    ></div>
+  </ng-container>
+  <ng-template #articleImg>
+    <div
+      class="news-image p-col"
+      [style.background]="'url(' + data.media + ')'"
+      [style.background-position]="'center'"
+      [style.background-size]="'cover'"
+    ></div>
+  </ng-template>
+</div>
