@@ -10,16 +10,18 @@
   </div>
   <ng-container *ngIf="!data.media; else articleImg">
     <div
-      [style.background]="'url(assets/images/placeholder-image.png)'"
+      [style.background]="
+        'rgba(0,0,0,0.2) url(assets/images/placeholder-image.png)'
+      "
       [style.background-position]="'center'"
       [style.background-size]="'cover'"
-      class="news-image p-col"
+      class="news-image no-image p-col"
     ></div>
   </ng-container>
   <ng-template #articleImg>
     <div
       class="news-image p-col"
-      [style.background]="'url(' + data.media + ')'"
+      [style.background]="'rgba(0,0,0,0.2) url(' + data.media + ')'"
       [style.background-position]="'center'"
       [style.background-size]="'cover'"
     ></div>
