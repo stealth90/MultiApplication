@@ -1,0 +1,35 @@
+@import "src/assets/colors/index.scss";
+
+.app-button-installer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 5%;
+  right: 50%;
+  left: 50%;
+  width: 300px;
+  max-width: 80%;
+  padding: 20px 10px;
+  color: #fff;
+  background-color: $secondary-alpha;
+  border-radius: 0.5rem;
+  z-index: 999999999999;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.install-button {
+  background-color: white;
+  margin-top: 10px;
+  padding: 2px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: black;
+}
+
+.close-icon {
+  position: absolute;
+  top: 5%;
+  right: 5px;
+  cursor: pointer;
+}

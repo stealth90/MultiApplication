@@ -17,6 +17,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PopupDialogComponent } from './components/popup-dialog/popup-dialog.component';
+import { ButtonInstallComponent } from './components/button-install/button-install.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { PopupDialogComponent } from './components/popup-dialog/popup-dialog.com
     NavbarComponent,
     FooterComponent,
     PopupDialogComponent,
+    ButtonInstallComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,12 +46,18 @@ import { PopupDialogComponent } from './components/popup-dialog/popup-dialog.com
         deps: [HttpClient],
       },
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerImmediately',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
 
-export function HttpLoaderFactory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }

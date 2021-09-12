@@ -1,0 +1,19 @@
+<ng-container *ngIf="showButton$ | async as button">
+  <div
+    [@openInstallButton]="'visible'"
+    *ngIf="button"
+    class="app-button-installer"
+  >
+    <div>
+      <h4 class="p-mx-2 p-my-0">
+        {{ "common.install-if-like" | translate }}
+      </h4>
+    </div>
+    <div class="install-button" (click)="handleInstallClick()">
+      {{ "common.install" | translate }}
+    </div>
+    <div class="close-icon" (click)="closeInstallPopup()">
+      <i class="pi pi-times-circle"></i>
+    </div>
+  </div>
+</ng-container>
