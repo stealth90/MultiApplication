@@ -20,7 +20,9 @@ export class WeatherFormComponent implements OnInit {
     this.citiesList$ = this.cityService.getAllItaCity();
     if (detectDeviceType() === 'Mobile') {
       this.isMobileDevice = true;
-    } else this.isMobileDevice = false;
+    } else {
+      this.isMobileDevice = false;
+    }
   }
 
   onAddCity(): void {

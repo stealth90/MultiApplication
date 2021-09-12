@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { options } from './models/fullpage';
+import { Options } from './models/fullpage';
 import * as AOS from 'aos';
 import { Skill } from './models/skill';
 @Component({
@@ -8,10 +8,10 @@ import { Skill } from './models/skill';
   styleUrls: ['./home-resume.component.scss'],
 })
 export class HomeResumeComponent implements OnInit, OnDestroy {
-  title: string = 'IOCA';
-  config: options;
+  title = 'IOCA';
+  config: Options;
   currentIndex = 0;
-  fullpage_api;
+  fullpageApi: any;
   mySkills: Skill[] = [
     { name: 'JavaScript', percentage: 90, icon: 'javascript.png' },
     { name: 'TypeScript', percentage: 75, icon: 'typescript.png' },
@@ -67,14 +67,14 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
     };
   }
 
-  getRef(fullPageRef) {
-    this.fullpage_api = fullPageRef;
+  getRef(fullPageRef: any): void {
+    this.fullpageApi = fullPageRef;
   }
 
   ngOnInit(): void {
     AOS.init();
   }
   ngOnDestroy(): void {
-    this.fullpage_api.destroy();
+    this.fullpageApi.destroy();
   }
 }

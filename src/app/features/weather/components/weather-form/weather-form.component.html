@@ -1,7 +1,7 @@
 <div class="input-container">
   <h2>{{ "weather.title" | translate }}</h2>
   <ng-container *ngIf="isMobileDevice; else desktopPicker">
-    <mobile-city-picker (addCity)="onSelectCity($event)"></mobile-city-picker>
+    <app-mobile-city-picker (addCity)="onSelectCity($event)"></app-mobile-city-picker>
   </ng-container>
   <ng-template #desktopPicker>
     <span class="button-container">
