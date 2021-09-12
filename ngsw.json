@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1631468882672,
+  "timestamp": 1631469186860,
   "index": "https://stealth90.github.io/MultiApplication/index.html",
   "assetGroups": [
     {
@@ -227,7 +227,7 @@
     "https://stealth90.github.io/MultiApplication/hue.f8505bd4d6f3e3aa435b.png": "f81ae627637a684614aa726e206c73ce099a01fd",
     "https://stealth90.github.io/MultiApplication/index.html": "55512b8401c55b2c576f84a3f48b2eeadc15417b",
     "https://stealth90.github.io/MultiApplication/main.af5a347319c347f71742.js": "0342fcec1a98e3b31f8f5b000014093ae6d46057",
-    "https://stealth90.github.io/MultiApplication/manifest.webmanifest": "0d6f8500d244b5957fbfb057a23b9f7968bbf280",
+    "https://stealth90.github.io/MultiApplication/manifest.webmanifest": "d7786953eb350162d15932d3e8a1e8243bb4f7cc",
     "https://stealth90.github.io/MultiApplication/password-meter.eea288d50533d7995ec1.png": "e0e101bd2a1cbda41398b48a4ab1792d89cb7334",
     "https://stealth90.github.io/MultiApplication/polyfills.beb9316f574e5d5be3b4.js": "cc748f3834a2b4296d015064d56029727c96e691",
     "https://stealth90.github.io/MultiApplication/primeicons.3a0d4a58da62cf7c55bb.ttf": "13889b5e1915891dd548d6b71c1cccddb469e13d",
