@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1631469724135,
+  "timestamp": 1631470063690,
   "index": "https://stealth90.github.io/MultiApplication/index.html",
   "assetGroups": [
     {
@@ -155,7 +155,7 @@
     "https://stealth90.github.io/MultiApplication/assets/fonts/RubikRegular.woff": "9ebf921609b1296da406d54cf051da05356a3b3e",
     "https://stealth90.github.io/MultiApplication/assets/fonts/RubikRegular.woff2": "14ae790c1ff1cdb2e6d79d71387a0ef86b5fc8da",
     "https://stealth90.github.io/MultiApplication/assets/i18n/en.json": "f76f3f58e07a3d7042d6b92a39eca4db7cb76222",
-    "https://stealth90.github.io/MultiApplication/assets/i18n/it.json": "ac692340c11dda93d43de3ee90bc0cba343b90e2",
+    "https://stealth90.github.io/MultiApplication/assets/i18n/it.json": "a9c7b6cf9c894a594a93e883d0f516bea1fa158d",
     "https://stealth90.github.io/MultiApplication/assets/icons/icon-120x120.png": "4152407ea0d5251bb65fc83fd73f95e2332de0ed",
     "https://stealth90.github.io/MultiApplication/assets/icons/icon-144x144.png": "150bbf8f4d13bc8eb987c5c03ecffb6ddc17174f",
     "https://stealth90.github.io/MultiApplication/assets/icons/icon-152x152.png": "50dafeba0e4501b528cdcaa984335adf21663b3c",
