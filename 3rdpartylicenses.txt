@@ -66,6 +66,9 @@ MIT
 @angular/router
 MIT
 
+@angular/service-worker
+MIT
+
 @egjs/agent
 MIT
 Copyright (c) 2015 NAVER Corp.
