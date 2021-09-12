@@ -199,8 +199,11 @@
   },
   "common": {
     "add": "Add",
+    "app-installed": "App installed successfully.",
     "date-from": "from",
     "date-to": "to",
+    "install": "Install",
+    "install-if-like": "Install this app if you like it.",
     "popup": {
       "warning": "Warning",
       "info": "Info",
