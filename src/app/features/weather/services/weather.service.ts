@@ -14,11 +14,11 @@ import { insertAt } from '../../../utils';
 export class WeatherService {
   weatherCollection: WeatherApp[];
   myCurrentWeather: WeatherApp[] = [];
-  api: string = '448b2429a71b8c55510f42a62897d676';
-  geoApi: string = 'c762178c3b604aa1b807eb867f8a1058';
-  baseGeoUri: string = `https://api.opencagedata.com/geocode/v1/json?key=${this.geoApi}&languange=native&&q=`;
-  baseUri: string = 'https://api.openweathermap.org/data/2.5/';
-  hasGeoPermission: boolean = true;
+  api = '448b2429a71b8c55510f42a62897d676';
+  geoApi = 'c762178c3b604aa1b807eb867f8a1058';
+  baseGeoUri = `https://api.opencagedata.com/geocode/v1/json?key=${this.geoApi}&languange=native&&q=`;
+  baseUri = 'https://api.openweathermap.org/data/2.5/';
+  hasGeoPermission = true;
   coordinates$: Observable<any>;
 
   constructor(
@@ -60,8 +60,8 @@ export class WeatherService {
     }).pipe(retryWhen((error) => error.pipe(delay(2000))));
   }
 
-  getCurrentCity() {
-    let newCity: WeatherApp = {
+  getCurrentCity(): void {
+    const newCity: WeatherApp = {
       prefetch: true,
       id: 0,
       city: '',
@@ -135,14 +135,11 @@ export class WeatherService {
               });
             }
           }
-        }),
-        (err: GeolocationPositionError) => {
-          console.log('err', err.message);
-        };
+        });
     });
   }
 
-  addCity = (city: string) => {
+  addCity = (city: string): void => {
     if (this.weatherCollection.find((weather) => weather.city === city)) {
       this.popupService.showPopup({
         message: 'common.item-exist',
@@ -150,7 +147,7 @@ export class WeatherService {
       });
       return;
     }
-    let newCity: WeatherApp = {
+    const newCity: WeatherApp = {
       prefetch: true,
       id: 0,
       city: '',
@@ -223,7 +220,7 @@ export class WeatherService {
           );
         }
       });
-  };
+  }
 
   deleteWeather = (id: number) => {
     this.weatherCollection = this.weatherCollection.filter(
@@ -237,11 +234,11 @@ export class WeatherService {
       message: 'common.item-deleted',
       popupType: PopupType.INFO,
     });
-  };
+  }
 
-  ceckDateWeather = (id: number) => {
+  ceckDateWeather = (id: number): void => {
     const index = this.weatherCollection.findIndex(
-      (weather) => weather.id === id
+      (element) => element.id === id
     );
     const weather = this.weatherCollection[index];
     if (-moment(weather.timestamp).diff(moment(), 'minutes') >= 30) {
@@ -276,5 +273,5 @@ export class WeatherService {
           );
         });
     }
-  };
+  }
 }

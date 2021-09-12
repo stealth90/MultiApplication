@@ -16,7 +16,7 @@ export class PopupMessageService {
 
   constructor() {}
 
-  closePopup() {
+  closePopup(): void {
     this.popup.next({
       isShow: false,
       popupType: PopupType.INFO,
@@ -28,7 +28,7 @@ export class PopupMessageService {
   showPopup(
     { message, popupType = PopupType.ERROR, icon }: Partial<PopupContent>,
     duration?: number
-  ) {
+  ): void {
     const iconPopup = !icon
       ? popupType === 'error'
         ? 'pi-ban'
