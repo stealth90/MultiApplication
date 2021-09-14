@@ -11,8 +11,8 @@ export class CityService {
   allCityCollection: [] = [];
   /* allCityUri: string =
     'https://parseapi.back4app.com/classes/Italycities_City?limit=90000&order=name'; */
-  allItaCityUri: string = 'https://comuni-ita.herokuapp.com/api/comuni';
-  allItaTownUri: string = 'https://comuni-ita.herokuapp.com/api/province';
+  allItaCityUri = 'https://comuni-ita.herokuapp.com/api/comuni';
+  allItaTownUri = 'https://comuni-ita.herokuapp.com/api/province';
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) {

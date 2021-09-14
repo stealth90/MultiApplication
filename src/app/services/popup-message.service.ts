@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, timer } from 'rxjs';
+import { BehaviorSubject, timer } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { PopupContent, PopupType } from '../../assets/models';
 
