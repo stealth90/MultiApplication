@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1631470063690,
+  "timestamp": 1631637904374,
   "index": "https://stealth90.github.io/MultiApplication/index.html",
   "assetGroups": [
     {
@@ -55,6 +55,7 @@
         "https://stealth90.github.io/MultiApplication/assets/fonts/RubikRegular.woff2",
         "https://stealth90.github.io/MultiApplication/assets/i18n/en.json",
         "https://stealth90.github.io/MultiApplication/assets/i18n/it.json",
+        "https://stealth90.github.io/MultiApplication/assets/icons/apple-icon-152x152.png",
         "https://stealth90.github.io/MultiApplication/assets/icons/icon-120x120.png",
         "https://stealth90.github.io/MultiApplication/assets/icons/icon-144x144.png",
         "https://stealth90.github.io/MultiApplication/assets/icons/icon-152x152.png",
@@ -156,6 +157,7 @@
     "https://stealth90.github.io/MultiApplication/assets/fonts/RubikRegular.woff2": "14ae790c1ff1cdb2e6d79d71387a0ef86b5fc8da",
     "https://stealth90.github.io/MultiApplication/assets/i18n/en.json": "f76f3f58e07a3d7042d6b92a39eca4db7cb76222",
     "https://stealth90.github.io/MultiApplication/assets/i18n/it.json": "a9c7b6cf9c894a594a93e883d0f516bea1fa158d",
+    "https://stealth90.github.io/MultiApplication/assets/icons/apple-icon-152x152.png": "50dafeba0e4501b528cdcaa984335adf21663b3c",
     "https://stealth90.github.io/MultiApplication/assets/icons/icon-120x120.png": "4152407ea0d5251bb65fc83fd73f95e2332de0ed",
     "https://stealth90.github.io/MultiApplication/assets/icons/icon-144x144.png": "150bbf8f4d13bc8eb987c5c03ecffb6ddc17174f",
     "https://stealth90.github.io/MultiApplication/assets/icons/icon-152x152.png": "50dafeba0e4501b528cdcaa984335adf21663b3c",
@@ -225,7 +227,7 @@
     "https://stealth90.github.io/MultiApplication/common.549396fb8feec20fa3a4.js": "6b5a12cfa6a27f9cdd37b9fd54a650f4af94fd64",
     "https://stealth90.github.io/MultiApplication/favicon.ico": "1cd6feeb14eb2c78b91fae323c011c339cdd53e5",
     "https://stealth90.github.io/MultiApplication/hue.f8505bd4d6f3e3aa435b.png": "f81ae627637a684614aa726e206c73ce099a01fd",
-    "https://stealth90.github.io/MultiApplication/index.html": "250ff83e77e5ff51a6e981229f382c9f5d214b85",
+    "https://stealth90.github.io/MultiApplication/index.html": "db3dbeeb0d0e03763b5ff3a20b1c16ef403bb57a",
     "https://stealth90.github.io/MultiApplication/main.e417dc137ac72c40214c.js": "03f84148f906083bb1f2ba292f9a81ae771c7f3d",
     "https://stealth90.github.io/MultiApplication/manifest.webmanifest": "d7786953eb350162d15932d3e8a1e8243bb4f7cc",
     "https://stealth90.github.io/MultiApplication/password-meter.eea288d50533d7995ec1.png": "e0e101bd2a1cbda41398b48a4ab1792d89cb7334",
