@@ -3,13 +3,13 @@
   [style.background-image]="'url(assets/images/' + skill.icon"
 >
   <div
-    ui-knob
+    appUiKnob
     [id]="id"
     [value]="skill.percentage"
     class="circle-border"
     [options]="knobOptions"
   >
-    <div counter [digit]="skill.percentage" [id]="id" class="circles-text">
+    <div appCounter [digit]="skill.percentage" [id]="id" class="circles-text">
       <span></span>
     </div>
   </div>

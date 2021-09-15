@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Skill } from '../../models/skill';
 
 @Component({
-  selector: 'skills-badge',
+  selector: 'app-skills-badge',
   templateUrl: './skills-badge.component.html',
   styleUrls: ['./skills-badge.component.scss'],
 })
