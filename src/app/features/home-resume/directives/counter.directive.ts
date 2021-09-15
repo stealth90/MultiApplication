@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Directive({
-  selector: '[counter]',
+  selector: '[appCounter]',
 })
 export class CounterDirective implements OnInit, OnDestroy {
   router$: Subscription;
@@ -26,7 +26,7 @@ export class CounterDirective implements OnInit, OnDestroy {
         this.animateCount();
       });
   }
-  ngOnInit() {
+  ngOnInit(): void {
     this.animateCount();
   }
 
@@ -34,9 +34,13 @@ export class CounterDirective implements OnInit, OnDestroy {
     this.router$.unsubscribe();
   }
 
-  animateCount() {
-    if (!this.duration) this.duration = 1000;
-    if (!this.delay) this.delay = 200;
+  animateCount(): void {
+    if (!this.duration) {
+      this.duration = 1000;
+    }
+    if (!this.delay) {
+      this.delay = 200;
+    }
 
     if (typeof this.digit === 'number') {
       setTimeout(
@@ -46,7 +50,7 @@ export class CounterDirective implements OnInit, OnDestroy {
     }
   }
 
-  counterFunc(endValue: number, durationMs: number, element: ElementRef) {
+  counterFunc(endValue: number, durationMs: number, element: ElementRef): void {
     if (!this.steps) {
       this.steps = 12;
     }

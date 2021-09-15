@@ -5,6 +5,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  OnChanges,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import * as d3 from 'd3';
@@ -74,9 +75,9 @@ export interface Options {
 }
 
 @Directive({
-  selector: '[ui-knob]',
+  selector: '[appUiKnob]',
 })
-export class KnobDirective implements OnInit {
+export class KnobDirective implements OnInit, OnChanges {
   element: HTMLElement;
   @Input() value: number;
   @Input() label: number;
@@ -85,7 +86,7 @@ export class KnobDirective implements OnInit {
   @Input() options: any;
   @Output() valueChange = new EventEmitter<number>();
   router$: Subscription;
-  inDrag: Boolean;
+  inDrag: boolean;
   bgArc: any;
   trackArc: any;
   changeArc: any;
@@ -135,7 +136,7 @@ export class KnobDirective implements OnInit {
       endAngle: 360,
       unit: '',
       displayInput: true,
-      inputFormatter: function (v: any) {
+      inputFormatter: (v: any): any => {
         return v;
       },
       readOnly: false,
@@ -184,27 +185,29 @@ export class KnobDirective implements OnInit {
   }
 
   /**
-   * Implement this interface to execute custom initialization logic after your directive's data-bound properties have been initialized.
-   * ngOnInit is called right after the directive's data-bound properties have been checked for the first time, and before any of its children have been checked.
+   * Implement this interface to execute custom initialization logic
+   *  after your directive's data-bound properties have been initialized.
+   * ngOnInit is called right after the directive's data-bound properties
+   *  have been checked for the first time, and before any of its children have been checked.
    * It is invoked only once when the directive is instantiated.
    */
-  ngOnInit() {
+  ngOnInit(): void {
     this.inDrag = false;
-    this.options = (<any>Object).assign(this.defaultOptions, this.options);
+    this.options = Object.assign(this.defaultOptions, this.options);
     this.draw();
   }
 
   /**
    * Actions when value or options change in host component
    */
-  ngOnChanges(changes: any) {
+  ngOnChanges(changes: any): void {
     if (
       this.defaultOptions != null &&
       changes.options != null &&
       changes.options.currentValue != null &&
       this.value != null
     ) {
-      this.options = (<any>Object).assign(
+      this.options = Object.assign(
         this.defaultOptions,
         changes.options.currentValue
       );
@@ -232,7 +235,7 @@ export class KnobDirective implements OnInit {
     angleEnd: number = 0,
     angleStart: number = 0,
     valueStart: number = 0
-  ) {
+  ): number {
     valueEnd = valueEnd || 100;
     valueStart = valueStart || 0;
     angleEnd = angleEnd || 360;
@@ -253,7 +256,7 @@ export class KnobDirective implements OnInit {
     valueStart: number,
     angleEnd: number,
     angleStart: number
-  ) {
+  ): number {
     valueEnd = valueEnd || 100;
     valueStart = valueStart || 0;
     angleEnd = angleEnd || 360;
@@ -293,11 +296,13 @@ export class KnobDirective implements OnInit {
     style: any,
     click?: any,
     drag?: any
-  ) {
+  ): any {
     const elem = svg.append('path').attr('id', label).attr('d', arc);
 
     for (const key in style) {
-      elem.style(key, style[key]);
+      if (key) {
+        elem.style(key, style[key]);
+      }
     }
 
     elem.attr(
@@ -318,7 +323,7 @@ export class KnobDirective implements OnInit {
   /**
    *   Create the arcs
    */
-  createArcs() {
+  createArcs(): void {
     let outerRadius = parseInt((this.options.size / 2).toString(), 10);
     const startAngle = this.valueToRadians(this.options.startAngle, 360);
     const endAngle = this.valueToRadians(this.options.endAngle, 360);
@@ -412,7 +417,7 @@ export class KnobDirective implements OnInit {
   /**
    *   Draw the arcs
    */
-  drawArcs(clickInteraction: any, dragBehavior: any) {
+  drawArcs(clickInteraction: any, dragBehavior: any): void {
     const svg = d3
       .select(this.element)
       .append('svg')
@@ -531,9 +536,9 @@ export class KnobDirective implements OnInit {
     if (this.options.scale.enabled) {
       let radius: number;
       let quantity: number;
-      let data;
-      let count: number = 0;
-      let angle: number = 0;
+      let data: any;
+      let count = 0;
+      let angle = 0;
       const startRadians = this.valueToRadians(
         this.options.min,
         this.options.max,
@@ -557,7 +562,7 @@ export class KnobDirective implements OnInit {
         radius = this.options.size / 2 - width;
         quantity = this.options.scale.quantity;
         const offset: number = radius + this.options.scale.width;
-        data = d3.range(quantity).map(function () {
+        data = d3.range(quantity).map(() => {
           angle =
             count * (endRadians - startRadians) - Math.PI / 2 + startRadians;
           count = count + 1 / (quantity - diff);
@@ -572,13 +577,13 @@ export class KnobDirective implements OnInit {
           .data(data)
           .enter()
           .append('circle')
-          .attr('r', function (d: { r: any }) {
+          .attr('r', (d: { r: any }): any => {
             return d.r;
           })
-          .attr('cx', function (d: { cx: any }) {
+          .attr('cx', (d: { cx: any }): any => {
             return d.cx;
           })
-          .attr('cy', function (d: { cy: any }) {
+          .attr('cy', (d: { cy: any }): any => {
             return d.cy;
           })
           .attr('fill', this.options.scale.color);
@@ -586,7 +591,7 @@ export class KnobDirective implements OnInit {
         const height = this.options.scale.height;
         radius = this.options.size / 2;
         quantity = this.options.scale.quantity;
-        data = d3.range(quantity).map(function () {
+        data = d3.range(quantity).map(() => {
           angle =
             count * (endRadians - startRadians) - Math.PI / 2 + startRadians;
           count = count + 1 / (quantity - diff);
@@ -602,16 +607,16 @@ export class KnobDirective implements OnInit {
           .data(data)
           .enter()
           .append('line')
-          .attr('x1', function (d: { x1: any }) {
+          .attr('x1', (d: { x1: any }): any => {
             return d.x1;
           })
-          .attr('y1', function (d: { y1: any }) {
+          .attr('y1', (d: { y1: any }): any => {
             return d.y1;
           })
-          .attr('x2', function (d: { x2: any }) {
+          .attr('x2', (d: { x2: any }): any => {
             return d.x2;
           })
-          .attr('y2', function (d: { y2: any }) {
+          .attr('y2', (d: { y2: any }): any => {
             return d.y2;
           })
           .attr('stroke-width', this.options.scale.width)
@@ -646,7 +651,7 @@ export class KnobDirective implements OnInit {
       svg,
       this.interactArc,
       'interactArc',
-      { 'fill-opacity': 0, cursor: cursor },
+      { 'fill-opacity': 0, cursor },
       clickInteraction,
       dragBehavior
     );
@@ -654,7 +659,7 @@ export class KnobDirective implements OnInit {
   /**
    *   Draw knob component
    */
-  draw() {
+  draw(): void {
     d3.select(this.element).select('svg').remove();
     const that = this;
 
@@ -674,7 +679,7 @@ export class KnobDirective implements OnInit {
         .ease(that.animations[that.options.animate.ease])
         .duration(that.options.animate.duration)
         .delay(that.id * 200)
-        .tween('', function () {
+        .tween('', (): ((t: any) => any) => {
           const i = d3.interpolate(
             that.valueToRadians(that.options.startAngle, 360),
             that.valueToRadians(
@@ -685,7 +690,7 @@ export class KnobDirective implements OnInit {
               that.options.min
             )
           );
-          return function (t: any) {
+          return (t: any): void => {
             const val = i(t);
             that.valueElem.attr('d', that.valueArc.endAngle(val));
             that.changeElem.attr('d', that.changeArc.endAngle(val));
@@ -714,14 +719,14 @@ export class KnobDirective implements OnInit {
       that.valueElem.attr('d', that.valueArc);
     }
 
-    function dragInteraction(event, d) {
+    function dragInteraction(event, d): void {
       that.inDrag = true;
       const x = event.x - that.options.size / 2;
       const y = event.y - that.options.size / 2;
       interaction(x, y, false);
     }
 
-    function clickInteraction() {
+    function clickInteraction(): void {
       that.inDrag = false;
       const coords = d3.pointer(this.parentNode);
       const x = coords[0] - that.options.size / 2;
@@ -729,7 +734,7 @@ export class KnobDirective implements OnInit {
       interaction(x, y, true);
     }
 
-    function interaction(x: any, y: any, isFinal: any) {
+    function interaction(x: any, y: any, isFinal: any): void {
       const arc = Math.atan(y / x) / (Math.PI / 180);
       let delta;
 
@@ -753,7 +758,9 @@ export class KnobDirective implements OnInit {
       if (that.value >= that.options.min && that.value <= that.options.max) {
         that.value =
           Math.round(
-            ~~((that.value < 0 ? -0.5 : 0.5) + that.value / that.options.step) *
+            Math.floor(
+              (that.value < 0 ? -0.5 : 0.5) + that.value / that.options.step
+            ) *
               that.options.step *
               100
           ) / 100;
@@ -798,7 +805,7 @@ export class KnobDirective implements OnInit {
   /**
    *   Set a value
    */
-  setValue(newValue: any) {
+  setValue(newValue: any): void {
     if (
       !this.inDrag &&
       this.value >= this.options.min &&
@@ -813,7 +820,9 @@ export class KnobDirective implements OnInit {
       );
       this.value =
         Math.round(
-          ~~((newValue < 0 ? -0.5 : 0.5) + newValue / this.options.step) *
+          Math.floor(
+            (newValue < 0 ? -0.5 : 0.5) + newValue / this.options.step
+          ) *
             this.options.step *
             100
         ) / 100;

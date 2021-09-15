@@ -6,10 +6,10 @@ import {
   Renderer2,
 } from '@angular/core';
 
-@Directive({ selector: '[articleCard]' })
+@Directive({ selector: '[appArticleCard]' })
 export class NewsDirective implements OnInit, OnDestroy {
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
-  ngOnInit() {
+  ngOnInit(): void {
     this.elRef.nativeElement.addEventListener('mouseenter', () =>
       this.onMouseEnter()
     );
@@ -18,7 +18,7 @@ export class NewsDirective implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.elRef.nativeElement.removeEventListener(
       'mouseenter',
       this.onMouseEnter
@@ -29,11 +29,11 @@ export class NewsDirective implements OnInit, OnDestroy {
     );
   }
 
-  onMouseEnter() {
+  onMouseEnter(): void {
     this.renderer.addClass(this.elRef.nativeElement.children[1], 'hover');
   }
 
-  onMouseLeave() {
+  onMouseLeave(): void {
     this.renderer.removeClass(this.elRef.nativeElement.children[1], 'hover');
   }
 }
