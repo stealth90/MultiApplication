@@ -1,4 +1,4 @@
-<div class="news-container p-grid">
+<div (click)="goToArticle(data.link)" class="news-container p-grid">
   <div class="news-content p-col-9">
     <div class="news-title">
       {{ data.title | truncate: [55] }}
