@@ -17,8 +17,8 @@ import { NewsService } from '../../services/news.service';
 })
 export class NewsContainerComponent implements OnInit {
   data: Article[] = [];
-  loading: boolean = false;
-  noResult: boolean = false;
+  loading = false;
+  noResult = false;
   newsError: NewsError;
   constructor(
     private newsService: NewsService,

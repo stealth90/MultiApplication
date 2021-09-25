@@ -1,17 +1,17 @@
-export interface options {
+export interface Options {
   anchors?: string[];
   animateAnchor?: boolean;
   autoScrolling?: boolean;
-  bigSectionsDestination?: any; //top, bottom, null
+  bigSectionsDestination?: any; // top, bottom, null
   continuousHorizontal?: boolean;
   continuousVertical?: boolean;
   controlArrowColor?: string;
   controlArrows?: boolean;
   css3?: boolean;
-  dragAndMove?: any; //true, false, 'horizontal', 'fingersonly'
+  dragAndMove?: any; // true, false, 'horizontal', 'fingersonly'
   easing?: string;
   easingcss3?: string;
-  fadingEffect?: any; //true, false, 'sections', 'slides'
+  fadingEffect?: any; // true, false, 'sections', 'slides'
   fitToSection?: boolean;
   fitToSectionDelay?: number;
   fixedElements?: string; // '#header, .footer'
@@ -62,6 +62,18 @@ export interface options {
   v2compatible?: boolean;
   verticalCentered?: boolean;
 
+  /* keys for extensions */
+  fadingEffectKey?: string;
+  responsiveSlidesKey?: string;
+  continuousHorizontalKey?: string;
+  interlockedSlidesKey?: string;
+  scrollHorizontallyKey?: string;
+  resetSlidersKey?: string;
+  offsetSectionsKey?: string;
+  dragAndMoveKey?: string;
+  parallaxKey?: string;
+  /* end key sections */
+
   /* callback and events */
   afterLoad?(origin?: any, destination?: any, direction?: any): void;
   afterRender?(): void;
@@ -81,16 +93,4 @@ export interface options {
     destination?: any,
     direction?: any
   ): void;
-
-  /* keys for extensions */
-  fadingEffectKey?: string;
-  responsiveSlidesKey?: string;
-  continuousHorizontalKey?: string;
-  interlockedSlidesKey?: string;
-  scrollHorizontallyKey?: string;
-  resetSlidersKey?: string;
-  offsetSectionsKey?: string;
-  dragAndMoveKey?: string;
-  parallaxKey?: string;
-  /* end key sections */
 }

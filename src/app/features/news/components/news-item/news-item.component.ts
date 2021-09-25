@@ -9,7 +9,7 @@ export class NewsItemComponent {
   @Input() data: Article;
   constructor() {}
 
-  goToArticle(url: string) {
+  goToArticle(url: string): void {
     window.open(url, '_blank');
   }
 }
