@@ -19,7 +19,7 @@ import { filter } from 'rxjs/operators';
 export class FooterComponent implements OnInit, OnDestroy {
   currentLanguage: string;
   subscriptions: Subscription[] = [];
-  offsetFooter: boolean = false;
+  offsetFooter = false;
   currentRoute: string;
 
   constructor(
@@ -66,7 +66,7 @@ export class FooterComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  changeLanguage(lang: string) {
+  changeLanguage(lang: string): void {
     this.translate.use(lang);
   }
 }

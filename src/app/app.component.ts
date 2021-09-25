@@ -17,11 +17,12 @@ export class AppComponent implements OnInit {
     this.translate.use(currentLanguage);
   }
 
-  prepareRoute(outlet: RouterOutlet) {
+  prepareRoute(outlet: RouterOutlet): RouterOutlet {
+    const animation = 'animationState';
     return (
       outlet &&
       outlet.activatedRouteData &&
-      outlet.activatedRouteData['animationState']
+      outlet.activatedRouteData[animation]
     );
   }
 }

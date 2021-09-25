@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   sidebarAnimation: boolean;
   sidebarSubscription$: Subscription;
   currentLanguage: string;
-  offsetNavbar: boolean = false;
+  offsetNavbar = false;
   currentRoute: string;
 
   constructor(
@@ -70,7 +70,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       )
       .subscribe(() => this.handleCloseSidebar());
     this.subscriptions.push(this.sidebarSubscription$);
-  };
+  }
 
   handleCloseSidebar = (routeName?: string) => {
     this.sidebarSubscription$.unsubscribe();
@@ -94,9 +94,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       setTimeout(() => (this.isVisibleSidebar = false), 1600);
     }
-  };
+  }
 
-  changeLanguage(lang: string) {
+  changeLanguage(lang: string): void {
     this.translate.use(lang);
   }
 }
