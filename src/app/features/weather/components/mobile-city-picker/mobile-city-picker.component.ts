@@ -10,7 +10,7 @@ import MobileSelect from 'mobile-select';
 import { CityService } from '../../services/city.service';
 
 @Component({
-  selector: 'mobile-city-picker',
+  selector: 'app-mobile-city-picker',
   templateUrl: './mobile-city-picker.component.html',
   styleUrls: ['./mobile-city-picker.component.scss'],
 })
@@ -27,7 +27,7 @@ export class MobileCityPickerComponent implements OnInit {
     },
   ];
   bodyNode: HTMLBodyElement;
-  loadingCities: boolean = false;
+  loadingCities = false;
   @Output() addCity = new EventEmitter<string>();
   constructor(
     private translate: TranslateService,
@@ -47,7 +47,7 @@ export class MobileCityPickerComponent implements OnInit {
           data: this.allCities,
         },
       ],
-      onShow: (e) => this.showPicker(e),
+      onShow: () => this.showPicker(),
       callback: (
         _: number[],
         data: {
@@ -56,11 +56,11 @@ export class MobileCityPickerComponent implements OnInit {
           childs: { id: string; value: string }[];
         }
       ) => this.getCurrentValues(_, data, this.addCity),
-      onHide: (e) => this.hidePicker(e),
+      onHide: () => this.hidePicker(),
     });
   }
 
-  fetchData() {
+  fetchData(): void {
     if (this.allCities.length === 1) {
       /* this.mobileSelect.setTitle(
         `<i class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>`
@@ -80,11 +80,11 @@ export class MobileCityPickerComponent implements OnInit {
     }
   }
 
-  showPicker(e) {
+  showPicker(): void {
     this.renderer.addClass(document.body, 'no-overflow');
   }
 
-  hidePicker(e) {
+  hidePicker(): void {
     this.renderer.removeClass(document.body, 'no-overflow');
   }
 
@@ -96,7 +96,7 @@ export class MobileCityPickerComponent implements OnInit {
       childs: { id: string; value: string }[];
     },
     callback: EventEmitter<string>
-  ) {
+  ): void {
     const city = data[1].value;
     callback.emit(city);
   }

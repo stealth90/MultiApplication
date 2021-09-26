@@ -104,7 +104,7 @@ export class WeatherWidgetComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteCity() {
+  deleteCity(): void {
     this.deleteButton.emit(this.weather.id);
   }
 
@@ -117,7 +117,7 @@ export class WeatherWidgetComponent implements OnInit, OnDestroy {
     )}`;
   }
 
-  capitalizeFirstLetter(word: string) {
+  capitalizeFirstLetter(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
