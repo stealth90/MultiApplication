@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent implements OnInit, OnDestroy {
-  @Input() message: string = 'loader.weather';
+  @Input() message = 'loader.weather';
   @Input() customSpinner: boolean;
   @Input() strokeWidth: string;
   @Input() animationDuration: string;
