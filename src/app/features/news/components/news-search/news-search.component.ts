@@ -24,7 +24,7 @@ export class NewsSearchComponent implements OnInit {
     this.yearRange = `2000:${new Date().getFullYear()}`;
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const updatedValue = Object.values(this.searchNewsForm.value).filter(
       (value) => value !== null
     );
@@ -43,7 +43,7 @@ export class NewsSearchComponent implements OnInit {
     }
   }
 
-  clearInput(inputField: string) {
+  clearInput(inputField: string): void {
     this.searchNewsForm.controls[inputField].reset();
   }
 }

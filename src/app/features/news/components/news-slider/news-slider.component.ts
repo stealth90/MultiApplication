@@ -30,11 +30,11 @@ export class NewsSliderComponent implements OnInit, OnDestroy {
       .subscribe((value: News[]) => (this.data = [...this.data, ...value]));
   }
 
-  goToArticle(url: string) {
+  goToArticle(url: string): void {
     window.open(url, '_blank');
   }
 
-  getNews({ category, country }) {
+  getNews({ category, country }): void {
     this.data = [];
     this.data$ = this.newsService
       .getTopHeadlinesNews(category, country)
