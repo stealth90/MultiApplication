@@ -28,6 +28,5 @@ export class NewsTableComponent implements OnInit {
       { field: 'urlToImage', header: 'Image' },
       { field: 'description', header: 'Description' },
     ];
-    console.log('data', this.data);
   }
 }
