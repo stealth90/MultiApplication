@@ -60,7 +60,6 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
   ) {
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
-      console.log('im here');
       this.pwaInstallService.userCanInstallApp(e);
     });
     window.addEventListener('appinstalled', () => {
