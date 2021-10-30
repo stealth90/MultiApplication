@@ -20,9 +20,9 @@ export class ButtonInstallComponent implements OnInit {
 
   handleInstallClick = (e: Event): void => {
     this.pwaInstallService.installApp();
-  };
+  }
 
   closeInstallPopup = (): void => {
     this.pwaInstallService.notInstall();
-  };
+  }
 }

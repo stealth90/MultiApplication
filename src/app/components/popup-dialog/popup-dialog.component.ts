@@ -20,7 +20,7 @@ export class PopupDialogComponent implements OnInit {
     this.showPopup$ = this.popupMessageService.popup;
   }
 
-  handleClosePopup() {
+  handleClosePopup(): void {
     this.popupMessageService.closePopup();
   }
 }
