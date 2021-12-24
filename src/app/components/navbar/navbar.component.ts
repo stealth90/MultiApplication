@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedinIn, faGitlab } from '@fortawesome/free-brands-svg-icons';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { UiService } from 'src/app/services/ui.service';
@@ -18,6 +18,7 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   faLinkedinIn = faLinkedinIn;
+  faGitlab = faGitlab;
   subscriptions: Subscription[] = [];
   isVisibleSidebar: boolean;
   sidebarAnimation: boolean;
@@ -70,7 +71,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       )
       .subscribe(() => this.handleCloseSidebar());
     this.subscriptions.push(this.sidebarSubscription$);
-  }
+  };
 
   handleCloseSidebar = (routeName?: string) => {
     this.sidebarSubscription$.unsubscribe();
@@ -94,7 +95,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       setTimeout(() => (this.isVisibleSidebar = false), 1600);
     }
-  }
+  };
 
   changeLanguage(lang: string): void {
     this.translate.use(lang);

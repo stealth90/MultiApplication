@@ -74,7 +74,7 @@ export class WeatherService {
       humidity: 0,
       timestamp: moment().toISOString(),
     };
-    this.myCurrentWeather.push(newCity);
+    this.myCurrentWeather = [newCity];
     this.getCurrentCoords().subscribe((myCords) => {
       this.http
         .get<any>(`${this.baseGeoUri}${myCords.latitude}+${myCords.longitude}`)

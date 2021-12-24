@@ -37,7 +37,9 @@
       <p class="time">
         {{ convertTimezone() }}
       </p>
-      <h2 #city>{{ weather.city }} {{ weather.flag }}</h2>
+      <h2 #city>
+        {{ weather.city }} <span> {{ weather.flag }}</span>
+      </h2>
     </span>
     <div class="card-content-wrapper">
       <div class="card-content p-mr-3">

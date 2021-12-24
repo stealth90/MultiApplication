@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedinIn, faGitlab } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-socials-links',
@@ -8,6 +8,7 @@ import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 })
 export class SocialsLinksComponent implements OnInit {
   faLinkedinIn = faLinkedinIn;
+  faGitlab = faGitlab;
   constructor() {}
 
   ngOnInit(): void {}
