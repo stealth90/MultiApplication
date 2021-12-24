@@ -27,10 +27,13 @@
       <div class="row p-jc-center">
         <div class="p-md-6 p-sm-12">
           <div class="about-img">
-            <img src="assets/images/placeholder-image.png" alt="About" />
+            <ng-lottie
+              [options]="options"
+              (animationCreated)="animationCreated($event)"
+            ></ng-lottie>
           </div>
         </div>
-        <div class="p-md-6 p-sm-12">
+        <div class="p-md-6 p-sm-12 p-as-center">
           <div class="prt_heading_wrapper_2">
             <app-header-section
               [title]="'home.about' | translate"

@@ -2,16 +2,20 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Options } from './models/fullpage';
 import * as AOS from 'aos';
 import { Skill } from './models/skill';
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 @Component({
   selector: 'app-home-resume',
   templateUrl: './home-resume.component.html',
   styleUrls: ['./home-resume.component.scss'],
 })
 export class HomeResumeComponent implements OnInit, OnDestroy {
-  title = 'IOCA';
   config: Options;
   currentIndex = 0;
   fullpageApi: any;
+  options: AnimationOptions = {
+    path: '/assets/lottie/home_resume.json',
+  };
   mySkills: Skill[] = [
     { name: 'JavaScript', percentage: 90, icon: 'javascript.png' },
     { name: 'TypeScript', percentage: 75, icon: 'typescript.png' },
@@ -65,6 +69,10 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
           : 0;
       },
     };
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
   }
 
   getRef(fullPageRef: any): void {
