@@ -72,7 +72,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
   }
 
   animationCreated(animationItem: AnimationItem): void {
-    console.log(animationItem);
+    /* console.log(animationItem); */
   }
 
   getRef(fullPageRef: any): void {

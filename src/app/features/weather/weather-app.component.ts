@@ -97,4 +97,8 @@ export class WeatherAppComponent implements OnInit, OnDestroy {
     this.weatherService.deleteWeather(id);
     this.myWeatherCollection = this.weatherService.weatherCollection;
   }
+
+  refetchCity(): void {
+    this.weatherService.getCurrentCity();
+  }
 }

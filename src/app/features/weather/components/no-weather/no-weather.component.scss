@@ -5,13 +5,16 @@
 
 .example-card {
   margin: 5px;
-  width: 70%;
   display: flex;
-  position: relative;
   justify-content: center;
-  background-color: #ff6347;
   border-radius: 10px;
   align-items: center;
+  position: relative;
+  background-color: white;
+  width: 95vw;
+  padding-top: 10px;
+  height: 100%;
+  flex-direction: column;
 }
 
 .esclamation-mark {
@@ -22,10 +25,18 @@
 
 h2 {
   margin-bottom: 0;
+  color: #f14336;
+}
+
+p {
+  color: #4d05e8;
 }
 
 i {
+  border: 1px solid #f142367c;
+  border-radius: 100%;
+  padding: 1rem;
   font-size: 2rem;
+  color: #f14336;
   font-weight: bold;
-  color: white;
 }

@@ -1,5 +1,14 @@
 <div
-  class="card p-d-flex p-flex-lg-column p-jc-between p-jc-lg-around p-ai-center p-ai-lg-start p-shadow-5"
+  class="
+    card
+    p-d-flex
+    p-flex-lg-column
+    p-jc-between
+    p-jc-lg-around
+    p-ai-center
+    p-ai-lg-start
+    p-shadow-5
+  "
 >
   <span class="card-header p-mt-5 p-mb-3">
     <span class="p-d-flex p-mb-3">
@@ -26,5 +35,13 @@
       <p-skeleton width="2rem" height="1.5rem"></p-skeleton>
       <p-skeleton width="2rem" height="1.5rem"></p-skeleton>
     </div>
+  </div>
+  <div
+    *ngIf="needRefetch"
+    class="refetch-overlay"
+    (click)="refetchCurrentCity()"
+  >
+    <i class="pi pi-refresh"></i>
+    <p>Riprova</p>
   </div>
 </div>

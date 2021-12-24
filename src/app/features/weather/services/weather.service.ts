@@ -220,7 +220,7 @@ export class WeatherService {
           );
         }
       });
-  }
+  };
 
   deleteWeather = (id: number) => {
     this.weatherCollection = this.weatherCollection.filter(
@@ -234,7 +234,7 @@ export class WeatherService {
       message: 'common.item-deleted',
       popupType: PopupType.INFO,
     });
-  }
+  };
 
   ceckDateWeather = (id: number): void => {
     const index = this.weatherCollection.findIndex(
@@ -273,5 +273,5 @@ export class WeatherService {
           );
         });
     }
-  }
+  };
 }
