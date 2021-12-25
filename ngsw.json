@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1640434842895,
+  "timestamp": 1640435218522,
   "index": "https://stealth90.github.io/MultiApplication/index.html",
   "assetGroups": [
     {
@@ -14,14 +14,14 @@
         "https://stealth90.github.io/MultiApplication/475.75ab64e8073bfb47.js",
         "https://stealth90.github.io/MultiApplication/515.3b2ec61700816e94.js",
         "https://stealth90.github.io/MultiApplication/576.d0494827970cae3c.js",
-        "https://stealth90.github.io/MultiApplication/941.549167f003e633bd.js",
+        "https://stealth90.github.io/MultiApplication/941.c03c8755de47c1f3.js",
         "https://stealth90.github.io/MultiApplication/common.b1b1db6d3c12fb55.js",
         "https://stealth90.github.io/MultiApplication/favicon.ico",
         "https://stealth90.github.io/MultiApplication/index.html",
         "https://stealth90.github.io/MultiApplication/main.63ca3ce48eba6fed.js",
         "https://stealth90.github.io/MultiApplication/manifest.webmanifest",
         "https://stealth90.github.io/MultiApplication/polyfills.d12555ec100090bb.js",
-        "https://stealth90.github.io/MultiApplication/runtime.dc6cf90756ca4124.js",
+        "https://stealth90.github.io/MultiApplication/runtime.a7ff810f22f54079.js",
         "https://stealth90.github.io/MultiApplication/scripts.b22e2f6e0683882e.js",
         "https://stealth90.github.io/MultiApplication/styles.ba52a2199f6d3840.css",
         "https://stealth90.github.io/MultiApplication/styles.f95e97df7566a470.js"
@@ -138,7 +138,7 @@
     "https://stealth90.github.io/MultiApplication/475.75ab64e8073bfb47.js": "924a56424fde1ba6ac08657bf5aa6a601db33c64",
     "https://stealth90.github.io/MultiApplication/515.3b2ec61700816e94.js": "40f755233e297bf11df6ca8800e18e044e599e3f",
     "https://stealth90.github.io/MultiApplication/576.d0494827970cae3c.js": "39e7268c4d374d2ea2bf7a9b4182afee920dfe1d",
-    "https://stealth90.github.io/MultiApplication/941.549167f003e633bd.js": "dc9def1335c0944be83bc32208817ea9a3afb9c9",
+    "https://stealth90.github.io/MultiApplication/941.c03c8755de47c1f3.js": "069867f752ace41b855ae55c64fdca0cec66a9e3",
     "https://stealth90.github.io/MultiApplication/RubikRegular.50388ebc6a50d4a9.ttf": "527a40b397f8e192d067bdcd70d90800a53ed905",
     "https://stealth90.github.io/MultiApplication/RubikRegular.786da0f766aa8b59.eot": "fd490ce14d6ff98e4e2c7a13b30495e00ecc63e7",
     "https://stealth90.github.io/MultiApplication/RubikRegular.79ee21ad6a45ccf7.woff2": "14ae790c1ff1cdb2e6d79d71387a0ef86b5fc8da",
@@ -229,7 +229,7 @@
     "https://stealth90.github.io/MultiApplication/common.b1b1db6d3c12fb55.js": "41c762e0008619c531b5d849d462df8c5d6ff0a3",
     "https://stealth90.github.io/MultiApplication/favicon.ico": "1cd6feeb14eb2c78b91fae323c011c339cdd53e5",
     "https://stealth90.github.io/MultiApplication/hue.8b1818380241e6ac.png": "f81ae627637a684614aa726e206c73ce099a01fd",
-    "https://stealth90.github.io/MultiApplication/index.html": "81cbc2972fb22fe34d8c039b433f1cda2db9902f",
+    "https://stealth90.github.io/MultiApplication/index.html": "9126ccfecd0db8af065b6fb53bedf1216e6cfa5d",
     "https://stealth90.github.io/MultiApplication/main.63ca3ce48eba6fed.js": "048aec3c079d7decc3e9588be057b94ca2328a02",
     "https://stealth90.github.io/MultiApplication/manifest.webmanifest": "d3d5ea8e10525b939962a098f1911ac9a8ff7aa4",
     "https://stealth90.github.io/MultiApplication/password-meter.7daa2ea7d6a97d1c.png": "e0e101bd2a1cbda41398b48a4ab1792d89cb7334",
@@ -238,7 +238,7 @@
     "https://stealth90.github.io/MultiApplication/primeicons.4ade98464de5b0cf.svg": "4a2c5258656a8b900ddeabf5ac62aace724f5a0d",
     "https://stealth90.github.io/MultiApplication/primeicons.bc7479046d23c211.eot": "6441e65a2458d0c813cd2bf6e8648c1f54327bdb",
     "https://stealth90.github.io/MultiApplication/primeicons.d2433813f8ffa55d.woff": "d65c561bf2d7b6707c3912d8987273a9c715b7f2",
-    "https://stealth90.github.io/MultiApplication/runtime.dc6cf90756ca4124.js": "34d4933c294b08e0c035f19fcb321408bb644eeb",
+    "https://stealth90.github.io/MultiApplication/runtime.a7ff810f22f54079.js": "0515dd93bc7e75ad688addd16136d9483d16f01e",
     "https://stealth90.github.io/MultiApplication/scripts.b22e2f6e0683882e.js": "a251e559cc5e2dc75e11feeb0d2a970fad696d11",
     "https://stealth90.github.io/MultiApplication/styles.ba52a2199f6d3840.css": "5e4f3bff916c9c9020528e050bdc60e0a9791dfd",
     "https://stealth90.github.io/MultiApplication/styles.f95e97df7566a470.js": "101a0dae514fcfdd8f2055fee567e704995923a6"
