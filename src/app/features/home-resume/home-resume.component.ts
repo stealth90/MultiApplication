@@ -14,7 +14,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   fullpageApi: any;
   options: AnimationOptions = {
-    path: '/assets/lottie/home_resume.json',
+    path: 'assets/lottie/home_resume.json',
   };
   mySkills: Skill[] = [
     { name: 'JavaScript', percentage: 90, icon: 'javascript.png' },
