@@ -77,6 +77,11 @@
     "download-resume": "Download resume",
     "education": "Education",
     "education-subtitle": "learning",
+    "education-steve-jobs": "ITS Steve Jobs Academy offers highly specialized courses recognized by MIUR, with practical lessons and 720 hours of internship, teaching languages and frameworks most used in both front end and back end development, thanks to lessons specially designed by university professors and professional programmers.",
+    "education-school": "Graduated in Electronics, Electrotechnics and Telecommunications, i have specific skills in the field of materials and construction technologies of electrical and electronic systems and electrical machines, generation, processing and transmission of electrical and electronic signals, networks of processing systems, multimedia systems, transmission and reception equipment of telecommunications networks and systems.",
+    "experience-1": "Develop and maintain responsive web app using SCSS, Typescript, React, Redux, Apollo GraphQL. Develop and maintain hybrid app using Ionic, Typescript, React, Redux, Apollo GraphQL. Work closely with UI/UX and Graphic Designers to translate designs into pixel-perfect web apps. Engaged in the Agile process by attending weekly planning meetings and writing user stories. Follow standard practices for version control through Git.",
+    "experience-2": "Migration and developed of an important web app banking from Angular.js to Angular 10. Follow standard practices for version control through Git",
+    "experience-3": "Developed a website using Angular 2, with SSR and internationalization with i18n. Maintained many projects, especially  a CMS of famous e-commerce at European level, developed in React, store in Redux and back end in Firebase. Maintained and refactoring of an european banking app developed in React Native. Follow standard practices for version control through Git",
     "skills": "Skills",
     "skills-subtitle": "expert in"
   },

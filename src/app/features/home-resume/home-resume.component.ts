@@ -22,7 +22,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
     { name: 'Angular 2+', percentage: 70, icon: 'angular.png' },
     { name: 'React.js', percentage: 80, icon: 'react.png' },
     { name: 'HTML 5', percentage: 80, icon: 'html.png' },
-    { name: 'CSS', percentage: 90, icon: 'css.png' },
+    { name: 'SCSS', percentage: 90, icon: 'sass.png' },
     { name: 'Redux', percentage: 70, icon: 'redux.png' },
     { name: 'RxJs', percentage: 75, icon: 'rxjs.svg' },
   ];
