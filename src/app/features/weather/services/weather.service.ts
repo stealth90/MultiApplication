@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, delay, map, mergeMap, retryWhen } from 'rxjs/operators';
 import { PopupMessageService } from 'src/app/services/popup-message.service';
 import { PopupType } from 'src/assets/models';
@@ -14,6 +14,7 @@ import { insertAt } from '../../../utils';
 export class WeatherService {
   weatherCollection: WeatherApp[];
   myCurrentWeather: WeatherApp[] = [];
+  needRefetch: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   api = '448b2429a71b8c55510f42a62897d676';
   geoApi = 'c762178c3b604aa1b807eb867f8a1058';
   baseGeoUri = `https://api.opencagedata.com/geocode/v1/json?key=${this.geoApi}&languange=native&&q=`;
@@ -61,6 +62,7 @@ export class WeatherService {
   }
 
   getCurrentCity(): void {
+    this.needRefetch.next(false);
     const newCity: WeatherApp = {
       prefetch: true,
       id: 0,
@@ -123,6 +125,7 @@ export class WeatherService {
               popupType: PopupType.WARNING,
             });
             this.myCurrentWeather.pop();
+            this.needRefetch.next(true);
           } else {
             this.popupService.closePopup();
             this.hasGeoPermission = true;

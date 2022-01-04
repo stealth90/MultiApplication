@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxFlickingModule } from '@egjs/ngx-flicking';
@@ -49,5 +50,6 @@ import { SourceBadgeComponent } from './components/source-badge/source-badge.com
     InputTextModule,
     CalendarModule,
   ],
+  providers: [Title],
 })
 export class NewsModule {}

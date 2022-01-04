@@ -6,6 +6,7 @@ import localeIt from '@angular/common/locales/it';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { PrimeNGConfig } from 'primeng/api';
+import { Title } from '@angular/platform-browser';
 registerLocaleData(localeIt, 'it');
 
 @Component({
@@ -24,18 +25,21 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private config: PrimeNGConfig
+    private config: PrimeNGConfig,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
     this.currentLang = this.translate.currentLang;
+    this.setPageTitle(this.translate.currentLang);
     const primengConfig$ = this.translate
       .get('primeng')
       .subscribe((res) => this.config.setTranslation(res));
     const currentLang$ = this.translate.onLangChange.subscribe(
-      (lang: LangChangeEvent) => {
-        this.currentLang = lang.lang;
-        this.config.setTranslation(lang.translations.primeng);
+      (langChangeEvent: LangChangeEvent) => {
+        this.currentLang = langChangeEvent.lang;
+        this.config.setTranslation(langChangeEvent.translations.primeng);
+        this.setPageTitle(langChangeEvent.lang);
       }
     );
     this.subscriptions.push(currentLang$, primengConfig$);
@@ -43,5 +47,11 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
+  setPageTitle(currentLang: string): void {
+    if (currentLang === 'it') {
+      this.titleService.setTitle('Petralia | App Notizie');
+    } else this.titleService.setTitle('Petralia | News app');
   }
 }

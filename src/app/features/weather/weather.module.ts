@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -43,5 +44,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     CardSkeletonComponent,
     MobileCityPickerComponent,
   ],
+  providers: [Title],
 })
 export class WeatherModule {}

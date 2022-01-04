@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 import { HomeResumeRoutingModule } from './home-resume-routing.module';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
@@ -40,6 +41,7 @@ import player from 'lottie-web';
     TranslateModule.forChild({ extend: true }),
     LottieModule.forRoot({ player: playerFactory }),
   ],
+  providers: [Title],
 })
 export class HomeResumeModule {}
 

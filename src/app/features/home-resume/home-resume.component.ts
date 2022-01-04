@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Options } from './models/fullpage';
 import * as AOS from 'aos';
@@ -41,9 +42,9 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
     maxGlare: 0.5,
   };
 
-  constructor() {
+  constructor(private titleService: Title) {
     this.config = {
-      licenseKey: null,
+      licenseKey: '20A84643-EB4C4F07-B5B35BF6-A606DDD4',
       anchors: [
         'firstPage',
         'secondPage',
@@ -53,16 +54,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
       ],
       sectionsColor: ['#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8'],
       scrollOverflow: true,
-      /* normalScrollElements: '.scrollable-content', */
       loopBottom: true,
-      // navigation: true,
-      // slidesNavigation: true,
-      // navigationTooltips: [
-      //   'firstPage',
-      //   'secondPage',
-      //   'thirdPage',
-      //   'fourthPage',
-      // ],
       onLeave: (origin?: any, destination?: any, direction?: any) => {
         this.currentIndex = destination.index
           ? 100.0 * (destination.index / (this.config.anchors.length - 1))
@@ -81,8 +73,15 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     AOS.init();
+    this.titleService.setTitle('Petralia | Homepage');
   }
   ngOnDestroy(): void {
     this.fullpageApi.destroy();
+  }
+
+  setPageTitle(currentLang: string): void {
+    if (currentLang === 'it') {
+      this.titleService.setTitle('Petralia | App Meteo');
+    } else this.titleService.setTitle('Petralia | Weather app');
   }
 }

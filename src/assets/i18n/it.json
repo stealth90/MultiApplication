@@ -83,7 +83,9 @@
     "experience-2": "Migrazione e sviluppo di un'importante web app bancaria da Angular.js ad Angular 10. Seguire le pratiche standard per il controllo della versione attraverso Git",
     "experience-3": "Sviluppato un sito web utilizzando Angular 2, con SSR e internazionalizzazione con i18n. Manutenuto molti progetti, soprattutto un CMS di un famoso e-commerce a livello europeo, sviluppato in React, store in Redux e back end in Firebase. Manutenzione e refactoring di un'app bancaria europea sviluppata in React Native. Seguire le pratiche standard per il controllo della versione attraverso Git",
     "skills": "Skills",
-    "skills-subtitle": "esperto in"
+    "skills-subtitle": "esperto in",
+    "portfolio": "Portfolio",
+    "portfolio-subtitle": "progetti personali"
   },
   "navbar": {
     "home": "Home",
@@ -100,7 +102,9 @@
       "no-position": "Non è stato possibile trovare la tua attuale posizione",
       "no-city": "La città che hai inserito non è stata trovata.",
       "no-permission": "Hai negato la geolocalizzazione. Per favore fornisci il permesso"
-    }
+    },
+    "no-city": "Nessuna città salvata",
+    "no-city-add": "Aggiungi una nuova città sopra"
   },
   "news": {
     "top-headlines": "Titoli principali",
@@ -217,6 +221,7 @@
     },
     "item-deleted": "L'elemento è stato eliminato con successo",
     "item-added": "L'elemento è stato aggiunto con successo",
-    "item-exist": "L'elemento desiderato è già presente"
+    "item-exist": "L'elemento desiderato è già presente",
+    "loading": "Caricamento in corso..."
   }
 }
