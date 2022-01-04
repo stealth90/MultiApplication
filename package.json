@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "ng build --configuration production --base-href https://stealth90.github.io/MultiApplication/ --deploy-url=https://stealth90.github.io/MultiApplication/",
+    "build:prod": "ng build --configuration production --base-href=https://stealth90.github.io/MultiApplication/",
     "deploy:prod": "npx angular-cli-ghpages --dir=dist/my-app "
   },
   "private": true,
