@@ -2,6 +2,8 @@ import { Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxFlickingModule } from '@egjs/ngx-flicking';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { SkeletonModule } from 'primeng/skeleton';
 
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from './news.component';
@@ -22,6 +24,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { NewsContainerComponent } from './components/news-container/news-container.component';
 import { SourceBadgeComponent } from './components/source-badge/source-badge.component';
+import { LazyImageComponent } from '../../components/lazy-image/lazy-image.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +38,14 @@ import { SourceBadgeComponent } from './components/source-badge/source-badge.com
     NewsItemComponent,
     NewsContainerComponent,
     SourceBadgeComponent,
+    LazyImageComponent,
   ],
   imports: [
     CommonModule,
     BadgeModule,
     NewsRoutingModule,
     NgxFlickingModule,
+    SkeletonModule,
     SharedModule,
     DropdownModule,
     FormsModule,
@@ -49,6 +54,7 @@ import { SourceBadgeComponent } from './components/source-badge/source-badge.com
     TableModule,
     InputTextModule,
     CalendarModule,
+    LazyLoadImageModule,
   ],
   providers: [Title],
 })

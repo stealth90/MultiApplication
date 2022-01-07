@@ -44,6 +44,7 @@
     "lottie-web": "^5.8.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
+    "ng-lazyload-image": "^9.1.1",
     "ngx-device-detector": "^2.1.1",
     "ngx-lottie": "^8.0.1",
     "ngx-owl-carousel-o": "^5.0.0",

@@ -1,0 +1,13 @@
+<div class="lazy-image-container">
+  <img
+    [defaultImage]="defaultImage"
+    [lazyLoad]="image"
+    (onStateChange)="myCallbackFunction($event)"
+  />
+  <p-skeleton
+    width="100%"
+    height="100%"
+    class="skeleton-image"
+    *ngIf="isImageLoading"
+  ></p-skeleton>
+</div>

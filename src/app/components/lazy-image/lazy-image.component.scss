@@ -1,0 +1,12 @@
+.lazy-iamge-container {
+  position: relative;
+}
+
+.skeleton-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: skew(-10deg);
+}

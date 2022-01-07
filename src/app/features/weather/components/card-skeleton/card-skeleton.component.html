@@ -1,14 +1,5 @@
 <div
-  class="
-    card
-    p-d-flex
-    p-flex-lg-column
-    p-jc-between
-    p-jc-lg-around
-    p-ai-center
-    p-ai-lg-start
-    p-shadow-5
-  "
+  class="card p-d-flex p-flex-lg-column p-jc-between p-jc-lg-around p-ai-center p-ai-lg-start p-shadow-5"
 >
   <span class="card-header p-mt-5 p-mb-3">
     <span class="p-d-flex p-mb-3">
@@ -42,6 +33,7 @@
     (click)="refetchCurrentCity()"
   >
     <i class="pi pi-refresh"></i>
-    <p>Riprova</p>
+    <p>{{ "weather.errors.no-position" | translate }}</p>
+    <h3>{{ "common.retry" | translate }}</h3>
   </div>
 </div>
