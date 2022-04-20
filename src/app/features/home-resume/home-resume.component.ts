@@ -84,4 +84,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
       this.titleService.setTitle('Petralia | App Meteo');
     } else this.titleService.setTitle('Petralia | Weather app');
   }
+  openCv():void{
+    window.open('assets/cv/Petralia_Pierantonio_CV.pdf', '_blank');
+  }
 }
