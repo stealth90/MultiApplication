@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1650465811397,
+  "timestamp": 1652774619123,
   "index": "https://stealth90.github.io/MultiApplication/index.html",
   "assetGroups": [
     {
@@ -153,7 +153,7 @@
     "https://stealth90.github.io/MultiApplication/assets/animations/route-transition-animations.ts": "cf088076f69e6dcee30cad24240eab05e1647f37",
     "https://stealth90.github.io/MultiApplication/assets/animations/weather-widget-animations.ts": "d7bf30bbdb3a3a1cd08d752feda18b9edeb256a2",
     "https://stealth90.github.io/MultiApplication/assets/colors/index.scss": "340154191e86ba0dac77f80bc8212e4f5df8dd72",
-    "https://stealth90.github.io/MultiApplication/assets/cv/Petralia_Pierantonio_CV.pdf": "05589edc285835f3f75942201626e4b5eceb47c3",
+    "https://stealth90.github.io/MultiApplication/assets/cv/Petralia_Pierantonio_CV.pdf": "5ba3af508db04068b7b7068c6095af5e2b4a722e",
     "https://stealth90.github.io/MultiApplication/assets/fonts/RubikRegular.eot": "fd490ce14d6ff98e4e2c7a13b30495e00ecc63e7",
     "https://stealth90.github.io/MultiApplication/assets/fonts/RubikRegular.svg": "44f05d92f6aa30067e8aa6bbf08838408a937b3a",
     "https://stealth90.github.io/MultiApplication/assets/fonts/RubikRegular.ttf": "527a40b397f8e192d067bdcd70d90800a53ed905",
@@ -233,7 +233,7 @@
     "https://stealth90.github.io/MultiApplication/common.b1b1db6d3c12fb55.js": "41c762e0008619c531b5d849d462df8c5d6ff0a3",
     "https://stealth90.github.io/MultiApplication/favicon.ico": "1cd6feeb14eb2c78b91fae323c011c339cdd53e5",
     "https://stealth90.github.io/MultiApplication/hue.8b1818380241e6ac.png": "f81ae627637a684614aa726e206c73ce099a01fd",
-    "https://stealth90.github.io/MultiApplication/index.html": "e3023ab548288a787f93cf985132735397964220",
+    "https://stealth90.github.io/MultiApplication/index.html": "4e813a653b4017a4c3aa39223250702a79e4bfaf",
     "https://stealth90.github.io/MultiApplication/main.f7cd6e8edb747425.js": "fa28a4145c9dd40e46aed64f44e6d26deca62d18",
     "https://stealth90.github.io/MultiApplication/manifest.webmanifest": "a2938b1d3df9c99c911274747cd52241ecca2a73",
     "https://stealth90.github.io/MultiApplication/password-meter.7daa2ea7d6a97d1c.png": "e0e101bd2a1cbda41398b48a4ab1792d89cb7334",
