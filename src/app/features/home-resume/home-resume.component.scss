@@ -255,8 +255,20 @@ section {
   display: flex;
   align-items: center;
   min-height: 100vh;
-  padding: 2rem 0;
   overflow-y: auto;
+/*   &::before,
+  &::after {
+    width: 100%;
+    content: "";
+    display: flex;
+    background-color: $primary;
+  }
+  &::after {
+    height: 82px;
+  }
+  &::before {
+    height: 104px;
+  } */
 }
 
 @media only screen and (min-width: 1200px) {

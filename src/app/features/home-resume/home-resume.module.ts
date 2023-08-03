@@ -17,8 +17,8 @@ import { CounterDirective } from './directives/counter.directive';
 import { ButtonModule } from 'primeng/button';
 import { HeaderSectionComponent } from './components/header-section/header-section.component';
 import { AngularTiltModule } from 'angular-tilt';
-import { LottieModule } from 'ngx-lottie';
-import player from 'lottie-web';
+import { LottieModule, LottieCacheModule } from 'ngx-lottie';
+import player from 'lottie-web/build/player/lottie_svg';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import player from 'lottie-web';
     ButtonModule,
     TranslateModule.forChild({ extend: true }),
     LottieModule.forRoot({ player: playerFactory }),
+    LottieCacheModule.forRoot(),
   ],
   providers: [Title],
 })

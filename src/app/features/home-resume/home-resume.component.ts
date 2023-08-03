@@ -64,10 +64,6 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
     };
   }
 
-  animationCreated(animationItem: AnimationItem): void {
-    /* console.log(animationItem); */
-  }
-
   getRef(fullPageRef: any): void {
     this.fullpageApi = fullPageRef;
   }
