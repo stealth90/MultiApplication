@@ -252,6 +252,8 @@ a:hover {
 }
 
 section {
+  min-height: 100vh;
+  overflow-y: auto;
   &::before,
   &::after {
     width: 100%;
