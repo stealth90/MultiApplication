@@ -11,11 +11,14 @@ import { AnimationOptions } from 'ngx-lottie';
   styleUrls: ['./home-resume.component.scss'],
 })
 export class HomeResumeComponent implements OnInit, OnDestroy {
+  private animationItem: AnimationItem;
   config: Options;
   currentIndex = 0;
   fullpageApi: any;
   options: AnimationOptions = {
     path: 'assets/lottie/home_resume.json',
+    loop: false,
+    autoplay: false,
   };
   mySkills: Skill[] = [
     { name: 'JavaScript', percentage: 90, icon: 'javascript.png' },
@@ -55,7 +58,6 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
       ],
       sectionsColor: ['#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8', '#4d05e8'],
       scrollOverflow: true,
-      loopBottom: true,
       onLeave: (origin?: any, destination?: any, direction?: any) => {
         this.currentIndex = destination.index
           ? 100.0 * (destination.index / (this.config.anchors.length - 1))
@@ -81,7 +83,7 @@ export class HomeResumeComponent implements OnInit, OnDestroy {
       this.titleService.setTitle('Petralia | App Meteo');
     } else this.titleService.setTitle('Petralia | Weather app');
   }
-  openCv():void{
+  openCv(): void {
     window.open('assets/cv/Petralia_Pierantonio_CV.pdf', '_blank');
   }
 }
