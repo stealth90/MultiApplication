@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { Article, Customer } from '../../models';
+import { Article, Customer, News } from '../../models';
 @Component({
   selector: 'app-news-table',
   templateUrl: './news-table.component.html',
@@ -8,7 +8,7 @@ import { Article, Customer } from '../../models';
 })
 export class NewsTableComponent implements OnInit {
   selectedCustomer2: Customer;
-  @Input() data: Article[];
+  @Input() data: News[];
   @Input() loading: boolean;
   @Input() noResult: boolean;
   customers2: Article[];

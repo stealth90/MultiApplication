@@ -37,7 +37,7 @@
             *ngFor="let article of data"
           >
             <div
-              *ngIf="!article.media && !article.urlToImage; else articleImg"
+              *ngIf="!article.photo_url; else articleImg"
               [style.background]="'url(assets/images/placeholder-image.png)'"
               [style.background-position]="'center'"
               [style.background-size]="'cover'"
@@ -46,30 +46,25 @@
               <app-date-badge [date]="article.published_date"></app-date-badge>
               <div class="source-badge">
                 <app-source-badge
-                  [source]="article.clean_url"
+                  [source]="article.link"
                 ></app-source-badge>
               </div>
             </div>
             <ng-template #articleImg>
               <div
                 class="article-img"
-                [style.background]="'url(' + article.media + ')'"
+                [style.background]="'url(' + article.photo_url + ')'"
                 [style.background-position]="'center'"
                 [style.background-size]="'cover'"
               >
                 <app-date-badge
-                  [date]="article.published_date"
+                  [date]="article.published_datetime_utc"
                 ></app-date-badge>
-                <div class="source-badge">
-                  <app-source-badge
-                    [source]="article.author"
-                  ></app-source-badge>
-                </div>
               </div>
             </ng-template>
             <div class="news-description">
               <div>
-                <p>{{ article.summary }}</p>
+                <p>{{ article.title }}</p>
               </div>
             </div>
             <div class="news-content">
@@ -81,19 +76,9 @@
                   <i class="pi pi-clock p-as-center p-m-2"></i>
                   <p>
                     {{
-                      article.published_date
+                      article.published_datetime_utc
                         | date: "MMM. d, y":"UTC":currentLang
                         | uppercase
-                    }}
-                  </p>
-                </span>
-                <span class="author-container">
-                  <i class="pi pi-user-edit p-as-center p-ml-2"></i>
-                  <p class="p-m-2">
-                    {{
-                      article.author
-                        ? article.author
-                        : ("news.unknow" | translate)
                     }}
                   </p>
                 </span>

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PopupType } from 'src/assets/models';
 import { PopupMessageService } from '../../../../services/popup-message.service';
 import {
-  Article,
   ArticleReq,
   ArticlesResp,
   NewsError,
   ERROR_MESSAGES,
+  News,
 } from '../../models';
 import { NewsService } from '../../services/news.service';
 
@@ -16,7 +16,7 @@ import { NewsService } from '../../services/news.service';
   styleUrls: ['./news-container.component.scss'],
 })
 export class NewsContainerComponent implements OnInit {
-  data: Article[] = [];
+  data: News[] = [];
   loading = false;
   noResult = false;
   newsError: NewsError;
@@ -34,11 +34,11 @@ export class NewsContainerComponent implements OnInit {
     this.noResult = false;
     this.newsService.getEverythingArticles(articleReq).subscribe(
       (response: ArticlesResp) => {
-        if (response.totalResults === 0) {
+        if (response.data.length === 0) {
           this.noResult = true;
           this.data = [];
         } else {
-          this.data = [...response.articles];
+          this.data = [...response.data];
           this.newsService.newsCollection = [...this.data];
           localStorage.setItem('lastArticles', JSON.stringify(this.data));
         }

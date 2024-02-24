@@ -4,21 +4,14 @@ export type Position = {
 };
 
 export const CATEGORY_NEWS = [
-  { name: 'news.categories.business', value: 'business' },
-  { name: 'news.categories.entertainment', value: 'entertainment' },
-  { name: 'news.categories.general', value: 'news' },
-  { name: 'news.categories.health', value: 'health' },
-  { name: 'news.categories.science', value: 'science' },
-  { name: 'news.categories.sports', value: 'sport' },
-  { name: 'news.categories.technology', value: 'tech' },
-  { name: 'news.categories.world', value: 'world' },
-  { name: 'news.categories.music', value: 'music' },
-  { name: 'news.categories.food', value: 'food' },
-  { name: 'news.categories.travel', value: 'travel' },
-  { name: 'news.categories.beauty', value: 'beauty' },
-  { name: 'news.categories.economics', value: 'economics' },
-  { name: 'news.categories.finance', value: 'finance' },
-  { name: 'news.categories.politics', value: 'politics' },
+  { name: 'news.categories.world', value: 'WORLD' },
+  { name: 'news.categories.national', value: 'NATIONAL' },
+  { name: 'news.categories.business', value: 'BUSINESS' },
+  { name: 'news.categories.technology', value: 'TECHNOLOGY' },
+  { name: 'news.categories.entertainment', value: 'ENTERTAINMENT' },
+  { name: 'news.categories.sports', value: 'SPORTS' },
+  { name: 'news.categories.science', value: 'SCIENCE' },
+  { name: 'news.categories.health', value: 'HEALTH' },
 ];
 
 export const ERROR_MESSAGES = {
@@ -114,15 +107,17 @@ export interface ArticleReq {
 export interface ArticlesResp {
   status: string;
   totalResults: number;
-  articles: Article[];
+  data: News[];
 }
 
 export interface News {
   title: string;
-  published_date: string;
+  published_datetime_utc: string;
   link: string;
-  author: string;
-  media?: string;
+  photo_url?: string;
+  source_favicon_url?: string;
+  source_logo_url?: string;
+  source_url: string;
 }
 
 export interface Article {

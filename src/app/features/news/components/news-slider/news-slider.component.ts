@@ -26,7 +26,7 @@ export class NewsSliderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.data$ = this.newsService
-      .getTopHeadlinesNews()
+      .getTopHeadlinesNews('WORLD')
       .subscribe((value: News[]) => (this.data = [...this.data, ...value]));
   }
 

@@ -18,56 +18,6 @@
         />
       </span>
     </div>
-    <div class="calendar-input">
-      <p-calendar
-        [style]="{ height: '45px', width: '100%' }"
-        [inputStyle]="{ width: '100%' }"
-        [baseZIndex]="9999999999"
-        [showIcon]="true"
-        dateFormat="dd/mm/yy"
-        [readonlyInput]="true"
-        [maxDate]="maxDateValue"
-        [placeholder]="'common.date-from' | translate"
-        [monthNavigator]="true"
-        [yearNavigator]="true"
-        [yearRange]="yearRange"
-        inputId="dateFrom"
-        formControlName="from"
-      ></p-calendar>
-      <button
-        type="button"
-        (click)="clearInput('from')"
-        [hidden]="!searchNewsForm.value.from"
-        class="clear-button"
-      >
-        X
-      </button>
-    </div>
-    <div class="calendar-input">
-      <p-calendar
-        [style]="{ height: '45px', width: '100%' }"
-        [inputStyle]="{ width: '100%' }"
-        [baseZIndex]="9999999999"
-        [showIcon]="true"
-        dateFormat="dd/mm/yy"
-        [readonlyInput]="true"
-        [maxDate]="maxDateValue"
-        [placeholder]="'common.date-to' | translate"
-        [monthNavigator]="true"
-        [yearNavigator]="true"
-        [yearRange]="yearRange"
-        inputId="dateTo"
-        formControlName="to"
-      ></p-calendar>
-      <button
-        type="button"
-        (click)="clearInput('to')"
-        [hidden]="!searchNewsForm.value.to"
-        class="clear-button"
-      >
-        X
-      </button>
-    </div>
   </div>
   <div class="button-container">
     <button

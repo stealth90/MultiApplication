@@ -19,15 +19,11 @@
         <div class="item" *ngFor="let news of data">
           <div class="image-area">
             <div class="image-inner-area">
-              <app-lazy-image [image]="news.media"></app-lazy-image>
+              <app-lazy-image [image]="news.photo_url"></app-lazy-image>
             </div>
           </div>
           <div class="info">
             <p class="title">{{ news.title }}</p>
-            <br />
-            <p class="subtitle">
-              {{ news.author || "news.unknow-author" | translate }}
-            </p>
             <button
               pButton
               type="button"

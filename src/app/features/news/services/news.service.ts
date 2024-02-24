@@ -3,44 +3,32 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Article, ArticleReq, ArticlesResp } from '../models';
+import { ArticleReq, ArticlesResp, News } from '../models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NewsService {
-  topNewsUri = `https://newscatcher.p.rapidapi.com/v1/latest_headlines?`;
-  allNewsUri = `https://newscatcher.p.rapidapi.com/v1/search?`;
-  allNewsFreeUri = `https://newscatcher.p.rapidapi.com/v1/search_free?`;
-  newsCollection: Article[] = [];
+  topNewsUri = `https://real-time-news-data.p.rapidapi.com/topic-headlines?`;
+  allNewsUri = `https://real-time-news-data.p.rapidapi.com/search?`;
+  /* allNewsFreeUri = `https://newscatcher.p.rapidapi.com/v1/search_free?`; */
+  newsCollection: News[] = [];
   headers: HttpHeaders;
   constructor(private http: HttpClient, private translate: TranslateService) {
-    const newsCollectionSaved: Article[] = JSON.parse(
+    const newsCollectionSaved: News[] = JSON.parse(
       localStorage.getItem('lastArticles')
     );
     this.newsCollection = newsCollectionSaved || [];
     this.headers = new HttpHeaders()
       .set(
-        'x-rapidapi-key',
+        'X-RapidAPI-Key',
         '0aaaf61640msh0a9c87855438186p15c6a1jsnff30d535d768'
       )
-      .set('x-rapidapi-host', 'newscatcher.p.rapidapi.com');
+      .set('X-RapidAPI-Host', 'real-time-news-data.p.rapidapi.com');
   }
 
-  /* getNews(year: string, month: string): Observable<any> {
-    return this.http
-      .get<any>(`${this.baseUri}${year}/${month}.json?api-key=${this.api}`, {
-        headers: this.headers,
-      })
-      .pipe(map((collection) => collection.response.docs));
-  } */
-
-  /* getItaNews(): Observable<any> {
-    return this.http.get<any>(this.topNewsUri);
-  } */
-
   getTopHeadlinesNews(
-    category: string = null,
+    category: string = 'NATIONAL',
     country: string = null
   ): Observable<any> {
     const currentCountry = country
@@ -48,24 +36,23 @@ export class NewsService {
       : this.translate.currentLang === 'en'
       ? 'gb'
       : this.translate.currentLang;
-    const url = `${this.topNewsUri}country=${currentCountry}&media=True${
-      category ? `&topic=${category}` : ''
-    }`;
+    const url = `${this.topNewsUri}topic=${category}&country=${currentCountry}`;
     return this.http
       .get<any>(url, { headers: this.headers })
-      .pipe(map((value) => value.articles));
+      .pipe(map((value) => value.data));
   }
 
   getEverythingArticles({ q, from, to }: ArticleReq): Observable<ArticlesResp> {
     const currentLanguage = this.translate.currentLang;
-    const withoutRangeDate = !from && !to;
-    const url = `${
+    /* const withoutRangeDate = !from && !to; */
+    /* const url = `${
       withoutRangeDate ? this.allNewsFreeUri : this.allNewsUri
     }q=${q}${from ? `&from=${from}` : ''}${
       to ? `&to=${to}` : ''
     }&lang=${currentLanguage}&media=True${
       withoutRangeDate ? '' : '&from_rank = 30000'
-    }}`;
+    }}`; */
+    const url = `${this.allNewsUri}query=${q}}&lang=${currentLanguage}`;
     return this.http.get<ArticlesResp>(url, { headers: this.headers });
   }
 }

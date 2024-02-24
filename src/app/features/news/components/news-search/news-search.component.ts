@@ -14,8 +14,6 @@ export class NewsSearchComponent implements OnInit {
   yearRange: string;
   searchNewsForm = this.formBuilder.group({
     q: ['', Validators.required],
-    from: [undefined],
-    to: [undefined],
   });
   constructor(private formBuilder: FormBuilder) {}
 
@@ -31,11 +29,11 @@ export class NewsSearchComponent implements OnInit {
     if (updatedValue.length) {
       const data = {};
       const values = Object.entries(this.searchNewsForm.value);
-      values.forEach((value) =>
-        value[1] !== null
-          ? value[0] === 'q'
-            ? (data[value[0]] = value[1])
-            : (data[value[0]] = Moment(value[1]).format('YYYY-MM-DD'))
+      values.forEach(([key, value]) =>
+        value !== null
+          ? key === 'q'
+            ? (data[key] = value)
+            : (data[key] = Moment(value).format('YYYY-MM-DD'))
           : null
       );
       this.dataSearch.emit(data);

@@ -43,26 +43,12 @@
   }
 }
 
-.calendar-input {
-  flex: 1;
-  position: relative;
-}
-
 :host::ng-deep {
-  .p-calendar .p-datepicker {
-    transform: scale(0.5);
-  }
   .p-button {
     background: $secondary;
     transition: background 300ms;
     &:hover {
       background: #a52d24;
-    }
-  }
-  .p-calendar-w-btn {
-    .p-inputtext,
-    .p-datepicker-trigger {
-      border-radius: 0;
     }
   }
 }
