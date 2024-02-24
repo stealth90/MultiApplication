@@ -122,21 +122,14 @@
     "no-result-body": "It looks like there aren't very relevant results to your search.",
     "on-search": "Search in progress...",
     "categories": {
-      "health": "Health",
-      "business": "Business",
-      "entertainment": "Entertainment",
-      "general": "General",
-      "science": "Science",
-      "sports": "Sports",
-      "technology": "Technology",
       "world": "World",
-      "music": "Music",
-      "food": "Food",
-      "travel": "Travel",
-      "beauty": "Beauty",
-      "economics": "Economics",
-      "finance": "Finance",
-      "politics": "Politics"
+      "national": "National",
+      "business": "Business",
+      "technology": "Technology",
+      "entertainment": "Entertainment",
+      "sports": "Sports",
+      "science": "Science",
+      "health": "Health"
     },
     "countries": {
       "emirate": "Emirate",
