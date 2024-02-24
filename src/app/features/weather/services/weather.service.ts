@@ -83,7 +83,9 @@ export class WeatherService {
         .pipe(
           map((city) => ({
             cityDetail: {
-              name: city.results[0].components.city,
+              name:
+                city.results[0].components.town ??
+                city.results[0].components.city,
               flag: city.results[0].annotations.flag,
               timezone: city.results[0].annotations.timezone.name,
             },

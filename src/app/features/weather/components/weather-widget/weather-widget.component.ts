@@ -92,7 +92,6 @@ export class WeatherWidgetComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     // this.animationState = 'default';
-    console.log('weather', this.weather);
     this.currentLang = this.translate.currentLang;
     this.currentLang$ = this.translate.onLangChange.subscribe(
       (lang: LangChangeEvent) => {
