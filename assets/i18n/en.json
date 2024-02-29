@@ -218,5 +218,10 @@
     "item-exist": "The desired item is already present.",
     "loading": "Loading...",
     "retry": "Retry"
+  },
+  "service-worker": {
+    "new-app": "New App Version",
+    "new-app-description": "A new version of the app is available. Please refresh your browser window or click on the update button.",
+    "refresh": "Update"
   }
 }
