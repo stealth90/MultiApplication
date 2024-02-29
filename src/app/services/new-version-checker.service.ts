@@ -42,7 +42,10 @@ export class NewVersionCheckerService {
     // Reload the page to update to the latest version after the new version is activated
     this.swUpdate
       .activateUpdate()
-      .then(() => document.location.reload())
+      .then(() => {
+        this.$isNewVersionAvailable.next(false);
+        document.location.reload();
+      })
       .catch((error) => console.error('Failed to apply updates:', error));
   }
 }
