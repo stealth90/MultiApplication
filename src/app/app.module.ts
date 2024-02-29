@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
+import { DialogModule } from 'primeng/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 /* COMPONENTS */
@@ -20,6 +21,7 @@ import { PopupDialogComponent } from './components/popup-dialog/popup-dialog.com
 import { ButtonInstallComponent } from './components/button-install/button-install.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NewVersionCheckerComponent } from './components/new-version-checker/new-version-checker.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { environment } from '../environments/environment';
     FooterComponent,
     PopupDialogComponent,
     ButtonInstallComponent,
+    NewVersionCheckerComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { environment } from '../environments/environment';
     SidebarModule,
     ButtonModule,
     MenubarModule,
+    DialogModule,
     HammerModule,
     FontAwesomeModule,
     TranslateModule.forRoot({

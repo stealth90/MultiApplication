@@ -218,5 +218,10 @@
     "item-exist": "L'elemento desiderato è già presente.",
     "loading": "Caricamento in corso...",
     "retry": "Riprova"
+  },
+  "service-worker": {
+    "new-app": "Nuova versione dell'app",
+    "new-app-description": "È disponibile una nuova versione dell'applicazione. Aggiorna la finestra del browser o fare clic sul pulsante di aggiornamento.",
+    "refresh": "Aggiorna"
   }
 }

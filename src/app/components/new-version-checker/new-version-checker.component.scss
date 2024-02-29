@@ -1,0 +1,23 @@
+@import "src/assets/colors/index.scss";
+
+.header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: $primary;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  button {
+    gap: 0.5rem;
+    span {
+      color: $primary;
+      &:first-of-type{
+        order:1
+      }
+    }
+  }
+}

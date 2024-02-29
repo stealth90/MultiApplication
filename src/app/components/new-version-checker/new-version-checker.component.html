@@ -1,0 +1,30 @@
+<p-dialog
+  visible="true"
+  [position]="'top'"
+  modal="true"
+  [style]="{ width: '50vw' }"
+  [closeOnEscape]="false"
+  [closable]="false"
+>
+  <ng-template pTemplate="header">
+    <div class="header">
+      <span class="font-bold white-space-nowrap">{{
+        "service-worker.new-app" | translate
+      }}</span>
+    </div>
+  </ng-template>
+  <p class="p-m-0 p-text-center">{{ "service-worker.new-app-description" | translate }}</p>
+  <ng-template pTemplate="footer">
+    <div class="footer">
+    <button
+      pButton
+      pRipple
+      icon="pi pi-undo"
+      type="button"
+      [label]="'service-worker.refresh' | translate"
+      (click)="applyUpdate()"
+      class="p-button-outlined p-button-secondary"
+    ></button>
+    </div>
+  </ng-template>
+</p-dialog>
