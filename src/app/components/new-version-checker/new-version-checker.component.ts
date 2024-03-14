@@ -9,7 +9,7 @@ import { NewVersionCheckerService } from 'src/app/services/new-version-checker.s
   encapsulation: ViewEncapsulation.None,
 })
 export class NewVersionCheckerComponent {
-  isNewVersionAvailable: boolean = true;
+  isNewVersionAvailable: boolean = false;
   newAppUpdateAvailableSubscription: Subscription;
   @Input() containerClasses: string;
 
