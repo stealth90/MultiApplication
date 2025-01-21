@@ -1,17 +1,10 @@
 @import "src/assets/colors/index.scss";
 .input-container {
-  width: 80%;
-  margin: 10% auto 5%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
-}
-
-@media (max-width: 576px) {
-  .input-container {
-    margin-top: 20%;
-  }
+  margin-top: 64px;
 }
 
 h2 {

@@ -24,12 +24,12 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private router: Router
-  ) /*  private uiService: UiService */
-  {
+    private router: Router /*  private uiService: UiService */
+  ) {
     const router$ = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
+        console.log({ route: event.url.slice(1) });
         this.currentRoute = event.url.slice(1);
       });
     this.subscriptions.push(router$);

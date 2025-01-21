@@ -22,7 +22,7 @@
   <div class="button-container">
     <button
       pButton
-      [disabled]="!(searchNewsForm.touched && searchNewsForm.valid)"
+      [disabled]="!searchNewsForm.controls['q'].value"
       label="{{ 'news.search' | translate }}"
       class="search-button"
       type="submit"

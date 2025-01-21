@@ -52,7 +52,9 @@ export class NewsService {
     }&lang=${currentLanguage}&media=True${
       withoutRangeDate ? '' : '&from_rank = 30000'
     }}`; */
-    const url = `${this.allNewsUri}query=${q}}&lang=${currentLanguage}`;
+    const url = `${this.allNewsUri}query=${q}&country=${
+      currentLanguage === 'it' ? 'IT' : 'US'
+    }&lang=${currentLanguage}`;
     return this.http.get<ArticlesResp>(url, { headers: this.headers });
   }
 }

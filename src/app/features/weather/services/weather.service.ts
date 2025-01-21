@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { BehaviorSubject, Observable, of } from 'rxjs';
@@ -16,11 +16,12 @@ export class WeatherService {
   myCurrentWeather: WeatherApp[] = [];
   needRefetch: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   api = '448b2429a71b8c55510f42a62897d676';
-  geoApi = 'c762178c3b604aa1b807eb867f8a1058';
+  geoApi = '672604a3782147cebfd0000f75646874';
   baseGeoUri = `https://api.opencagedata.com/geocode/v1/json?key=${this.geoApi}&languange=native&&q=`;
   baseUri = 'https://api.openweathermap.org/data/2.5/';
   hasGeoPermission = true;
   coordinates$: Observable<any>;
+  /* headers: HttpHeaders; */
 
   constructor(
     private http: HttpClient,
@@ -31,6 +32,10 @@ export class WeatherService {
     );
     this.getCurrentCity();
     this.weatherCollection = weatherCitiesSaved || [];
+    /*     this.headers = new HttpHeaders().set(
+      'x-rapidapi-host',
+      'google-map-places.p.rapidapi.com'
+    ); */
   }
 
   getCurrentCoords(): Observable<any> {
@@ -79,7 +84,7 @@ export class WeatherService {
     this.myCurrentWeather = [newCity];
     this.getCurrentCoords().subscribe((myCords) => {
       this.http
-        .get<any>(`${this.baseGeoUri}${myCords.latitude}+${myCords.longitude}`)
+        .get<any>(`${this.baseGeoUri}${myCords.latitude},${myCords.longitude}`)
         .pipe(
           map((city) => ({
             cityDetail: {
